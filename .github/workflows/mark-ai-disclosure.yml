@@ -1,0 +1,62 @@
+name: Mark AI disclosure on article image
+
+on:
+  push:
+    paths:
+      - 'ai-disclosure.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  mark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add generative AI disclosure label
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="$(cat ai-disclosure.trigger)"
+          python -m pip install --quiet pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          TARGET="$target" python - <<'PY'
+          import os
+          from PIL import Image, ImageDraw, ImageFont
+
+          path = os.environ['TARGET']
+          im = Image.open(path).convert('RGB')
+          draw = ImageDraw.Draw(im, 'RGBA')
+          text = '생성형 AI 제작 이미지'
+          font_paths = [
+              '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
+              '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc',
+          ]
+          font = None
+          for p in font_paths:
+              if os.path.exists(p):
+                  font = ImageFont.truetype(p, max(22, im.width // 45))
+                  break
+          if font is None:
+              font = ImageFont.load_default()
+
+          bbox = draw.textbbox((0,0), text, font=font)
+          tw, th = bbox[2]-bbox[0], bbox[3]-bbox[1]
+          pad_x, pad_y = max(16, im.width//80), max(10, im.height//70)
+          margin = max(18, im.width//70)
+          x2, y2 = im.width-margin, im.height-margin
+          x1, y1 = x2-tw-2*pad_x, y2-th-2*pad_y
+          radius = max(10, im.width//120)
+          draw.rounded_rectangle((x1,y1,x2,y2), radius=radius, fill=(0,0,0,165))
+          draw.text((x1+pad_x, y1+pad_y-bbox[1]), text, font=font, fill=(255,255,255,235))
+          im.save(path, 'JPEG', quality=90, optimize=True)
+          PY
+          rm -f ai-disclosure.trigger
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add generative AI disclosure to article image"
+          git push
