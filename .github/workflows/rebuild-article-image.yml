@@ -15,16 +15,31 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Rebuild JPEG from staged base64 parts
+      - name: Rebuild and normalize article JPEG
         shell: bash
         run: |
           set -euo pipefail
           target="$(cat image-build.trigger)"
           mkdir -p "$(dirname "$target")"
-          cat image-parts/*.part | base64 -d > "$target"
-          rm -rf image-parts image-build.trigger
+
+          if compgen -G 'image-parts/*.part' > /dev/null; then
+            cat image-parts/*.part | base64 -d > "$target"
+            rm -rf image-parts
+          fi
+
+          python3 -m pip install --quiet pillow
+          TARGET="$target" python3 - <<'PY'
+          import os
+          from PIL import Image
+          path = os.environ['TARGET']
+          image = Image.open(path).convert('RGB')
+          image = image.resize((1200, 675), Image.Resampling.LANCZOS)
+          image.save(path, 'JPEG', quality=88, optimize=True)
+          PY
+
+          rm -f image-build.trigger
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Add generated article image: $target"
+          git commit -m "Normalize generated article image: $target"
           git push
