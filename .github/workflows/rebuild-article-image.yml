@@ -1,0 +1,30 @@
+name: Rebuild article image
+
+on:
+  push:
+    paths:
+      - 'image-build.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rebuild JPEG from staged base64 parts
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="$(cat image-build.trigger)"
+          mkdir -p "$(dirname "$target")"
+          cat image-parts/*.part | base64 -d > "$target"
+          rm -rf image-parts image-build.trigger
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add generated article image: $target"
+          git push
