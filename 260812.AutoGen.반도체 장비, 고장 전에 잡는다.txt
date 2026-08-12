@@ -1,0 +1,25 @@
+반도체 FAB의 유지보수가 ‘고장 후 수리’에서 ‘고장 전 대응’으로 빠르게 이동하고 있다. 핵심은 장비 센서 데이터를 AI가 지속적으로 읽고 정상 상태에서 벗어나는 미세한 변화를 조기에 찾아내는 예지보전(Predictive Maintenance)이다.
+
+반도체 장비는 온도·압력·진동·가스·전력·진공 등 다양한 데이터를 실시간으로 만든다. 기존에는 설정값을 넘으면 알람이 울리고 엔지니어가 현장에서 원인을 찾았다. 예지보전은 한발 앞선다. AI가 정상 패턴을 학습해 이상 징후를 발견하고 장비가 멈추기 전에 점검이나 부품 교체 시점을 제안한다.
+
+해외 장비업체의 움직임도 같은 방향이다. 일본 Tokyo Electron은 7월 NVIDIA와 협력을 확대하며 Epsira 플랫폼에 AI Troubleshooting과 Robotics Maintenance를 결합하고 있다. 장비 데이터를 분석해 정비 시점을 최적화하고, 디지털 트윈에서 정비 로봇을 학습시켜 실제 유지보수까지 연결하려는 구상이다.
+
+미국 Lam Research도 5월 공개한 Equipment Intelligence에서 센서·데이터·알고리즘·AI를 이용해 장비 신뢰성과 가동률을 높이고 장애 진단 시간을 줄이는 방향을 제시했다. 유럽 ASML 역시 predictive analytics와 dashboard로 장비 상태를 감시하고, AI를 predictive maintenance와 장애 진단에 활용하고 있다고 밝히고 있다.
+
+8월 5~6일 미국 SEMI의 ‘AI Techniques in Semiconductor Manufacturing’ 워크숍에서도 maintenance optimization과 predictive maintenance가 실제 AI 적용 분야로 다뤄졌다. 예지보전이 연구단계를 넘어 FAB 운영 실무로 들어오고 있다는 의미다.
+
+하지만 센서와 AI만 설치한다고 예지보전이 완성되는 것은 아니다. 숙련 엔지니어는 압력이나 진동의 작은 변화, 반복되는 알람 순서만 보고도 특정 펌프나 밸브의 이상을 의심한다. 이런 경험은 매뉴얼에 모두 기록돼 있지 않다. 결국 센서 데이터에 고장이력, 부품교체 기록, 정비결과와 엔지니어 판단을 함께 축적해야 AI의 예측도 정확해진다.
+
+따라서 앞으로의 경쟁력은 ‘어떤 AI 모델을 쓰느냐’보다 ‘현장의 운영 경험을 얼마나 잘 데이터화했느냐’에서 갈릴 가능성이 크다. 대형 FAB뿐 아니라 연구기관·대학·중소 반도체 기업에서도 장비 운영 이력을 쌓는다면 전문인력 부족을 보완하는 유지보수 서비스로 발전할 수 있다.
+
+반도체 장비 유지보수의 기준은 이제 ‘얼마나 빨리 고치느냐’에서 ‘고장 전에 얼마나 빨리 알아채느냐’로 바뀌고 있다.
+
+[자료]
+Tokyo Electron, 2026.07.16
+https://www.tel.com/news/topics/2026/20260716_001.html
+Lam Research, 2026.05.19
+https://newsroom.lamresearch.com/what-is-equipment-intelligence-semi-101
+ASML 2025 Annual Report
+https://www.asml.com/en/investors/annual-report/2025/strategy-and-stories
+SEMI, 2026.08.05-06
+https://www.semi.org/en/event/ai-techniques-workshop
