@@ -24,17 +24,15 @@ jobs:
           sudo apt-get install -y -qq fonts-noto-cjk
           python - <<'PY'
           from PIL import Image, ImageDraw, ImageFont
-          import os, math
+          import os
 
           W,H=2400,1350
           im=Image.new('RGB',(W,H),(232,241,247))
           d=ImageDraw.Draw(im,'RGBA')
 
-          # cleanroom background
           for y in range(H):
               t=y/H
-              c=(int(242-36*t),int(248-30*t),int(251-22*t))
-              d.line((0,y,W,y),fill=c)
+              d.line((0,y,W,y),fill=(int(242-36*t),int(248-30*t),int(251-22*t)))
           for i in range(10):
               x=80+i*240
               d.rounded_rectangle((x,45,x+180,105),16,fill=(255,255,255,215),outline=(185,202,214,180),width=3)
@@ -81,50 +79,45 @@ jobs:
               else:
                   d.line((cx-70*s,cy+140*s,cx-130*s,cy+220*s),fill=(242,247,249,255),width=48)
                   d.line((cx+70*s,cy+140*s,cx+120*s,cy+220*s),fill=(242,247,249,255),width=48)
-                  tw,th=150*s,105*s; tx,ty=cx-tw/2,cy+185*s
+                  tw,th=150*s,105*s
+                  tx,ty=cx-tw/2,cy+185*s
                   d.rounded_rectangle((tx,ty,tx+tw,ty+th),12,fill=(14,48,70,255),outline=(82,179,220,255),width=4)
                   for j in range(3): d.line((tx+20*s,ty+25*s+j*24*s,tx+tw-25*s,ty+25*s+j*24*s),fill=(55,185,225,180),width=4)
                   d.ellipse((cx-145*s,cy+205*s,cx-112*s,cy+238*s),fill=glove)
                   d.ellipse((cx+105*s,cy+205*s,cx+138*s,cy+238*s),fill=glove)
 
-          # senior teaching junior
           engineer(1160,455,1.05,'point')
           engineer(1545,520,0.95,'tablet')
 
-          # subtle digital knowledge-transfer path only
           pts=[(905,500),(1040,480),(1180,440),(1320,475),(1460,535)]
           for a,b in zip(pts[:-1],pts[1:]): d.line((*a,*b),fill=(32,188,220,95),width=7)
           for x,y in pts: d.ellipse((x-10,y-10,x+10,y+10),fill=(30,200,230,175))
 
-          # only allowed text: AI disclosure label
           font=None
           for p in ['/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc','/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc']:
               if os.path.exists(p):
-                  font=ImageFont.truetype(p,44); break
+                  font=ImageFont.truetype(p,44)
+                  break
           if font is None: font=ImageFont.load_default()
           label='생성형 AI 제작 이미지'
-          bb=d.textbbox((0,0),label,font=font); tw,th=bb[2]-bb[0],bb[3]-bb[1]
-          x2,y2=W-45,H-35; x1,y1=x2-tw-48,y2-th-30
+          bb=d.textbbox((0,0),label,font=font)
+          tw,th=bb[2]-bb[0],bb[3]-bb[1]
+          x2,y2=W-45,H-35
+          x1,y1=x2-tw-48,y2-th-30
           d.rounded_rectangle((x1,y1,x2,y2),22,fill=(5,30,45,175))
           d.text((x1+24,y1+15-bb[1]),label,font=font,fill=(255,255,255,235))
 
           out='260813.AutoGen.반도체 FAB의 새 병목, 장비 엔지니어가 부족하다.jpg'
           im.resize((1200,675),Image.Resampling.LANCZOS).save(out,'JPEG',quality=92,optimize=True)
+
+          rules='chatgpt/K-ARTICLE-RULES.md'
+          marker='## 10-A. 대표이미지 엄격 규칙 — FROZEN 보강'
+          if os.path.exists(rules):
+              text=open(rules,'r',encoding='utf-8').read()
+              if marker not in text:
+                  addition='''\n\n## 10-A. 대표이미지 엄격 규칙 — FROZEN 보강\n- 대표이미지는 기사 카드용 **사진형 또는 단순 일러스트형 이미지**로 만든다.\n- 기사 전체 내용을 축약한 **인포그래픽·뉴스페이지·포스터·보고서 형식은 금지**한다.\n- 기사 제목, 긴 설명문, 통계 수치, 차트, 표, 기업 로고, 다수의 텍스트 박스를 이미지에 넣지 않는다.\n- 이미지에는 기사 핵심 장면 또는 핵심 기술 개념 **하나만** 표현한다.\n- 허용되는 고정 문구는 우측 하단의 `생성형 AI 제작 이미지` 1개뿐이다.\n- 저장 전 이미지가 기사 주제와 직접 일치하는지 반드시 육안 검증한다.\n'''
+                  open(rules,'a',encoding='utf-8').write(addition)
           PY
-
-          # Strengthen frozen image rule without rewriting existing content
-          if ! grep -q '대표이미지 엄격 규칙' chatgpt/K-ARTICLE-RULES.md; then
-            cat >> chatgpt/K-ARTICLE-RULES.md <<'EOF'
-
-## 10-A. 대표이미지 엄격 규칙 — FROZEN 보강
-- 대표이미지는 기사 카드용 **사진형 또는 단순 일러스트형 이미지**로 만든다.
-- 기사 전체 내용을 축약한 **인포그래픽·뉴스페이지·포스터·보고서 형식은 금지**한다.
-- 기사 제목, 긴 설명문, 통계 수치, 차트, 표, 기업 로고, 다수의 텍스트 박스를 이미지에 넣지 않는다.
-- 이미지에는 기사 핵심 장면 또는 핵심 기술 개념 **하나만** 표현한다.
-- 허용되는 고정 문구는 우측 하단의 `생성형 AI 제작 이미지` 1개뿐이다.
-- 저장 전 이미지가 기사 주제와 직접 일치하는지 반드시 육안 검증한다.
-EOF
-          fi
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
