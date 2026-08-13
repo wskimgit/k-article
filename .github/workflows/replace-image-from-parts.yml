@@ -20,24 +20,25 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install --quiet pillow
-          cat .image_part_*.b64 | tr -d '\n\r ' | base64 -d > rebuilt.jpg
+          cat .image_part_*.b64 | tr -d '\n\r ' | base64 -d > rebuilt.webp
           python - <<'PY'
           from PIL import Image
-          p='rebuilt.jpg'
-          im=Image.open(p)
-          im.verify()
-          im=Image.open(p)
-          assert im.format == 'JPEG', im.format
-          assert im.size == (1200, 675), im.size
-          print('JPEG verified:', im.size)
-          PY
+          src='rebuilt.webp'
           target='260813.AutoGen.반도체 FAB의 새 병목, 장비 엔지니어가 부족하다.jpg'
-          mv rebuilt.jpg "$target"
-          rm -f .image_part_*.b64 image-replace.trigger
-          rm -f .github/workflows/replace-image-from-parts.yml
+          im=Image.open(src).convert('RGB')
+          assert im.size == (1200, 675), im.size
+          im.save(target, 'JPEG', quality=92, optimize=True, progressive=False)
+          chk=Image.open(target)
+          chk.verify()
+          chk=Image.open(target)
+          assert chk.format == 'JPEG', chk.format
+          assert chk.size == (1200, 675), chk.size
+          print('JPEG verified:', chk.size)
+          PY
+          rm -f rebuilt.webp .image_part_*.b64 image-replace.trigger
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m 'Replace article image with regenerated high-quality JPEG'
+          git commit -m 'Replace workforce article image with high-quality generated photo'
           git pull --rebase origin main
           git push
