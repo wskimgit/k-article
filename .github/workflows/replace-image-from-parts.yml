@@ -1,0 +1,43 @@
+name: Replace article image from base64 parts
+
+on:
+  push:
+    paths:
+      - 'image-replace.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rebuild verified article JPEG
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          cat .image_part_*.b64 | tr -d '\n\r ' | base64 -d > rebuilt.jpg
+          python - <<'PY'
+          from PIL import Image
+          p='rebuilt.jpg'
+          im=Image.open(p)
+          im.verify()
+          im=Image.open(p)
+          assert im.format == 'JPEG', im.format
+          assert im.size == (1200, 675), im.size
+          print('JPEG verified:', im.size)
+          PY
+          target='260813.AutoGen.반도체 FAB의 새 병목, 장비 엔지니어가 부족하다.jpg'
+          mv rebuilt.jpg "$target"
+          rm -f .image_part_*.b64 image-replace.trigger
+          rm -f .github/workflows/replace-image-from-parts.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Replace article image with regenerated high-quality JPEG'
+          git pull --rebase origin main
+          git push
