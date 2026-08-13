@@ -1,0 +1,134 @@
+name: Generate clean workforce article image
+
+on:
+  push:
+    paths:
+      - 'workforce-image.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate clean 16x9 article image
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk
+          python - <<'PY'
+          from PIL import Image, ImageDraw, ImageFont
+          import os, math
+
+          W,H=2400,1350
+          im=Image.new('RGB',(W,H),(232,241,247))
+          d=ImageDraw.Draw(im,'RGBA')
+
+          # cleanroom background
+          for y in range(H):
+              t=y/H
+              c=(int(242-36*t),int(248-30*t),int(251-22*t))
+              d.line((0,y,W,y),fill=c)
+          for i in range(10):
+              x=80+i*240
+              d.rounded_rectangle((x,45,x+180,105),16,fill=(255,255,255,215),outline=(185,202,214,180),width=3)
+          vanish=(1210,420)
+          for x in range(-200,2700,180): d.line((x,H,*vanish),fill=(145,175,195,75),width=3)
+          for y in [760,900,1040,1180,1290]: d.line((100,y,W-100,y),fill=(145,175,195,55),width=3)
+
+          def cabinet(x,y,w,h,screen=False):
+              d.rounded_rectangle((x,y,x+w,y+h),24,fill=(216,225,231,245),outline=(142,164,180,230),width=5)
+              d.rectangle((x+24,y+24,x+w-24,y+70),fill=(244,248,250,245))
+              d.ellipse((x+w-58,y+92,x+w-36,y+114),fill=(62,200,120,230))
+              d.ellipse((x+w-58,y+130,x+w-36,y+152),fill=(245,184,55,230))
+              if screen:
+                  d.rounded_rectangle((x+35,y+110,x+w-35,y+310),14,fill=(11,45,66,255))
+                  for j in range(5):
+                      yy=y+140+j*30
+                      d.line((x+65,yy,x+w-80,yy),fill=(38,164,220,145),width=5)
+                  d.line((x+65,y+270,x+130,y+242,x+190,y+255,x+250,y+205,x+w-75,y+230),fill=(93,226,172,220),width=8)
+
+          for x in [60,350,1640,1930,2210]: cabinet(x,280,245,625,screen=x in [60,1930])
+          cabinet(500,220,520,760,True)
+          d.ellipse((615,695,900,980),fill=(195,208,215,255),outline=(116,142,158,255),width=8)
+          d.ellipse((665,745,850,930),fill=(62,88,104,255),outline=(112,180,200,255),width=7)
+          d.ellipse((730,810,785,865),fill=(34,194,220,235))
+
+          def engineer(cx,cy,s=1.0,pose='point'):
+              d.ellipse((cx-120*s,cy+360*s,cx+145*s,cy+420*s),fill=(70,95,110,30))
+              body=[(cx-95*s,cy+80*s),(cx+90*s,cy+70*s),(cx+145*s,cy+310*s),(cx+95*s,cy+380*s),(cx-105*s,cy+380*s),(cx-140*s,cy+260*s)]
+              d.polygon(body,fill=(245,248,250,255),outline=(166,182,193,255))
+              d.rounded_rectangle((cx-90*s,cy+330*s,cx-10*s,cy+540*s),22,fill=(239,244,247,255),outline=(166,182,193,255),width=4)
+              d.rounded_rectangle((cx+20*s,cy+330*s,cx+100*s,cy+540*s),22,fill=(239,244,247,255),outline=(166,182,193,255),width=4)
+              d.rounded_rectangle((cx-105*s,cy+510*s,cx+5*s,cy+555*s),16,fill=(190,205,214,255))
+              d.rounded_rectangle((cx+5*s,cy+510*s,cx+125*s,cy+555*s),16,fill=(190,205,214,255))
+              d.ellipse((cx-85*s,cy-110*s,cx+85*s,cy+70*s),fill=(247,249,250,255),outline=(162,178,190,255),width=4)
+              d.polygon([(cx-55*s,cy-35*s),(cx+55*s,cy-30*s),(cx+48*s,cy+25*s),(cx-45*s,cy+30*s)],fill=(211,226,233,255))
+              d.line((cx-58*s,cy-52*s,cx+50*s,cy-48*s),fill=(68,103,123,220),width=5)
+              d.line((cx,cy+90*s,cx,cy+330*s),fill=(165,182,193,140),width=3)
+              glove=(36,169,204,255)
+              if pose=='point':
+                  d.line((cx-80*s,cy+130*s,cx-210*s,cy+180*s,cx-300*s,cy+130*s),fill=(242,247,249,255),width=52)
+                  d.ellipse((cx-315*s,cy+110*s,cx-280*s,cy+145*s),fill=glove)
+                  d.line((cx+70*s,cy+140*s,cx+150*s,cy+220*s),fill=(242,247,249,255),width=48)
+                  d.ellipse((cx+137*s,cy+205*s,cx+170*s,cy+238*s),fill=glove)
+              else:
+                  d.line((cx-70*s,cy+140*s,cx-130*s,cy+220*s),fill=(242,247,249,255),width=48)
+                  d.line((cx+70*s,cy+140*s,cx+120*s,cy+220*s),fill=(242,247,249,255),width=48)
+                  tw,th=150*s,105*s; tx,ty=cx-tw/2,cy+185*s
+                  d.rounded_rectangle((tx,ty,tx+tw,ty+th),12,fill=(14,48,70,255),outline=(82,179,220,255),width=4)
+                  for j in range(3): d.line((tx+20*s,ty+25*s+j*24*s,tx+tw-25*s,ty+25*s+j*24*s),fill=(55,185,225,180),width=4)
+                  d.ellipse((cx-145*s,cy+205*s,cx-112*s,cy+238*s),fill=glove)
+                  d.ellipse((cx+105*s,cy+205*s,cx+138*s,cy+238*s),fill=glove)
+
+          # senior teaching junior
+          engineer(1160,455,1.05,'point')
+          engineer(1545,520,0.95,'tablet')
+
+          # subtle digital knowledge-transfer path only
+          pts=[(905,500),(1040,480),(1180,440),(1320,475),(1460,535)]
+          for a,b in zip(pts[:-1],pts[1:]): d.line((*a,*b),fill=(32,188,220,95),width=7)
+          for x,y in pts: d.ellipse((x-10,y-10,x+10,y+10),fill=(30,200,230,175))
+
+          # only allowed text: AI disclosure label
+          font=None
+          for p in ['/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc','/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc']:
+              if os.path.exists(p):
+                  font=ImageFont.truetype(p,44); break
+          if font is None: font=ImageFont.load_default()
+          label='생성형 AI 제작 이미지'
+          bb=d.textbbox((0,0),label,font=font); tw,th=bb[2]-bb[0],bb[3]-bb[1]
+          x2,y2=W-45,H-35; x1,y1=x2-tw-48,y2-th-30
+          d.rounded_rectangle((x1,y1,x2,y2),22,fill=(5,30,45,175))
+          d.text((x1+24,y1+15-bb[1]),label,font=font,fill=(255,255,255,235))
+
+          out='260813.AutoGen.반도체 FAB의 새 병목, 장비 엔지니어가 부족하다.jpg'
+          im.resize((1200,675),Image.Resampling.LANCZOS).save(out,'JPEG',quality=92,optimize=True)
+          PY
+
+          # Strengthen frozen image rule without rewriting existing content
+          if ! grep -q '대표이미지 엄격 규칙' chatgpt/K-ARTICLE-RULES.md; then
+            cat >> chatgpt/K-ARTICLE-RULES.md <<'EOF'
+
+## 10-A. 대표이미지 엄격 규칙 — FROZEN 보강
+- 대표이미지는 기사 카드용 **사진형 또는 단순 일러스트형 이미지**로 만든다.
+- 기사 전체 내용을 축약한 **인포그래픽·뉴스페이지·포스터·보고서 형식은 금지**한다.
+- 기사 제목, 긴 설명문, 통계 수치, 차트, 표, 기업 로고, 다수의 텍스트 박스를 이미지에 넣지 않는다.
+- 이미지에는 기사 핵심 장면 또는 핵심 기술 개념 **하나만** 표현한다.
+- 허용되는 고정 문구는 우측 하단의 `생성형 AI 제작 이미지` 1개뿐이다.
+- 저장 전 이미지가 기사 주제와 직접 일치하는지 반드시 육안 검증한다.
+EOF
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '260813.AutoGen.반도체 FAB의 새 병목, 장비 엔지니어가 부족하다.jpg' chatgpt/K-ARTICLE-RULES.md
+          git commit -m 'Replace workforce article image with clean representative visual'
+          git pull --rebase origin main
+          git push
