@@ -20,11 +20,11 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install --quiet pillow
-          cat .image_part_*.b64 | tr -d '\n\r ' | base64 -d > rebuilt.webp
+          cat .image_part_*.b64 | tr -d '\n\r ' | base64 -d > rebuilt.jpg
           python - <<'PY'
           from PIL import Image
-          src='rebuilt.webp'
-          target='260813.AutoGen.반도체 FAB의 새 병목, 장비 엔지니어가 부족하다.jpg'
+          src='rebuilt.jpg'
+          target='260814.AutoGen.반도체 장비 공급망의 새 변수, 중국산 장비가 대체 가능성을 시험받는다.jpg'
           im=Image.open(src).convert('RGB')
           assert im.size == (1200, 675), im.size
           im.save(target, 'JPEG', quality=92, optimize=True, progressive=False)
@@ -35,10 +35,10 @@ jobs:
           assert chk.size == (1200, 675), chk.size
           print('JPEG verified:', chk.size)
           PY
-          rm -f rebuilt.webp .image_part_*.b64 image-replace.trigger
+          rm -f rebuilt.jpg .image_part_*.b64 image-replace.trigger
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m 'Replace workforce article image with high-quality generated photo'
+          git commit -m 'Add 2026-08-14 article representative image'
           git pull --rebase origin main
           git push
