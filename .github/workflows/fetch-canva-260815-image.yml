@@ -25,7 +25,7 @@ jobs:
           set -euo pipefail
           python -m pip install --quiet pillow
           TARGET='260815.AutoGen.반도체 FAB AI, 분석을 넘어 공정 제어로 들어간다.jpg'
-          BASE='https://media.canva.com/v2/image-resize/format:JPG/height:675/quality:100/uri:ifs%3A%2F%2FM%2Fad444afe-6af8-4637-af77-8b4683239926/watermark:F/width:1200?csig=AAAAAAAAAAAAAAAAAAAAADlilEVrzWRT2olUbLZfv4BpKlmMNgc_9y5e8SkfE9fU&exp=1786769665&osig=AAAAAAAAAAAAAAAAAAAAADkdTuIBwPmULGMPs2tZH5Op1LbT6mnI7xxceQYqZY3m&signer=media-rpc'
+          BASE='https://media.canva.com/v2/image-resize/format:JPG/height:675/quality:100/uri:ifs%3A%2F%2FM%2Fc64f1d00-b7ea-48ec-b961-187e67ff9e93/watermark:F/width:1200?csig=AAAAAAAAAAAAAAAAAAAAALRsFfU2aeWmUyyYOBfk7ikXt4u-koQy94xdqOFLbZAF&exp=1786812069&osig=AAAAAAAAAAAAAAAAAAAAAJqNciC_OOWf0mfbou5Z76kFcxs7nlnN9KUzx8zvnDam&signer=media-rpc'
           ok=0
           for suffix in '&x-canva-quality=thumbnail' '&x-canva-quality=screen' ''; do
             echo "Trying candidate URL: ${suffix}"
@@ -63,5 +63,5 @@ jobs:
           git config user.name 'k-article-bot'
           git config user.email 'actions@users.noreply.github.com'
           git add -A
-          git commit -m 'Save verified 260815 article image'
+          git commit -m 'Save differentiated verified 260815 article image'
           git push origin main
