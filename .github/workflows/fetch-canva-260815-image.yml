@@ -1,0 +1,67 @@
+name: Fetch verified 260815 article image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.fetch_canva_260815.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch full resolution Canva asset
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          TARGET='260815.AutoGen.반도체 FAB AI, 분석을 넘어 공정 제어로 들어간다.jpg'
+          BASE='https://media.canva.com/v2/image-resize/format:JPG/height:675/quality:100/uri:ifs%3A%2F%2FM%2Fad444afe-6af8-4637-af77-8b4683239926/watermark:F/width:1200?csig=AAAAAAAAAAAAAAAAAAAAADlilEVrzWRT2olUbLZfv4BpKlmMNgc_9y5e8SkfE9fU&exp=1786769665&osig=AAAAAAAAAAAAAAAAAAAAADkdTuIBwPmULGMPs2tZH5Op1LbT6mnI7xxceQYqZY3m&signer=media-rpc'
+          ok=0
+          for suffix in '&x-canva-quality=thumbnail' '&x-canva-quality=screen' ''; do
+            echo "Trying candidate URL: ${suffix}"
+            if curl -fL --retry 2 --connect-timeout 15 --max-time 60 "${BASE}${suffix}" -o candidate.jpg; then
+              if python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          p=Path('candidate.jpg')
+          try:
+              with Image.open(p) as im:
+                  im.load()
+                  print('candidate', im.format, im.size, p.stat().st_size)
+                  assert im.format == 'JPEG'
+                  assert im.size == (1200,675)
+              b=p.read_bytes()
+              assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9'
+              assert len(b) > 50000
+          except Exception as e:
+              print('reject:', e)
+              raise SystemExit(1)
+          PY
+              then
+                mv candidate.jpg "$TARGET"
+                ok=1
+                break
+              fi
+            fi
+          done
+          test "$ok" = 1
+      - name: Commit image and clean transfer artifacts
+        shell: bash
+        run: |
+          rm -f .fetch_canva_260815.trigger
+          rm -f .tmp_260815_image.part*.b64 .image_part_*.b64 .save_260814_image.trigger
+          git config user.name 'k-article-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Save verified 260815 article image'
+          git push origin main
