@@ -1,0 +1,57 @@
+name: Build 260814 article image v1
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.build_260814_v1.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  build-image-v1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build and verify versioned JPEG
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          cat .tmp_260814_v1.part*.b64 | base64 --decode > '260814.AutoGen.반도체 장비 공급망의 새 변수, 중국산 장비가 대체 가능성을 시험받는다.v1.jpg'
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          p = Path('260814.AutoGen.반도체 장비 공급망의 새 변수, 중국산 장비가 대체 가능성을 시험받는다.v1.jpg')
+          with Image.open(p) as im:
+              im.load()
+              assert im.format == 'JPEG', im.format
+              assert im.size == (1200, 675), im.size
+          b = p.read_bytes()
+          assert b[:2] == b'\xff\xd8'
+          assert b[-2:] == b'\xff\xd9'
+          assert len(b) > 80000, len(b)
+          print('Verified JPEG:', len(b), 'bytes')
+          PY
+
+      - name: Remove temporary transfer files
+        shell: bash
+        run: |
+          rm -f .tmp_260814_v1.part*.b64 .build_260814_v1.trigger
+
+      - name: Commit versioned image and cleanup
+        shell: bash
+        run: |
+          git config user.name 'k-article-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Save verified 260814 representative image v1 and cleanup'
+          git push origin main
