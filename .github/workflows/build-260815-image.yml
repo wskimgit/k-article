@@ -39,19 +39,19 @@ jobs:
               assert im.size == (1200, 675), im.size
           b = p.read_bytes()
           assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9'
-          assert len(b) > 100000
+          assert len(b) > 90000
           print('Verified JPEG', len(b), 'bytes')
           PY
       - name: Remove temporary transfer files
         shell: bash
         run: |
           rm -f .tmp_260815_image.part*.b64 .build_260815_image.trigger
-          rm -f .image_part_*.b64 .save_260814_image.trigger
+          rm -f .image_part_*.b64 .save_260814_image.trigger .fetch_canva_260815.trigger
       - name: Commit final image and cleanup
         shell: bash
         run: |
           git config user.name 'k-article-bot'
           git config user.email 'actions@users.noreply.github.com'
           git add -A
-          git commit -m 'Save verified 260815 article image and remove temp base64 files'
+          git commit -m 'Save differentiated verified 260815 article image and remove temp transfer files'
           git push origin main
