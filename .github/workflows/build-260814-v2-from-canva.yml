@@ -1,0 +1,58 @@
+name: Build verified 260814 image v2
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.build_260814_v2.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download current image source and build v2
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://media.canva.com/v2/document-image/hash:1130992412/height:335/id:DAHSZ7ZWPQE/type:B/width:595?brand=BAF-IELq5Kw&csig=AAAAAAAAAAAAAAAAAAAAAHTkO8Fxt-FrVyu_G6rc44cnKxQV_vSEv-iKe1t64GFX&disableexport=T&exp=1786841616&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2FZWPQE%2FDAHSZ7ZWPQE%2F1%2Fthumbnail%2F0001.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260815%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260815T161957Z%26X-Amz-Expires%3D30819%26X-Amz-Signature%3De81079dc96aa123576d4905abf325051aa9fbc0764e84ae34369a07b899ad5da%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSun%252C%252016%2520Aug%25202026%252000%253A53%253A36%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAMuhAmQ1UyklQpRcJWzuQIpttS9a71Ub2M9zYV0mR88L&page=1&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=1'
+          curl -fL --retry 3 --connect-timeout 20 --max-time 120 "$URL" -o /tmp/source.png
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from PIL import Image, ImageOps
+          from pathlib import Path
+          src=Path('/tmp/source.png')
+          out=Path('260814.AutoGen.반도체 장비 공급망의 새 변수, 중국산 장비가 대체 가능성을 시험받는다.v2.jpg')
+          with Image.open(src) as im:
+              im.load()
+              if im.width < 500 or im.height < 280:
+                  raise SystemExit(f'source too small: {im.size}')
+              rgb=ImageOps.fit(im.convert('RGB'), (1200,675), method=Image.Resampling.LANCZOS)
+              rgb.save(out,'JPEG',quality=94,optimize=True,progressive=False)
+          b=out.read_bytes()
+          assert b[:2]==b'\xff\xd8' and b[-2:]==b'\xff\xd9'
+          with Image.open(out) as chk:
+              chk.load(); assert chk.format=='JPEG' and chk.size==(1200,675)
+          if len(b) < 40000:
+              raise SystemExit(f'JPEG unexpectedly small: {len(b)}')
+          print('verified',len(b),'bytes')
+          PY
+      - name: Commit v2 and cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'k-article-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          rm -f .build_260814_v2.trigger
+          git add -A
+          git commit -m 'Save verified 260814 representative image v2'
+          git push origin main
