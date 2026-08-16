@@ -1,0 +1,54 @@
+name: Build verified 260816 representative image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.build_260816_image.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild and verify JPEG
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          TARGET='260816.AutoGen.반도체 FAB, 자동화를 넘어 자율운영 설계로 간다.jpg'
+          cat .tmp_260816_image.part*.b64 > /tmp/260816_image.b64
+          base64 -d /tmp/260816_image.b64 > "$TARGET"
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          import hashlib
+          p=Path('260816.AutoGen.반도체 FAB, 자동화를 넘어 자율운영 설계로 간다.jpg')
+          b=p.read_bytes()
+          assert len(b) == 117346, len(b)
+          assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9'
+          assert hashlib.sha256(b).hexdigest() == '5ff0b9bf94b5f22f476e0c8f7af1579ea252042449382335a76ebed6bf8bb523'
+          with Image.open(p) as im:
+              im.load()
+              assert im.format == 'JPEG', im.format
+              assert im.size == (1200,675), im.size
+          print('verified', p.name, len(b), hashlib.sha256(b).hexdigest())
+          PY
+      - name: Commit image and remove transfer files
+        shell: bash
+        run: |
+          rm -f .tmp_260816_image.part*.b64 .build_260816_image.trigger .fetch_canva_260816.trigger
+          git config user.name 'k-article-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Save verified 260816 representative image'
+          git push origin main
