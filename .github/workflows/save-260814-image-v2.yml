@@ -1,0 +1,69 @@
+name: Save verified 260814 article image v2
+
+on:
+  push:
+    paths:
+      - '.save_260814_image_v2.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  save-image-v2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download high-resolution generated source
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://media.canva.com/v2/image-resize/format:PNG/height:675/quality:100/uri:ifs%3A%2F%2FM%2Fe23f4887-335c-49da-bd3e-0cfcddc2dcad/watermark:F/width:1200?csig=AAAAAAAAAAAAAAAAAAAAAJnEeYlenx-YrDSWrCVB-CJAgor1xzWn_296EBbscHkn&exp=1786682470&osig=AAAAAAAAAAAAAAAAAAAAAFTxdBY94EIQycG2BLOy3kCmNVqzCanyKm9zAMF1U08p&signer=media-rpc&x-canva-quality=thumbnail'
+          curl -fL --retry 3 --connect-timeout 20 --max-time 120 "$URL" -o /tmp/source.png
+          test -s /tmp/source.png
+
+      - name: Validate source and create versioned JPEG
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from PIL import Image, ImageOps
+          from pathlib import Path
+
+          src = Path('/tmp/source.png')
+          out = Path('260814.AutoGen.반도체 장비 공급망의 새 변수, 중국산 장비가 대체 가능성을 시험받는다.v2.jpg')
+
+          with Image.open(src) as im:
+              im.load()
+              w, h = im.size
+              print('source:', im.format, im.size)
+              if w < 1000 or h < 550:
+                  raise SystemExit(f'REJECT: source too small: {w}x{h}')
+              rgb = ImageOps.fit(im.convert('RGB'), (1200, 675), method=Image.Resampling.LANCZOS)
+              rgb.save(out, 'JPEG', quality=92, optimize=True, progressive=False)
+
+          data = out.read_bytes()
+          if len(data) < 50000:
+              raise SystemExit(f'REJECT: JPEG unexpectedly small: {len(data)} bytes')
+          if data[:2] != b'\xff\xd8' or data[-2:] != b'\xff\xd9':
+              raise SystemExit('REJECT: JPEG SOI/EOI invalid')
+          with Image.open(out) as chk:
+              chk.load()
+              if chk.format != 'JPEG' or chk.size != (1200, 675):
+                  raise SystemExit(f'REJECT: final format/size {chk.format} {chk.size}')
+          print('final:', len(data), 'bytes, JPEG 1200x675 OK')
+          PY
+
+      - name: Commit verified v2 image
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE='260814.AutoGen.반도체 장비 공급망의 새 변수, 중국산 장비가 대체 가능성을 시험받는다.v2.jpg'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$FILE"
+          git commit -m 'Save verified 260814 article image v2'
+          git push
