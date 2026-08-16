@@ -20,30 +20,34 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Rebuild and verify JPEG
+      - name: Fetch Canva-preserved image and verify JPEG
         shell: bash
         run: |
           set -euo pipefail
           python -m pip install --quiet pillow
           TARGET='260816.AutoGen.반도체 FAB, 자동화를 넘어 자율운영 설계로 간다.v1.jpg'
-          cat .tmp_260816_image.part*.b64 > /tmp/260816_image.b64
-          base64 -d /tmp/260816_image.b64 > "$TARGET"
+          URL='https://media.canva.com/v2/document-image/hash:1936059160/height:675/id:DAHSai-SxeI/type:B/width:1200?brand=BAF-IELq5Kw&csig=AAAAAAAAAAAAAAAAAAAAALVmRmZYQCshN6OvIvYhNpcySbXxteUL2UO26J1Ewvcj&disableexport=T&exp=1786852056&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2F-SxeI%2FDAHSai-SxeI%2F1%2Fthumbnail%2F0001.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUHYGFFNMW3%252F20260815%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260815T224525Z%26X-Amz-Expires%3D18131%26X-Amz-Signature%3D7b526db9b1895a13edfae936d32d89f9958753b272ebb9dd5a02f4ec5dc769ca%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSun%252C%252016%2520Aug%25202026%252003%253A47%253A36%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAGI9jfHSWkJMkH4Wdz2MIQKEV0qQ08eQIWwWUyf1TrWd&page=1&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=1'
+          curl -fL --retry 3 --retry-delay 2 "$URL" -o /tmp/canva_image
           python - <<'PY'
-          from PIL import Image
+          from PIL import Image, ImageOps
           from pathlib import Path
           import hashlib
-          p=Path('260816.AutoGen.반도체 FAB, 자동화를 넘어 자율운영 설계로 간다.v1.jpg')
-          b=p.read_bytes()
-          assert len(b) == 117346, len(b)
-          assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9'
-          assert hashlib.sha256(b).hexdigest() == '5ff0b9bf94b5f22f476e0c8f7af1579ea252042449382335a76ebed6bf8bb523'
-          with Image.open(p) as im:
+          src=Path('/tmp/canva_image')
+          dst=Path('260816.AutoGen.반도체 FAB, 자동화를 넘어 자율운영 설계로 간다.v1.jpg')
+          with Image.open(src) as im:
               im.load()
-              assert im.format == 'JPEG', im.format
-              assert im.size == (1200,675), im.size
-          print('verified', p.name, len(b), hashlib.sha256(b).hexdigest())
+              print('fetched', im.format, im.size)
+              im=ImageOps.fit(im.convert('RGB'), (1200,675), method=Image.Resampling.LANCZOS)
+              im.save(dst, 'JPEG', quality=92, optimize=True, progressive=False)
+          b=dst.read_bytes()
+          assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9'
+          with Image.open(dst) as im:
+              im.load()
+              assert im.format == 'JPEG'
+              assert im.size == (1200,675)
+          print('verified', dst.name, len(b), hashlib.sha256(b).hexdigest())
           PY
-      - name: Commit image and remove transfer files
+      - name: Commit image and clean transfer artifacts
         shell: bash
         run: |
           rm -f .tmp_260816_image.part*.b64 .build_260816_image.trigger .fetch_canva_260816.trigger
