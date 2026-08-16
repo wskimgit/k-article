@@ -1,0 +1,24 @@
+반도체 공장의 자동화가 ‘장비를 자동으로 움직이는 단계’에서 ‘공장 전체가 스스로 판단하기 쉬운 구조를 만드는 단계’로 넘어가고 있다. 최근 해외 업계가 강조하는 핵심은 개별 장비의 AI 기능보다 전력·공조·가스·용수·물류·생산설비와 운영 소프트웨어를 처음부터 하나의 시스템으로 연결하는 것이다.
+
+SEMI는 오는 8월 25일 Siemens와 함께 ‘From Automated to Autonomous: Rethinking Fab Design for the Future’ 웨비나를 연다. 주제 자체가 변화의 방향을 보여준다. 기존 FAB가 완공 후 자동화 장비와 소프트웨어를 덧붙였다면, 앞으로의 신규 FAB는 설계 단계부터 전력 배전, 빌딩 시스템, 자동화 기술을 통합해 장기간 확장 가능한 자율운영 기반을 만들어야 한다는 접근이다. SEMI는 이를 위해 인프라·공정·생산을 하나의 기술 스택으로 연결해야 한다고 설명한다.
+
+Siemens도 2026년 5월 반도체 제조가 단순 최적화를 넘어 ‘autonomous decision-making’ 단계로 이동하고 있다고 분석했다. 장비 한 대의 효율보다 공장 레이아웃, 생산 흐름, 에너지 사용, 유지보수 판단이 서로 영향을 주기 때문에 초기 설계의 선택이 수년 뒤 운영 유연성까지 좌우한다는 것이다. 6월 공개한 Executable Digital Twin은 실제 설비 데이터와 물리·AI 모델을 연결해 디지털 트윈을 설계용 시뮬레이션에 머물지 않고 운영 단계에서도 계속 사용하는 방향을 제시했다.
+
+이 흐름은 실제 FAB 투자에도 나타난다. GlobalFoundries와 Siemens는 AI 기반 소프트웨어, 센서, 실시간 제어, 중앙집중형 자동화, 에너지·빌딩 자동화를 반도체 생산에 함께 적용하기로 했다. 목표는 개별 공정만이 아니라 설비 가동률과 공장 전체 운영 효율을 동시에 높이는 것이다.
+
+여기서 중요한 점은 ‘자율 FAB’가 곧 무인 FAB를 뜻하지 않는다는 것이다. 현재 현실적인 방향은 장비·시설·MES·EAM/CMMS·물류 데이터를 연결하고, AI가 이상을 찾고 원인을 좁히며 대응안을 제시한 뒤 사람이 승인하거나 제한된 영역에서 자동 제어하는 구조다. 특히 전력, 가스, 화학물질, 공조처럼 안전과 직결된 설비는 추적 가능한 의사결정과 즉시 복구 가능한 제어 체계가 필수다. 결국 자동화 수준보다 시스템 사이의 데이터 연결과 제어 권한을 어떻게 설계했는지가 더 중요해진다.
+
+결국 앞으로의 FAB 경쟁력은 좋은 장비를 얼마나 많이 보유했느냐만으로 결정되지 않는다. 장비와 시설 데이터를 하나의 운영 모델로 묶고, 디지털 트윈과 AI가 그 위에서 판단할 수 있도록 만드는 ‘운영 플랫폼’의 완성도가 새로운 경쟁 요소가 될 가능성이 커지고 있다.
+
+※ 본 기사는 공개된 해외 자료를 바탕으로 생성형 AI가 작성·편집했습니다.
+※ 대표이미지는 생성형 AI로 제작했습니다.
+
+[자료]
+SEMI, From Automated to Autonomous: Rethinking Fab Design for the Future, 2026.08.25
+https://www.semi.org/en/event/siemens-webinar-from-automated-to-autonomous-rethinking-fab-design-for-the-future
+Siemens, Beyond optimization: how semiconductor manufacturing is entering the era of autonomous decision-making, 2026.05.27
+https://blogs.sw.siemens.com/opcenter/beyond-optimization-how-semiconductor-manufacturing-is-entering-the-era-of-autonomous-decision-making/
+Siemens, Simcenter Executable Digital Twin: 2604 release updates, 2026.06.05
+https://blogs.sw.siemens.com/en-US/simcenter/simcenter-executable-digital-twin-2604-release-updates/
+GlobalFoundries, Siemens and GlobalFoundries Collaborate to Deploy AI-Driven Manufacturing to Strengthen Global Semiconductor Supply, 2025.12.11
+https://gf.com/gf-press-release/siemens-and-globalfoundries-collaborate-to-deploy-ai-driven-manufacturing-to-strengthen-global-semiconductor-supply/
