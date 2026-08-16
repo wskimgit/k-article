@@ -1,0 +1,70 @@
+name: Fetch verified 260816 article image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.fetch_canva_260816.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch and verify 1200x675 Canva asset
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          TARGET='260816.AutoGen.반도체 FAB, 자동화를 넘어 자율운영 설계로 간다.jpg'
+          BASE='https://media.canva.com/v2/image-resize/format:JPG/height:675/quality:100/uri:ifs%3A%2F%2FM%2F95d5fd9c-0867-4064-8818-fff232c82709/watermark:F/width:1200?csig=AAAAAAAAAAAAAAAAAAAAANA9IaO1xO4u9QFTOB813tHHH-ek2O4-KbUO_VO4fTuN&exp=1786855524&osig=AAAAAAAAAAAAAAAAAAAAAKC-zGNlpSwExSC5xcSsOCm6ySMgrJifl_yem_lqw7cJ&signer=media-rpc'
+          ok=0
+          for suffix in '' '&x-canva-quality=screen' '&x-canva-quality=thumbnail'; do
+            rm -f candidate.jpg
+            if curl -fL --retry 2 --connect-timeout 15 --max-time 60 "${BASE}${suffix}" -o candidate.jpg; then
+              if python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          p=Path('candidate.jpg')
+          try:
+              with Image.open(p) as im:
+                  im.load()
+                  print('candidate', im.format, im.size, p.stat().st_size)
+                  assert im.format == 'JPEG'
+                  assert im.size == (1200,675)
+              b=p.read_bytes()
+              assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9'
+              assert len(b) > 50000
+          except Exception as e:
+              print('reject:', e)
+              raise SystemExit(1)
+          PY
+              then
+                mv candidate.jpg "$TARGET"
+                ok=1
+                break
+              fi
+            fi
+          done
+          test "$ok" = 1
+      - name: Commit image and cleanup trigger
+        shell: bash
+        run: |
+          rm -f .fetch_canva_260816.trigger candidate.jpg
+          git config user.name 'k-article-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Nothing to commit.'
+            exit 0
+          fi
+          git commit -m 'Save verified 260816 representative image'
+          git push origin main
