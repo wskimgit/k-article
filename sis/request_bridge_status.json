@@ -1,8 +1,6 @@
 {
   "ok": true,
-  "schema": "sis_request_bridge_status_v1",
-  "processed_at": "2026-08-17T14:47:11Z",
-  "symbols": [
-    "006400"
-  ]
+  "schema": "sis_request_bridge_status_v2",
+  "processed_at": "2026-08-17T14:56:47Z",
+  "had_errors": false
 }
