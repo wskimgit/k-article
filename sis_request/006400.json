@@ -4,8 +4,8 @@
   "market": "KR",
   "symbol": "006400",
   "name": "삼성SDI",
-  "requested_at": "2026-08-17T23:51:00+09:00",
+  "requested_at": "2026-08-18T00:15:01+09:00",
   "requested_by": "chatgpt",
-  "request_nonce": "006400-20260817T235100+0900",
+  "request_nonce": "006400-20260818T001501+0900",
   "force_refresh": true
 }
