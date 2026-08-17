@@ -1,0 +1,134 @@
+name: SIS Snapshot Mirror
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sis-snapshot-mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Pull SIS snapshots from K-BizPost
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          import time
+          import urllib.request
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          BASE = 'https://k-bizpost.myds.me/sis'
+          OUT = Path('sis')
+          OUT.mkdir(parents=True, exist_ok=True)
+
+          def fetch_json(url: str):
+              sep = '&' if '?' in url else '?'
+              req = urllib.request.Request(
+                  url + sep + '_sis=' + str(int(time.time())),
+                  headers={
+                      'User-Agent': 'k-article-sis-mirror/1.0',
+                      'Accept': 'application/json',
+                      'Cache-Control': 'no-cache',
+                  },
+              )
+              with urllib.request.urlopen(req, timeout=20) as r:
+                  if r.status != 200:
+                      raise RuntimeError(f'HTTP {r.status}: {url}')
+                  raw = r.read()
+              data = json.loads(raw.decode('utf-8'))
+              if not isinstance(data, dict):
+                  raise RuntimeError(f'JSON object required: {url}')
+              return data
+
+          def valid_snapshot(row, symbol):
+              if row.get('ok') is not True:
+                  return False
+              inst = row.get('instrument') or {}
+              snap = row.get('snapshot') or {}
+              dq = row.get('data_quality') or {}
+              return (
+                  str(inst.get('market', 'KR')) == 'KR'
+                  and str(inst.get('symbol', '')) == symbol
+                  and str(snap.get('status', '')).upper() == 'PUBLISHED'
+                  and str(dq.get('status', '')).upper() in {'SUFFICIENT', 'LIMITED'}
+              )
+
+          index = fetch_json(BASE + '/index.json')
+          if index.get('ok') is not True:
+              raise RuntimeError('source index ok!=true')
+
+          items = index.get('items') or {}
+          if isinstance(items, list):
+              normalized = {}
+              for item in items:
+                  if isinstance(item, dict):
+                      sym = str(item.get('symbol', ''))
+                      if sym:
+                          normalized[sym] = item
+              items = normalized
+          if not isinstance(items, dict):
+              raise RuntimeError('source index items must be object/list')
+
+          mirrored = []
+          for symbol, meta in sorted(items.items()):
+              symbol = str(symbol)
+              if not re.fullmatch(r'\d{6}', symbol):
+                  continue
+              meta = meta if isinstance(meta, dict) else {}
+              url = str(meta.get('snapshot_url') or f'{BASE}/{symbol}.json')
+              if not url.startswith('https://k-bizpost.myds.me/sis/'):
+                  url = f'{BASE}/{symbol}.json'
+              row = fetch_json(url)
+              if not valid_snapshot(row, symbol):
+                  raise RuntimeError(f'invalid snapshot: {symbol}')
+              (OUT / f'{symbol}.json').write_text(
+                  json.dumps(row, ensure_ascii=False, indent=2) + '\n',
+                  encoding='utf-8',
+              )
+              mirrored.append(symbol)
+
+          (OUT / 'index.json').write_text(
+              json.dumps(index, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
+          )
+          status = {
+              'ok': True,
+              'schema': 'sis_github_mirror_status_v1',
+              'synced_at': datetime.now(timezone.utc).isoformat(),
+              'source': BASE + '/index.json',
+              'count': len(mirrored),
+              'symbols': mirrored,
+          }
+          (OUT / 'mirror_status.json').write_text(
+              json.dumps(status, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
+          )
+          print(f'mirrored {len(mirrored)} SIS snapshot(s)')
+          PY
+
+      - name: Commit mirror only when changed
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sis
+          if git diff --cached --quiet; then
+            echo "No SIS snapshot changes."
+            exit 0
+          fi
+          git commit -m "sync SIS snapshots"
+          git push
