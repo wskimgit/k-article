@@ -1,4 +1,4 @@
-name: SIS Snapshot Mirror
+name: SIS Snapshot Mirror v2
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: sis-snapshot-mirror
+  group: sis-github-write
   cancel-in-progress: false
 
 jobs:
@@ -17,118 +17,89 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Pull SIS snapshots from K-BizPost
+      - name: Pull and validate snapshots with error isolation
         shell: bash
         run: |
+          set -euo pipefail
           python3 - <<'PY'
-          import json
-          import re
-          import time
-          import urllib.request
-          from datetime import datetime, timezone
+          import json,re,time,urllib.request
+          from datetime import datetime,timezone
           from pathlib import Path
 
-          BASE = 'https://k-bizpost.myds.me/sis'
-          OUT = Path('sis')
-          OUT.mkdir(parents=True, exist_ok=True)
+          BASE='https://k-bizpost.myds.me/sis'; OUT=Path('sis'); OUT.mkdir(exist_ok=True)
+          def now(): return datetime.now(timezone.utc).isoformat()
+          def get(url,tries=3):
+              last=None
+              for i in range(tries):
+                  try:
+                      sep='&' if '?' in url else '?'
+                      req=urllib.request.Request(url+sep+'_sis='+str(int(time.time())),headers={'User-Agent':'sis-mirror/2.0','Accept':'application/json','Cache-Control':'no-cache'})
+                      with urllib.request.urlopen(req,timeout=20) as r:
+                          if r.status!=200: raise RuntimeError(f'HTTP {r.status}')
+                          x=json.loads(r.read().decode())
+                      if not isinstance(x,dict): raise RuntimeError('JSON object required')
+                      return x
+                  except Exception as e:
+                      last=e
+                      if i+1<tries: time.sleep((i+1)*2)
+              raise RuntimeError(f'FETCH_FAILED:{last}')
+          def valid(x,s):
+              i=x.get('instrument') or {}; p=x.get('snapshot') or {}; d=x.get('data_quality') or {}
+              return x.get('ok') is True and str(i.get('symbol',''))==s and str(p.get('status','')).upper()=='PUBLISHED' and str(d.get('status','')).upper() in {'SUFFICIENT','LIMITED'}
 
-          def fetch_json(url: str):
-              sep = '&' if '?' in url else '?'
-              req = urllib.request.Request(
-                  url + sep + '_sis=' + str(int(time.time())),
-                  headers={
-                      'User-Agent': 'k-article-sis-mirror/1.0',
-                      'Accept': 'application/json',
-                      'Cache-Control': 'no-cache',
-                  },
-              )
-              with urllib.request.urlopen(req, timeout=20) as r:
-                  if r.status != 200:
-                      raise RuntimeError(f'HTTP {r.status}: {url}')
-                  raw = r.read()
-              data = json.loads(raw.decode('utf-8'))
-              if not isinstance(data, dict):
-                  raise RuntimeError(f'JSON object required: {url}')
-              return data
+          src=get(BASE+'/index.json')
+          if src.get('ok') is not True: raise RuntimeError('SOURCE_INDEX_OK_FALSE')
+          items=src.get('items') or {}
+          if isinstance(items,list): items={str(x.get('symbol')):x for x in items if isinstance(x,dict) and x.get('symbol')}
+          if not isinstance(items,dict): raise RuntimeError('SOURCE_INDEX_ITEMS_INVALID')
 
-          def valid_snapshot(row, symbol):
-              if row.get('ok') is not True:
-                  return False
-              inst = row.get('instrument') or {}
-              snap = row.get('snapshot') or {}
-              dq = row.get('data_quality') or {}
-              return (
-                  str(inst.get('market', 'KR')) == 'KR'
-                  and str(inst.get('symbol', '')) == symbol
-                  and str(snap.get('status', '')).upper() == 'PUBLISHED'
-                  and str(dq.get('status', '')).upper() in {'SUFFICIENT', 'LIMITED'}
-              )
+          synced=[]; retained=[]; errors=[]; gitems={}
+          for s,meta in sorted(items.items()):
+              s=str(s); meta=meta if isinstance(meta,dict) else {}
+              if not re.fullmatch(r'\d{6}',s):
+                  errors.append({'symbol':s,'stage':'INDEX_VALIDATE','error':'INVALID_SYMBOL'}); continue
+              url=str(meta.get('snapshot_url') or f'{BASE}/{s}.json')
+              if not url.startswith(BASE+'/'): url=f'{BASE}/{s}.json'
+              target=OUT/f'{s}.json'
+              try:
+                  x=get(url)
+                  if not valid(x,s): raise RuntimeError('INVALID_SNAPSHOT')
+                  target.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+                  m=dict(meta); m['github_snapshot_url']=f'https://raw.githubusercontent.com/wskimgit/k-article/main/sis/{s}.json'; m['mirror_state']='SYNCED'
+                  gitems[s]=m; synced.append(s); print('[SYNCED]',s)
+              except Exception as e:
+                  keep=False
+                  if target.exists():
+                      try: keep=valid(json.loads(target.read_text()),s)
+                      except Exception: keep=False
+                  errors.append({'symbol':s,'stage':'SNAPSHOT_FETCH_VALIDATE','snapshot_url':url,'error':str(e),'retained_previous':keep})
+                  if keep:
+                      m=dict(meta); m['github_snapshot_url']=f'https://raw.githubusercontent.com/wskimgit/k-article/main/sis/{s}.json'; m['mirror_state']='RETAINED_PREVIOUS'
+                      gitems[s]=m; retained.append(s); print('[RETAINED]',s)
+                  else: print('[ERROR]',s,e)
 
-          index = fetch_json(BASE + '/index.json')
-          if index.get('ok') is not True:
-              raise RuntimeError('source index ok!=true')
-
-          items = index.get('items') or {}
-          if isinstance(items, list):
-              normalized = {}
-              for item in items:
-                  if isinstance(item, dict):
-                      sym = str(item.get('symbol', ''))
-                      if sym:
-                          normalized[sym] = item
-              items = normalized
-          if not isinstance(items, dict):
-              raise RuntimeError('source index items must be object/list')
-
-          mirrored = []
-          for symbol, meta in sorted(items.items()):
-              symbol = str(symbol)
-              if not re.fullmatch(r'\d{6}', symbol):
-                  continue
-              meta = meta if isinstance(meta, dict) else {}
-              url = str(meta.get('snapshot_url') or f'{BASE}/{symbol}.json')
-              if not url.startswith('https://k-bizpost.myds.me/sis/'):
-                  url = f'{BASE}/{symbol}.json'
-              row = fetch_json(url)
-              if not valid_snapshot(row, symbol):
-                  raise RuntimeError(f'invalid snapshot: {symbol}')
-              (OUT / f'{symbol}.json').write_text(
-                  json.dumps(row, ensure_ascii=False, indent=2) + '\n',
-                  encoding='utf-8',
-              )
-              mirrored.append(symbol)
-
-          (OUT / 'index.json').write_text(
-              json.dumps(index, ensure_ascii=False, indent=2) + '\n',
-              encoding='utf-8',
-          )
-          status = {
-              'ok': True,
-              'schema': 'sis_github_mirror_status_v1',
-              'synced_at': datetime.now(timezone.utc).isoformat(),
-              'source': BASE + '/index.json',
-              'count': len(mirrored),
-              'symbols': mirrored,
-          }
-          (OUT / 'mirror_status.json').write_text(
-              json.dumps(status, ensure_ascii=False, indent=2) + '\n',
-              encoding='utf-8',
-          )
-          print(f'mirrored {len(mirrored)} SIS snapshot(s)')
+          (OUT/'source_index.json').write_text(json.dumps(src,ensure_ascii=False,indent=2)+'\n')
+          idx=dict(src); idx.update({'items':gitems,'count':len(gitems),'mirror_filtered':True,'mirror_synced_at':now(),'mirror_error_count':len(errors),'mirror_retained_count':len(retained)})
+          (OUT/'index.json').write_text(json.dumps(idx,ensure_ascii=False,indent=2)+'\n')
+          status={'ok':len(errors)==0,'schema':'sis_github_mirror_status_v2','synced_at':now(),'source':BASE+'/index.json','source_count':len(items),'mirrored_count':len(synced),'retained_count':len(retained),'error_count':len(errors),'symbols':synced,'retained_symbols':retained,'errors':errors}
+          (OUT/'mirror_status.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n')
+          (OUT/'mirror_errors.json').write_text(json.dumps({'ok':len(errors)==0,'schema':'sis_github_mirror_errors_v1','synced_at':now(),'errors':errors},ensure_ascii=False,indent=2)+'\n')
+          print('MIRROR_RESULT',status)
           PY
 
-      - name: Commit mirror only when changed
+      - name: Commit mirror and diagnostics
         shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sis
-          if git diff --cached --quiet; then
-            echo "No SIS snapshot changes."
-            exit 0
+          git add -- sis
+          if ! git diff --cached --quiet; then
+            git commit -m "sync SIS snapshots and mirror diagnostics"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
-          git commit -m "sync SIS snapshots"
-          git push
