@@ -3,8 +3,8 @@
   "schema": "sis_snapshot_index_v1",
   "version": "1.3.0",
   "revision": "sis-feed-v130-local-github-mirror-fallback-20260817-r1",
-  "updated_at": "2026-08-17T13:10:21+09:00",
-  "count": 2,
+  "updated_at": "2026-08-17T18:10:00+09:00",
+  "count": 3,
   "items": {
     "000660": {
       "symbol": "000660",
@@ -26,6 +26,17 @@
       "stale_any": false,
       "snapshot_url": "https://k-bizpost.myds.me/sis/005930.json",
       "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/005930.json"
+    },
+    "065450": {
+      "symbol": "065450",
+      "name": "065450",
+      "market": "KR",
+      "exchange": "",
+      "updated_at": "2026-08-17T18:10:00+09:00",
+      "data_quality": "SUFFICIENT",
+      "stale_any": false,
+      "snapshot_url": "https://k-bizpost.myds.me/sis/065450.json",
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/065450.json"
     }
   },
   "github_mirror": {
