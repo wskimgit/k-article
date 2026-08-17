@@ -3,7 +3,7 @@
   "schema": "sis_snapshot_index_v1",
   "version": "1.3.4",
   "revision": "sis-feed-v134-publish-debug-trace-20260817-r1",
-  "updated_at": "2026-08-17T23:56:46+09:00",
+  "updated_at": "2026-08-18T00:15:26+09:00",
   "count": 6,
   "items": {
     "000660": {
@@ -53,10 +53,9 @@
       "name": "삼성SDI",
       "market": "KR",
       "exchange": "KOSPI",
-      "updated_at": "2026-08-17T23:56:46+09:00",
+      "updated_at": "2026-08-18T00:15:26+09:00",
       "data_quality": "SUFFICIENT",
       "stale_any": false,
-      "cache_stale_any": false,
       "market_stale": false,
       "last_completed_date": "2026-08-14",
       "expected_last_completed_date": "2026-08-14",
@@ -64,7 +63,7 @@
       "market_fresh": true,
       "snapshot_url": "https://k-bizpost.myds.me/sis/006400.json",
       "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/006400.json",
-      "mirror_state": "SYNCED"
+      "mirror_state": "REQUEST_BRIDGE_SYNCED"
     },
     "065450": {
       "symbol": "065450",

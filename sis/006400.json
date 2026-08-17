@@ -3,7 +3,7 @@
   "schema": "sis_snapshot_v1",
   "version": "1.3.4",
   "revision": "sis-feed-v134-publish-debug-trace-20260817-r1",
-  "generated_at": "2026-08-17T23:56:46+09:00",
+  "generated_at": "2026-08-18T00:15:26+09:00",
   "request": {
     "q": "006400",
     "resolved_by": "code",
@@ -37,10 +37,10 @@
       "status": "FRESH",
       "calendar_verified": true,
       "calendar_confidence": "BUILTIN_2026",
-      "today": "2026-08-17",
-      "today_is_trading_day": false,
+      "today": "2026-08-18",
+      "today_is_trading_day": true,
       "cutoff_hi": "1540",
-      "reason": "TODAY_MARKET_CLOSED"
+      "reason": "TODAY_BEFORE_MARKET_CUTOFF"
     },
     "components": {
       "quote": {
@@ -55,8 +55,8 @@
       "ohlcv": {
         "ok": true,
         "stale": false,
-        "cache_hit": true,
-        "cache_age_sec": 576,
+        "cache_hit": false,
+        "cache_age_sec": 0,
         "count": 100,
         "error": "",
         "degraded": false
@@ -64,8 +64,8 @@
       "investor_daily": {
         "ok": true,
         "stale": false,
-        "cache_hit": true,
-        "cache_age_sec": 576,
+        "cache_hit": false,
+        "cache_age_sec": 0,
         "count": 30,
         "error": "",
         "degraded": false
@@ -3253,7 +3253,7 @@
   "snapshot": {
     "status": "PUBLISHED",
     "symbol": "006400",
-    "published_at": "2026-08-17T23:56:46+09:00",
+    "published_at": "2026-08-18T00:15:26+09:00",
     "file_name": "006400.json",
     "url": "https://k-bizpost.myds.me/sis/006400.json",
     "index_url": "https://k-bizpost.myds.me/sis/index.json",
@@ -3274,7 +3274,7 @@
       "sync": "ASYNCHRONOUS",
       "nas_github_credentials": false
     },
-    "confirmed_at": "2026-08-17T23:56:46+09:00",
+    "confirmed_at": "2026-08-18T00:15:26+09:00",
     "index_update": "UPDATED"
   }
 }

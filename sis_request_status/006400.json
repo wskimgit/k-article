@@ -2,10 +2,10 @@
   "schema": "sis_request_status_v1",
   "symbol": "006400",
   "status": "PUBLISHED",
-  "request_nonce": "006400-20260817T235100+0900",
-  "requested_at": "2026-08-17T23:51:00+09:00",
-  "completed_at": "2026-08-17T14:56:47Z",
-  "snapshot_generated_at": "2026-08-17T23:56:46+09:00",
+  "request_nonce": "006400-20260818T001501+0900",
+  "requested_at": "2026-08-18T00:15:01+09:00",
+  "completed_at": "2026-08-17T15:15:27Z",
+  "snapshot_generated_at": "2026-08-18T00:15:26+09:00",
   "market_fresh": true,
   "error": null
 }
