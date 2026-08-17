@@ -1,0 +1,11 @@
+{
+  "schema": "sis_snapshot_request_v1",
+  "action": "PUBLISH_SNAPSHOT",
+  "market": "KR",
+  "symbol": "005490",
+  "name": "POSCO홀딩스",
+  "requested_at": "2026-08-18T00:18:00+09:00",
+  "requested_by": "chatgpt",
+  "request_nonce": "005490-20260818T001800+0900",
+  "force_refresh": true
+}
