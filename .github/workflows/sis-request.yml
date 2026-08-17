@@ -1,239 +1,117 @@
-name: SIS Snapshot Request Bridge
+name: SIS Snapshot Request Bridge v1.1
 
 on:
   push:
-    paths:
-      - 'sis_request/*.json'
-  workflow_dispatch:
-    inputs:
-      symbol:
-        description: '6-digit KR stock code'
-        required: true
-        type: string
-      name:
-        description: 'Optional stock name'
-        required: false
-        type: string
+    paths: ['sis_request/*.json']
 
 permissions:
   contents: write
 
 concurrency:
-  group: sis-request-bridge
+  group: sis-github-write
   cancel-in-progress: false
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      - name: Resolve changed requests
-        id: requests
+      - name: Publish requested snapshots
         shell: bash
         env:
-          EVENT_NAME: ${{ github.event_name }}
           BEFORE_SHA: ${{ github.event.before }}
           AFTER_SHA: ${{ github.sha }}
-          INPUT_SYMBOL: ${{ inputs.symbol }}
-          INPUT_NAME: ${{ inputs.name }}
         run: |
           set -euo pipefail
-          mkdir -p .sis_request_runtime
-
-          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            python3 - <<'PY'
-          import json, os, re
-          from pathlib import Path
-
-          symbol = (os.environ.get('INPUT_SYMBOL') or '').strip()
-          name = (os.environ.get('INPUT_NAME') or symbol).strip()
-          if not re.fullmatch(r'\d{6}', symbol):
-              raise SystemExit('workflow_dispatch symbol must be 6 digits')
-
-          row = {
-              'schema': 'sis_snapshot_request_v1',
-              'action': 'PUBLISH_SNAPSHOT',
-              'market': 'KR',
-              'symbol': symbol,
-              'name': name,
-              'requested_by': 'workflow_dispatch',
-          }
-          p = Path('.sis_request_runtime') / f'{symbol}.json'
-          p.write_text(json.dumps(row, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-          print(p)
-          PY
-            printf '%s\n' ".sis_request_runtime/${INPUT_SYMBOL}.json" > .sis_request_runtime/request_files.txt
+          mkdir -p sis sis_request_status sis_request_error .sis_request_runtime
+          if [ -n "${BEFORE_SHA:-}" ] && ! printf '%s' "$BEFORE_SHA" | grep -Eq '^0+$'; then
+            git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- 'sis_request/*.json' > .sis_request_runtime/files.txt
           else
-            if [ -n "${BEFORE_SHA:-}" ] && ! printf '%s' "$BEFORE_SHA" | grep -Eq '^0+$'; then
-              git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- 'sis_request/*.json' > .sis_request_runtime/request_files.txt
-            else
-              git show --pretty='' --name-only "$AFTER_SHA" -- 'sis_request/*.json' > .sis_request_runtime/request_files.txt
-            fi
+            git show --pretty='' --name-only "$AFTER_SHA" -- 'sis_request/*.json' > .sis_request_runtime/files.txt
           fi
-
-          echo 'Request files:'
-          cat .sis_request_runtime/request_files.txt || true
-
-          if [ ! -s .sis_request_runtime/request_files.txt ]; then
-            echo 'No SIS request files to process.'
-            exit 0
-          fi
-
-      - name: Publish requested SIS snapshots
-        shell: bash
-        run: |
-          set -euo pipefail
           python3 - <<'PY'
-          import json
-          import re
-          import time
-          import urllib.error
-          import urllib.parse
-          import urllib.request
+          import json,re,time,urllib.parse,urllib.request
           from pathlib import Path
 
-          PUBLISHER = 'https://k-bizpost.myds.me/sis_feed.php'
-          OUT = Path('sis')
-          OUT.mkdir(parents=True, exist_ok=True)
+          PUB='https://k-bizpost.myds.me/sis_feed.php'
+          OUT=Path('sis'); ST=Path('sis_request_status'); ER=Path('sis_request_error')
+          files=[x.strip() for x in Path('.sis_request_runtime/files.txt').read_text().splitlines() if x.strip()]
+          had=False
 
-          request_list = Path('.sis_request_runtime/request_files.txt')
-          if not request_list.exists():
-              print('No request list; nothing to do.')
-              raise SystemExit(0)
-
-          files = [line.strip() for line in request_list.read_text(encoding='utf-8').splitlines() if line.strip()]
-          if not files:
-              print('No request files; nothing to do.')
-              raise SystemExit(0)
-
-          def fetch_json(url: str, attempts: int = 3, timeout: int = 90):
-              last = None
-              for attempt in range(1, attempts + 1):
-                  req = urllib.request.Request(
-                      url,
-                      headers={
-                          'User-Agent': 'k-article-sis-request-bridge/1.0',
-                          'Accept': 'application/json',
-                          'Cache-Control': 'no-cache',
-                      },
-                  )
+          def now(): return time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+          def get(url, tries=3, timeout=90):
+              last=None
+              for i in range(tries):
                   try:
-                      with urllib.request.urlopen(req, timeout=timeout) as r:
-                          raw = r.read()
-                          status = r.status
-                      if status != 200:
-                          raise RuntimeError(f'HTTP {status}')
-                      row = json.loads(raw.decode('utf-8'))
-                      if not isinstance(row, dict):
-                          raise RuntimeError('JSON object required')
-                      if attempt > 1:
-                          print(f'[RECOVERED] {url} attempt={attempt}')
-                      return row
+                      q=urllib.request.Request(url,headers={'User-Agent':'sis-request-bridge/1.1','Accept':'application/json','Cache-Control':'no-cache'})
+                      with urllib.request.urlopen(q,timeout=timeout) as r:
+                          if r.status!=200: raise RuntimeError(f'HTTP {r.status}')
+                          x=json.loads(r.read().decode())
+                      if not isinstance(x,dict): raise RuntimeError('JSON object required')
+                      return x
                   except Exception as e:
-                      last = e
-                      print(f'[RETRY] {url} attempt={attempt}/{attempts} error={type(e).__name__}: {e}')
-                      if attempt < attempts:
-                          time.sleep(attempt * 2)
-              raise RuntimeError(f'FETCH_FAILED: {url}: {last}')
+                      last=e
+                      if i+1<tries: time.sleep((i+1)*2)
+              raise RuntimeError(f'FETCH_FAILED:{last}')
+          def valid(x,s):
+              i=x.get('instrument') or {}; p=x.get('snapshot') or {}; d=x.get('data_quality') or {}
+              return x.get('ok') is True and str(i.get('symbol',''))==s and str(p.get('status','')).upper()=='PUBLISHED' and p.get('local_saved') is True and p.get('readback_verified') is True and p.get('publish_confirmed') is True and str(d.get('status','')).upper() in {'SUFFICIENT','LIMITED'}
+          def update_index(x,s):
+              f=OUT/'index.json'
+              try: idx=json.loads(f.read_text()) if f.exists() else {}
+              except Exception: idx={}
+              items=idx.get('items') if isinstance(idx.get('items'),dict) else {}
+              i=x.get('instrument') or {}; d=x.get('data_quality') or {}; p=x.get('snapshot') or {}
+              items[s]={'symbol':s,'name':i.get('name',s),'market':'KR','exchange':i.get('exchange',''),'updated_at':x.get('generated_at'),'data_quality':d.get('status'),'stale_any':d.get('stale_any'),'market_stale':d.get('market_stale'),'last_completed_date':d.get('last_completed_date'),'expected_last_completed_date':d.get('expected_last_completed_date'),'market_data_lag_trading_days':d.get('market_data_lag_trading_days'),'market_fresh':d.get('market_fresh'),'snapshot_url':p.get('url'),'github_snapshot_url':f'https://raw.githubusercontent.com/wskimgit/k-article/main/sis/{s}.json','mirror_state':'REQUEST_BRIDGE_SYNCED'}
+              idx.update({'ok':True,'schema':idx.get('schema','sis_snapshot_index_v1'),'version':x.get('version'),'revision':x.get('revision'),'updated_at':x.get('generated_at'),'count':len(items),'items':items})
+              f.write_text(json.dumps(idx,ensure_ascii=False,indent=2)+'\n')
 
-          def validate_request(row):
-              if not isinstance(row, dict):
-                  raise RuntimeError('request must be JSON object')
-              if str(row.get('action', 'PUBLISH_SNAPSHOT')).upper() != 'PUBLISH_SNAPSHOT':
-                  raise RuntimeError('unsupported action')
-              if str(row.get('market', 'KR')).upper() != 'KR':
-                  raise RuntimeError('market must be KR')
-              symbol = str(row.get('symbol', '')).strip()
-              if not re.fullmatch(r'\d{6}', symbol):
-                  raise RuntimeError('symbol must be 6 digits')
-              return symbol
-
-          def validate_publisher(row, symbol):
-              inst = row.get('instrument') or {}
-              snap = row.get('snapshot') or {}
-              dq = row.get('data_quality') or {}
-
-              errors = []
-              if row.get('ok') is not True:
-                  errors.append('ok!=true')
-              if str(inst.get('market', 'KR')).upper() != 'KR':
-                  errors.append('market!=KR')
-              if str(inst.get('symbol', '')) != symbol:
-                  errors.append('symbol_mismatch')
-              if str(snap.get('status', '')).upper() != 'PUBLISHED':
-                  errors.append('snapshot_not_published')
-              if snap.get('local_saved') is not True:
-                  errors.append('local_saved!=true')
-              if snap.get('readback_verified') is not True:
-                  errors.append('readback_verified!=true')
-              if snap.get('publish_confirmed') is not True:
-                  errors.append('publish_confirmed!=true')
-              if str(dq.get('status', '')).upper() not in {'SUFFICIENT', 'LIMITED'}:
-                  errors.append('data_quality_not_publishable')
-
-              if errors:
-                  raise RuntimeError('INVALID_PUBLISHER_RESPONSE:' + ','.join(errors))
-
-          processed = []
-          for file_name in files:
-              p = Path(file_name)
-              if not p.is_file():
-                  raise RuntimeError(f'REQUEST_FILE_NOT_FOUND:{file_name}')
-
-              req_row = json.loads(p.read_text(encoding='utf-8'))
-              symbol = validate_request(req_row)
-              name = str(req_row.get('name') or symbol)
-
-              url = PUBLISHER + '?q=' + urllib.parse.quote(symbol, safe='') + '&_bridge=' + str(int(time.time()))
-              print(f'[REQUEST] symbol={symbol} name={name}')
-              publisher = fetch_json(url)
-              validate_publisher(publisher, symbol)
-
-              target = OUT / f'{symbol}.json'
-              target.write_text(
-                  json.dumps(publisher, ensure_ascii=False, indent=2) + '\n',
-                  encoding='utf-8',
-              )
-              processed.append(symbol)
-              print(
-                  f'[PUBLISHED] {symbol} '
-                  f'version={publisher.get("version")} '
-                  f'generated_at={publisher.get("generated_at")} '
-                  f'quality={(publisher.get("data_quality") or {}).get("status")}'
-              )
-
-          status = {
-              'ok': True,
-              'schema': 'sis_request_bridge_status_v1',
-              'processed_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
-              'symbols': processed,
-          }
-          (OUT / 'request_bridge_status.json').write_text(
-              json.dumps(status, ensure_ascii=False, indent=2) + '\n',
-              encoding='utf-8',
-          )
+          for fn in files:
+              req={}; s='unknown'
+              try:
+                  req=json.loads(Path(fn).read_text()); s=str(req.get('symbol','')).strip()
+                  if not re.fullmatch(r'\d{6}',s): raise RuntimeError('symbol must be 6 digits')
+                  nonce=str(req.get('request_nonce') or '')
+                  x=get(PUB+'?q='+urllib.parse.quote(s)+'&_bridge='+str(int(time.time())))
+                  if not valid(x,s): raise RuntimeError('INVALID_PUBLISHER_RESPONSE')
+                  (OUT/f'{s}.json').write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+                  update_index(x,s)
+                  (ST/f'{s}.json').write_text(json.dumps({'schema':'sis_request_status_v1','symbol':s,'status':'PUBLISHED','request_nonce':nonce,'requested_at':req.get('requested_at'),'completed_at':now(),'snapshot_generated_at':x.get('generated_at'),'market_fresh':(x.get('data_quality') or {}).get('market_fresh'),'error':None},ensure_ascii=False,indent=2)+'\n')
+                  ep=ER/f'{s}.json'
+                  if ep.exists(): ep.unlink()
+                  print('[PUBLISHED]',s)
+              except Exception as e:
+                  had=True; dbg=None
+                  if s!='unknown':
+                      try: dbg=get(PUB+'?action=debug&q='+urllib.parse.quote(s)+'&_bridge_debug='+str(int(time.time())),1,30)
+                      except Exception as de: dbg={'ok':False,'error':f'DEBUG_FETCH_FAILED:{de}'}
+                  err={'schema':'sis_request_error_v1','symbol':s,'failed_at':now(),'error':str(e),'publisher_debug':dbg}
+                  (ER/f'{s}.json').write_text(json.dumps(err,ensure_ascii=False,indent=2)+'\n')
+                  (ST/f'{s}.json').write_text(json.dumps({'schema':'sis_request_status_v1','symbol':s,'status':'FAILED','completed_at':now(),'error':str(e),'error_path':f'sis_request_error/{s}.json'},ensure_ascii=False,indent=2)+'\n')
+                  print('[FAILED]',s,e)
+          (OUT/'request_bridge_status.json').write_text(json.dumps({'ok':not had,'schema':'sis_request_bridge_status_v2','processed_at':now(),'had_errors':had},ensure_ascii=False,indent=2)+'\n')
+          if had: Path('.sis_request_runtime/had_errors').write_text('1\n')
           PY
 
-      - name: Commit generated snapshots
+      - name: Commit snapshots and diagnostics
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -- sis
-
-          if git diff --cached --quiet; then
-            echo "No SIS snapshot changes."
-            exit 0
+          git add -- sis sis_request_status sis_request_error
+          if ! git diff --cached --quiet; then
+            git commit -m "publish requested SIS snapshot"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
-          git commit -m "publish requested SIS snapshot"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Fail after diagnostics commit
+        if: always()
+        shell: bash
+        run: |
+          test ! -f .sis_request_runtime/had_errors
