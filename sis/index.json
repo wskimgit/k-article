@@ -1,10 +1,10 @@
 {
   "ok": true,
   "schema": "sis_snapshot_index_v1",
-  "version": "1.3.0",
-  "revision": "sis-feed-v130-local-github-mirror-fallback-20260817-r1",
-  "updated_at": "2026-08-17T19:13:41+09:00",
-  "count": 4,
+  "version": "1.3.4",
+  "revision": "sis-feed-v134-publish-debug-trace-20260817-r1",
+  "updated_at": "2026-08-17T23:00:33+09:00",
+  "count": 5,
   "items": {
     "000660": {
       "symbol": "000660",
@@ -15,6 +15,23 @@
       "data_quality": "SUFFICIENT",
       "stale_any": false,
       "snapshot_url": "https://k-bizpost.myds.me/sis/000660.json"
+    },
+    "005380": {
+      "symbol": "005380",
+      "name": "현대차",
+      "market": "KR",
+      "exchange": "KOSPI",
+      "updated_at": "2026-08-17T23:00:33+09:00",
+      "data_quality": "SUFFICIENT",
+      "stale_any": false,
+      "cache_stale_any": false,
+      "market_stale": false,
+      "last_completed_date": "2026-08-14",
+      "expected_last_completed_date": "2026-08-14",
+      "market_data_lag_trading_days": 0,
+      "market_fresh": true,
+      "snapshot_url": "https://k-bizpost.myds.me/sis/005380.json",
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/005380.json"
     },
     "005930": {
       "symbol": "005930",
