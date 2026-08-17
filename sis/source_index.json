@@ -14,9 +14,7 @@
       "updated_at": "2026-08-17T12:06:09+09:00",
       "data_quality": "SUFFICIENT",
       "stale_any": false,
-      "snapshot_url": "https://k-bizpost.myds.me/sis/000660.json",
-      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/000660.json",
-      "mirror_state": "SYNCED"
+      "snapshot_url": "https://k-bizpost.myds.me/sis/000660.json"
     },
     "005380": {
       "symbol": "005380",
@@ -33,8 +31,7 @@
       "market_data_lag_trading_days": 0,
       "market_fresh": true,
       "snapshot_url": "https://k-bizpost.myds.me/sis/005380.json",
-      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/005380.json",
-      "mirror_state": "SYNCED"
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/005380.json"
     },
     "005930": {
       "symbol": "005930",
@@ -45,8 +42,7 @@
       "data_quality": "SUFFICIENT",
       "stale_any": false,
       "snapshot_url": "https://k-bizpost.myds.me/sis/005930.json",
-      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/005930.json",
-      "mirror_state": "SYNCED"
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/005930.json"
     },
     "006400": {
       "symbol": "006400",
@@ -63,8 +59,7 @@
       "market_data_lag_trading_days": 0,
       "market_fresh": true,
       "snapshot_url": "https://k-bizpost.myds.me/sis/006400.json",
-      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/006400.json",
-      "mirror_state": "SYNCED"
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/006400.json"
     },
     "065450": {
       "symbol": "065450",
@@ -75,8 +70,7 @@
       "data_quality": "SUFFICIENT",
       "stale_any": false,
       "snapshot_url": "https://k-bizpost.myds.me/sis/065450.json",
-      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/065450.json",
-      "mirror_state": "SYNCED"
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/065450.json"
     },
     "105560": {
       "symbol": "105560",
@@ -87,8 +81,7 @@
       "data_quality": "SUFFICIENT",
       "stale_any": false,
       "snapshot_url": "https://k-bizpost.myds.me/sis/105560.json",
-      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/105560.json",
-      "mirror_state": "SYNCED"
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/105560.json"
     }
   },
   "github_mirror": {
@@ -97,9 +90,5 @@
     "branch": "main",
     "path": "sis",
     "index_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/index.json"
-  },
-  "mirror_filtered": true,
-  "mirror_synced_at": "2026-08-17T15:01:18.946921+00:00",
-  "mirror_error_count": 0,
-  "mirror_retained_count": 0
+  }
 }
