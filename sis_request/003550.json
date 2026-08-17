@@ -1,0 +1,11 @@
+{
+  "schema": "sis_snapshot_request_v1",
+  "action": "PUBLISH_SNAPSHOT",
+  "market": "KR",
+  "symbol": "003550",
+  "name": "LG",
+  "requested_at": "2026-08-18T00:22:00+09:00",
+  "requested_by": "chatgpt",
+  "request_nonce": "003550-20260818T002200+0900",
+  "force_refresh": true
+}
