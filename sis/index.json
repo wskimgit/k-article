@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "schema": "sis_snapshot_index_v1",
+  "version": "1.3.0",
+  "revision": "sis-feed-v130-local-github-mirror-fallback-20260817-r1",
+  "updated_at": "2026-08-17T13:10:21+09:00",
+  "count": 2,
+  "items": {
+    "000660": {
+      "symbol": "000660",
+      "name": "SK하이닉스",
+      "market": "KR",
+      "exchange": "KOSPI",
+      "updated_at": "2026-08-17T12:06:09+09:00",
+      "data_quality": "SUFFICIENT",
+      "stale_any": false,
+      "snapshot_url": "https://k-bizpost.myds.me/sis/000660.json"
+    },
+    "005930": {
+      "symbol": "005930",
+      "name": "삼성전자",
+      "market": "KR",
+      "exchange": "KOSPI",
+      "updated_at": "2026-08-17T13:10:21+09:00",
+      "data_quality": "SUFFICIENT",
+      "stale_any": false,
+      "snapshot_url": "https://k-bizpost.myds.me/sis/005930.json",
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/005930.json"
+    }
+  },
+  "github_mirror": {
+    "mode": "ACTIONS_PULL",
+    "repo": "wskimgit/k-article",
+    "branch": "main",
+    "path": "sis",
+    "index_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/index.json"
+  }
+}
