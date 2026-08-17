@@ -1,0 +1,10 @@
+{
+  "schema": "sis_snapshot_request_v1",
+  "action": "PUBLISH_SNAPSHOT",
+  "market": "KR",
+  "symbol": "006400",
+  "name": "삼성SDI",
+  "requested_at": "2026-08-17T23:45:00+09:00",
+  "requested_by": "chatgpt",
+  "request_nonce": "006400-20260817T234500+0900"
+}
