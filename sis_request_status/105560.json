@@ -1,0 +1,11 @@
+{
+  "schema": "sis_request_status_v1",
+  "symbol": "105560",
+  "status": "PUBLISHED",
+  "request_nonce": "105560-20260818T104700+0900",
+  "requested_at": "2026-08-18T10:47:00+09:00",
+  "completed_at": "2026-08-18T01:48:23Z",
+  "snapshot_generated_at": "2026-08-18T10:48:22+09:00",
+  "market_fresh": true,
+  "error": null
+}

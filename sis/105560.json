@@ -1,12 +1,12 @@
 {
   "ok": true,
   "schema": "sis_snapshot_v1",
-  "version": "1.3.0",
-  "revision": "sis-feed-v130-local-github-mirror-fallback-20260817-r1",
-  "generated_at": "2026-08-17T19:13:41+09:00",
+  "version": "1.3.4",
+  "revision": "sis-feed-v134-publish-debug-trace-20260817-r1",
+  "generated_at": "2026-08-18T10:48:22+09:00",
   "request": {
-    "q": "kb금융",
-    "resolved_by": "exact_name",
+    "q": "105560",
+    "resolved_by": "code",
     "venue": "J",
     "bars_requested": 100
   },
@@ -22,7 +22,26 @@
   "data_quality": {
     "status": "SUFFICIENT",
     "stale_any": false,
+    "cache_stale_any": false,
+    "market_stale": false,
     "last_completed_date": "2026-08-14",
+    "expected_last_completed_date": "2026-08-14",
+    "market_data_lag_trading_days": 0,
+    "market_fresh": true,
+    "freshness": {
+      "schema": "krx_trading_day_freshness_v1",
+      "actual_last_completed_date": "2026-08-14",
+      "expected_last_completed_date": "2026-08-14",
+      "market_data_lag_trading_days": 0,
+      "market_fresh": true,
+      "status": "FRESH",
+      "calendar_verified": true,
+      "calendar_confidence": "BUILTIN_2026",
+      "today": "2026-08-18",
+      "today_is_trading_day": true,
+      "cutoff_hi": "1540",
+      "reason": "TODAY_BEFORE_MARKET_CUTOFF"
+    },
     "components": {
       "quote": {
         "ok": true,
@@ -38,7 +57,7 @@
         "stale": false,
         "cache_hit": false,
         "cache_age_sec": 0,
-        "count": 100,
+        "count": 99,
         "error": "",
         "degraded": false
       },
@@ -56,7 +75,7 @@
         "stale": false,
         "cache_hit": false,
         "cache_age_sec": 0,
-        "count": 5,
+        "count": 2,
         "error": "",
         "degraded": false
       },
@@ -72,27 +91,18 @@
     }
   },
   "quote": {
-    "price": 168500,
-    "change": 400,
-    "change_rate": 0.24,
-    "open": 167100,
-    "high": 169800,
-    "low": 166400,
-    "volume": 951351,
-    "turnover": 159988557050,
+    "price": 167100,
+    "change": -1400,
+    "change_rate": -0.83,
+    "open": 168400,
+    "high": 168400,
+    "low": 166100,
+    "volume": 334519,
+    "turnover": 55945534700,
     "foreign_ownership_rate": 79.33,
-    "weighted_avg_price": 168169.81
+    "weighted_avg_price": 167241.73
   },
   "ohlcv": [
-    {
-      "date": "2026-03-23",
-      "open": 147900,
-      "high": 150300,
-      "low": 144100,
-      "close": 145300,
-      "volume": 1121082,
-      "turnover": 164034922050
-    },
     {
       "date": "2026-03-24",
       "open": 149000,
@@ -1349,34 +1359,16 @@
   ],
   "investor_intraday_estimate": [
     {
-      "slot": "5",
-      "foreign_estimated_net_qty": 35000,
-      "institution_estimated_net_qty": -39000,
-      "sum_estimated_net_qty": -4000
-    },
-    {
-      "slot": "4",
-      "foreign_estimated_net_qty": -14000,
-      "institution_estimated_net_qty": -29000,
-      "sum_estimated_net_qty": -43000
-    },
-    {
-      "slot": "3",
-      "foreign_estimated_net_qty": 6000,
-      "institution_estimated_net_qty": -9000,
-      "sum_estimated_net_qty": -3000
-    },
-    {
       "slot": "2",
-      "foreign_estimated_net_qty": -7000,
-      "institution_estimated_net_qty": 1000,
-      "sum_estimated_net_qty": -6000
+      "foreign_estimated_net_qty": -27000,
+      "institution_estimated_net_qty": -6000,
+      "sum_estimated_net_qty": -33000
     },
     {
       "slot": "1",
-      "foreign_estimated_net_qty": -19000,
+      "foreign_estimated_net_qty": -35000,
       "institution_estimated_net_qty": 0,
-      "sum_estimated_net_qty": -19000
+      "sum_estimated_net_qty": -35000
     }
   ],
   "program_daily": [
@@ -1592,22 +1584,6 @@
     }
   ],
   "flow_daily": [
-    {
-      "date": "2026-03-23",
-      "open": 147900,
-      "high": 150300,
-      "low": 144100,
-      "close": 145300,
-      "volume": 1121082,
-      "turnover": 164034922050,
-      "foreign_net_qty": null,
-      "institution_net_qty": null,
-      "personal_net_qty": null,
-      "foreign_net_amount_million": null,
-      "institution_net_amount_million": null,
-      "program_net_qty": null,
-      "program_net_amount": null
-    },
     {
       "date": "2026-03-24",
       "open": 149000,
@@ -3234,7 +3210,7 @@
   "snapshot": {
     "status": "PUBLISHED",
     "symbol": "105560",
-    "published_at": "2026-08-17T19:13:41+09:00",
+    "published_at": "2026-08-18T10:48:22+09:00",
     "file_name": "105560.json",
     "url": "https://k-bizpost.myds.me/sis/105560.json",
     "index_url": "https://k-bizpost.myds.me/sis/index.json",
@@ -3242,6 +3218,10 @@
     "atomic_write": true,
     "directory": "/sis",
     "directory_created": false,
+    "local_saved": true,
+    "readback_verified": true,
+    "publish_confirmed": true,
+    "confirmation_mode": "SYNC_LOCAL_READBACK",
     "github_mirror": {
       "mode": "ACTIONS_PULL",
       "repo": "wskimgit/k-article",
@@ -3251,6 +3231,7 @@
       "sync": "ASYNCHRONOUS",
       "nas_github_credentials": false
     },
+    "confirmed_at": "2026-08-18T10:48:22+09:00",
     "index_update": "UPDATED"
   }
 }
