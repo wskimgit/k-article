@@ -1,0 +1,11 @@
+{
+  "schema": "sis_snapshot_request_v1",
+  "action": "PUBLISH_SNAPSHOT",
+  "market": "KR",
+  "symbol": "105560",
+  "name": "KB금융",
+  "requested_at": "2026-08-18T10:47:00+09:00",
+  "requested_by": "chatgpt",
+  "request_nonce": "105560-20260818T104700+0900",
+  "force_refresh": true
+}
