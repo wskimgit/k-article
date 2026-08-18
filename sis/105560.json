@@ -3,7 +3,7 @@
   "schema": "sis_snapshot_v1",
   "version": "1.3.4",
   "revision": "sis-feed-v134-publish-debug-trace-20260817-r1",
-  "generated_at": "2026-08-18T10:48:22+09:00",
+  "generated_at": "2026-08-18T13:22:28+09:00",
   "request": {
     "q": "105560",
     "resolved_by": "code",
@@ -75,7 +75,7 @@
         "stale": false,
         "cache_hit": false,
         "cache_age_sec": 0,
-        "count": 2,
+        "count": 3,
         "error": "",
         "degraded": false
       },
@@ -97,10 +97,10 @@
     "open": 168400,
     "high": 168400,
     "low": 166100,
-    "volume": 334519,
-    "turnover": 55945534700,
+    "volume": 560063,
+    "turnover": 93722834800,
     "foreign_ownership_rate": 79.33,
-    "weighted_avg_price": 167241.73
+    "weighted_avg_price": 167343.38
   },
   "ohlcv": [
     {
@@ -1358,6 +1358,12 @@
     }
   ],
   "investor_intraday_estimate": [
+    {
+      "slot": "3",
+      "foreign_estimated_net_qty": -11000,
+      "institution_estimated_net_qty": -7000,
+      "sum_estimated_net_qty": -18000
+    },
     {
       "slot": "2",
       "foreign_estimated_net_qty": -27000,
@@ -3210,7 +3216,7 @@
   "snapshot": {
     "status": "PUBLISHED",
     "symbol": "105560",
-    "published_at": "2026-08-18T10:48:22+09:00",
+    "published_at": "2026-08-18T13:22:28+09:00",
     "file_name": "105560.json",
     "url": "https://k-bizpost.myds.me/sis/105560.json",
     "index_url": "https://k-bizpost.myds.me/sis/index.json",
@@ -3231,7 +3237,7 @@
       "sync": "ASYNCHRONOUS",
       "nas_github_credentials": false
     },
-    "confirmed_at": "2026-08-18T10:48:22+09:00",
+    "confirmed_at": "2026-08-18T13:22:28+09:00",
     "index_update": "UPDATED"
   }
 }
