@@ -36,6 +36,24 @@
       "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/003550.json",
       "mirror_state": "SYNCED"
     },
+    "004170": {
+      "symbol": "004170",
+      "name": "신세계",
+      "market": "KR",
+      "exchange": "KOSPI",
+      "updated_at": "2026-08-18T21:49:00+09:00",
+      "data_quality": "SUFFICIENT",
+      "stale_any": false,
+      "cache_stale_any": false,
+      "market_stale": false,
+      "last_completed_date": "2026-08-18",
+      "expected_last_completed_date": "2026-08-18",
+      "market_data_lag_trading_days": 0,
+      "market_fresh": true,
+      "snapshot_url": "https://k-bizpost.myds.me/sis/004170.json",
+      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/004170.json",
+      "mirror_state": "SYNCED"
+    },
     "005380": {
       "symbol": "005380",
       "name": "현대차",
@@ -131,23 +149,6 @@
       "snapshot_url": "https://k-bizpost.myds.me/sis/105560.json",
       "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/105560.json",
       "mirror_state": "SYNCED"
-    },
-    "004170": {
-      "symbol": "004170",
-      "name": "신세계",
-      "market": "KR",
-      "exchange": "KOSPI",
-      "updated_at": "2026-08-18T21:49:00+09:00",
-      "data_quality": "SUFFICIENT",
-      "stale_any": false,
-      "market_stale": false,
-      "last_completed_date": "2026-08-18",
-      "expected_last_completed_date": "2026-08-18",
-      "market_data_lag_trading_days": 0,
-      "market_fresh": true,
-      "snapshot_url": "https://k-bizpost.myds.me/sis/004170.json",
-      "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/004170.json",
-      "mirror_state": "REQUEST_BRIDGE_SYNCED"
     }
   },
   "github_mirror": {
@@ -158,7 +159,7 @@
     "index_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/index.json"
   },
   "mirror_filtered": true,
-  "mirror_synced_at": "2026-08-18T12:19:24.991121+00:00",
+  "mirror_synced_at": "2026-08-18T13:13:08.428917+00:00",
   "mirror_error_count": 0,
   "mirror_retained_count": 0
 }
