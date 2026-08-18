@@ -1,0 +1,11 @@
+{
+  "schema": "sis_snapshot_request_v1",
+  "action": "PUBLISH_SNAPSHOT",
+  "market": "KR",
+  "symbol": "004170",
+  "name": "신세계",
+  "requested_at": "2026-08-18T21:48:00+09:00",
+  "requested_by": "chatgpt",
+  "request_nonce": "004170-20260818T214800+0900",
+  "force_refresh": true
+}
