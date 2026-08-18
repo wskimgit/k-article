@@ -122,6 +122,7 @@
       "updated_at": "2026-08-18T13:22:28+09:00",
       "data_quality": "SUFFICIENT",
       "stale_any": false,
+      "cache_stale_any": false,
       "market_stale": false,
       "last_completed_date": "2026-08-14",
       "expected_last_completed_date": "2026-08-14",
@@ -129,7 +130,7 @@
       "market_fresh": true,
       "snapshot_url": "https://k-bizpost.myds.me/sis/105560.json",
       "github_snapshot_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/105560.json",
-      "mirror_state": "REQUEST_BRIDGE_SYNCED"
+      "mirror_state": "SYNCED"
     }
   },
   "github_mirror": {
@@ -140,7 +141,7 @@
     "index_url": "https://raw.githubusercontent.com/wskimgit/k-article/main/sis/index.json"
   },
   "mirror_filtered": true,
-  "mirror_synced_at": "2026-08-18T04:07:29.823356+00:00",
+  "mirror_synced_at": "2026-08-18T04:47:45.047028+00:00",
   "mirror_error_count": 0,
   "mirror_retained_count": 0
 }

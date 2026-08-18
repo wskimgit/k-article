@@ -3,7 +3,7 @@
   "schema": "sis_snapshot_index_v1",
   "version": "1.3.4",
   "revision": "sis-feed-v134-publish-debug-trace-20260817-r1",
-  "updated_at": "2026-08-18T10:48:22+09:00",
+  "updated_at": "2026-08-18T13:22:28+09:00",
   "count": 8,
   "items": {
     "000660": {
@@ -111,7 +111,7 @@
       "name": "KB금융",
       "market": "KR",
       "exchange": "KOSPI",
-      "updated_at": "2026-08-18T10:48:22+09:00",
+      "updated_at": "2026-08-18T13:22:28+09:00",
       "data_quality": "SUFFICIENT",
       "stale_any": false,
       "cache_stale_any": false,
