@@ -3,7 +3,7 @@
   "schema": "sis_snapshot_index_v1",
   "version": "1.3.5",
   "revision": "sis-feed-v135-integrated-live-quote-gate-errc-20260819-r1",
-  "updated_at": "2026-08-19T09:03:18+09:00",
+  "updated_at": "2026-08-19T09:09:18+09:00",
   "count": 9,
   "items": {
     "000660": {
@@ -11,7 +11,7 @@
       "name": "SK하이닉스",
       "market": "KR",
       "exchange": "KOSPI",
-      "updated_at": "2026-08-19T09:03:18+09:00",
+      "updated_at": "2026-08-19T09:09:18+09:00",
       "data_quality": "SUFFICIENT",
       "stale_any": false,
       "market_stale": false,
