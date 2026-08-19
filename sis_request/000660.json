@@ -4,8 +4,8 @@
   "market": "KR",
   "symbol": "000660",
   "name": "SK하이닉스",
-  "requested_at": "2026-08-19T09:02:00+09:00",
+  "requested_at": "2026-08-19T09:08:00+09:00",
   "requested_by": "chatgpt",
-  "request_nonce": "000660-20260819T090200+0900",
+  "request_nonce": "000660-20260819T090800+0900",
   "force_refresh": true
 }
