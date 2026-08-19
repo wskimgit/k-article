@@ -1,13 +1,17 @@
 {
   "ok": true,
   "schema": "sis_snapshot_v1",
-  "version": "1.3.4",
-  "revision": "sis-feed-v134-publish-debug-trace-20260817-r1",
-  "generated_at": "2026-08-19T08:40:28+09:00",
+  "version": "1.3.5",
+  "revision": "sis-feed-v135-integrated-live-quote-gate-errc-20260819-r1",
+  "generated_at": "2026-08-19T09:03:18+09:00",
   "request": {
     "q": "000660",
     "resolved_by": "code",
     "venue": "J",
+    "market_venue": "J",
+    "quote_venue_requested": "AUTO",
+    "quote_venue_used": "UN",
+    "quote_session": "KRX_NXT_DUAL_MAIN",
     "bars_requested": 100
   },
   "instrument": {
@@ -28,6 +32,13 @@
     "expected_last_completed_date": "2026-08-18",
     "market_data_lag_trading_days": 0,
     "market_fresh": true,
+    "quote_fresh": true,
+    "quote_stale": false,
+    "quote_retrieved_at": "2026-08-19T09:03:14+09:00",
+    "quote_age_sec": 0,
+    "quote_market_session": "KRX_NXT_DUAL_MAIN",
+    "quote_venue_used": "UN",
+    "quote_transport": "KIS_REST_POLL",
     "freshness": {
       "schema": "krx_trading_day_freshness_v1",
       "actual_last_completed_date": "2026-08-18",
@@ -42,6 +53,18 @@
       "cutoff_hi": "1540",
       "reason": "TODAY_BEFORE_MARKET_CUTOFF"
     },
+    "quote_freshness": {
+      "schema": "sis_quote_freshness_v1",
+      "fresh": true,
+      "retrieved_at": "2026-08-19T09:03:14+09:00",
+      "retrieval_age_sec": 0,
+      "max_age_sec": 10,
+      "cache_hit": false,
+      "cache_stale": false,
+      "transport": "KIS_REST_POLL",
+      "tick_realtime": false,
+      "websocket_required_for_tick_realtime": true
+    },
     "components": {
       "quote": {
         "ok": true,
@@ -55,8 +78,8 @@
       "ohlcv": {
         "ok": true,
         "stale": false,
-        "cache_hit": true,
-        "cache_age_sec": 729,
+        "cache_hit": false,
+        "cache_age_sec": 0,
         "count": 99,
         "error": "",
         "degraded": false
@@ -91,16 +114,55 @@
     }
   },
   "quote": {
-    "price": 1662000,
-    "change": 0,
-    "change_rate": 0,
-    "open": 0,
-    "high": 0,
-    "low": 0,
-    "volume": 12,
-    "turnover": 19944000,
+    "price": 1528000,
+    "change": -134000,
+    "change_rate": -8.06,
+    "open": 1552000,
+    "high": 1575000,
+    "low": 1525000,
+    "volume": 860055,
+    "turnover": 1332266898500,
     "foreign_ownership_rate": 51.16,
-    "weighted_avg_price": 0
+    "weighted_avg_price": 1549046.91,
+    "venue": "UN",
+    "retrieved_at": "2026-08-19T09:03:14+09:00"
+  },
+  "quote_live": {
+    "price": 1528000,
+    "change": -134000,
+    "change_rate": -8.06,
+    "open": 1552000,
+    "high": 1575000,
+    "low": 1525000,
+    "volume": 860055,
+    "turnover": 1332266898500,
+    "foreign_ownership_rate": 51.16,
+    "weighted_avg_price": 1549046.91,
+    "requested_venue": "AUTO",
+    "used_venue": "UN",
+    "fallback_used": false,
+    "retrieved_at": "2026-08-19T09:03:14+09:00",
+    "retrieval_age_sec": 0,
+    "fresh": true,
+    "session": {
+      "schema": "krx_nxt_quote_session_v1",
+      "name": "KRX_NXT_DUAL_MAIN",
+      "as_of": "2026-08-19T09:03:13+09:00",
+      "today_is_trading_day": true,
+      "trade_active": true,
+      "krx_active": true,
+      "nxt_active": true,
+      "price_reference": "INTEGRATED",
+      "nxt_hours": {
+        "premarket": "08:00-08:50",
+        "main": "09:00:30-15:20",
+        "aftermarket": "15:40-20:00"
+      },
+      "krx_regular_hours": "09:00-15:30"
+    },
+    "transport": "KIS_REST_POLL",
+    "tick_realtime": false,
+    "websocket_required_for_tick_realtime": true
   },
   "ohlcv": [
     {
@@ -3162,7 +3224,10 @@
     "foreign_active_cost_basis": "SIS computes from flow_daily + active accumulation cycle",
     "institution_active_cost_basis": "SIS computes from flow_daily + active accumulation cycle",
     "intraday_estimate_is_provisional": true,
-    "daily_investor_data_note": "당일 확정 투자자 일별자료는 장 종료 후 제공/산출될 수 있음"
+    "daily_investor_data_note": "당일 확정 투자자 일별자료는 장 종료 후 제공/산출될 수 있음",
+    "current_price_source": "quote_live.price first; quote.price backward-compatible alias",
+    "market_fresh_and_quote_fresh_are_independent": true,
+    "quote_transport_note": "KIS REST request-time snapshot; tick real-time requires WebSocket"
   },
   "privacy": {
     "account_number_included": false,
@@ -3197,7 +3262,7 @@
   "snapshot": {
     "status": "PUBLISHED",
     "symbol": "000660",
-    "published_at": "2026-08-19T08:40:28+09:00",
+    "published_at": "2026-08-19T09:03:18+09:00",
     "file_name": "000660.json",
     "url": "https://k-bizpost.myds.me/sis/000660.json",
     "index_url": "https://k-bizpost.myds.me/sis/index.json",
@@ -3218,7 +3283,7 @@
       "sync": "ASYNCHRONOUS",
       "nas_github_credentials": false
     },
-    "confirmed_at": "2026-08-19T08:40:28+09:00",
+    "confirmed_at": "2026-08-19T09:03:18+09:00",
     "index_update": "UPDATED"
   }
 }
