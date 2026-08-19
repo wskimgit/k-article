@@ -3,7 +3,7 @@
   "schema": "sis_snapshot_v1",
   "version": "1.3.5",
   "revision": "sis-feed-v135-integrated-live-quote-gate-errc-20260819-r1",
-  "generated_at": "2026-08-19T09:09:18+09:00",
+  "generated_at": "2026-08-19T16:44:20+09:00",
   "request": {
     "q": "000660",
     "resolved_by": "code",
@@ -11,7 +11,7 @@
     "market_venue": "J",
     "quote_venue_requested": "AUTO",
     "quote_venue_used": "UN",
-    "quote_session": "KRX_NXT_DUAL_MAIN",
+    "quote_session": "NXT_AFTERMARKET",
     "bars_requested": 100
   },
   "instrument": {
@@ -28,21 +28,21 @@
     "stale_any": false,
     "cache_stale_any": false,
     "market_stale": false,
-    "last_completed_date": "2026-08-18",
-    "expected_last_completed_date": "2026-08-18",
+    "last_completed_date": "2026-08-19",
+    "expected_last_completed_date": "2026-08-19",
     "market_data_lag_trading_days": 0,
     "market_fresh": true,
     "quote_fresh": true,
     "quote_stale": false,
-    "quote_retrieved_at": "2026-08-19T09:09:16+09:00",
+    "quote_retrieved_at": "2026-08-19T16:44:17+09:00",
     "quote_age_sec": 0,
-    "quote_market_session": "KRX_NXT_DUAL_MAIN",
+    "quote_market_session": "NXT_AFTERMARKET",
     "quote_venue_used": "UN",
     "quote_transport": "KIS_REST_POLL",
     "freshness": {
       "schema": "krx_trading_day_freshness_v1",
-      "actual_last_completed_date": "2026-08-18",
-      "expected_last_completed_date": "2026-08-18",
+      "actual_last_completed_date": "2026-08-19",
+      "expected_last_completed_date": "2026-08-19",
       "market_data_lag_trading_days": 0,
       "market_fresh": true,
       "status": "FRESH",
@@ -51,12 +51,12 @@
       "today": "2026-08-19",
       "today_is_trading_day": true,
       "cutoff_hi": "1540",
-      "reason": "TODAY_BEFORE_MARKET_CUTOFF"
+      "reason": "TODAY_AFTER_MARKET_CUTOFF"
     },
     "quote_freshness": {
       "schema": "sis_quote_freshness_v1",
       "fresh": true,
-      "retrieved_at": "2026-08-19T09:09:16+09:00",
+      "retrieved_at": "2026-08-19T16:44:17+09:00",
       "retrieval_age_sec": 0,
       "max_age_sec": 10,
       "cache_hit": false,
@@ -78,17 +78,17 @@
       "ohlcv": {
         "ok": true,
         "stale": false,
-        "cache_hit": true,
-        "cache_age_sec": 361,
-        "count": 99,
+        "cache_hit": false,
+        "cache_age_sec": 0,
+        "count": 100,
         "error": "",
         "degraded": false
       },
       "investor_daily": {
         "ok": true,
         "stale": false,
-        "cache_hit": true,
-        "cache_age_sec": 361,
+        "cache_hit": false,
+        "cache_age_sec": 0,
         "count": 30,
         "error": "",
         "degraded": false
@@ -98,7 +98,7 @@
         "stale": false,
         "cache_hit": false,
         "cache_age_sec": 0,
-        "count": 0,
+        "count": 5,
         "error": "",
         "degraded": false
       },
@@ -114,45 +114,45 @@
     }
   },
   "quote": {
-    "price": 1524000,
-    "change": -138000,
-    "change_rate": -8.3,
+    "price": 1622000,
+    "change": -40000,
+    "change_rate": -2.41,
     "open": 1552000,
-    "high": 1575000,
-    "low": 1510000,
-    "volume": 1157015,
-    "turnover": 1783976392000,
+    "high": 1628000,
+    "low": 1486000,
+    "volume": 8255248,
+    "turnover": 12704863418500,
     "foreign_ownership_rate": 51.16,
-    "weighted_avg_price": 1541877.12,
+    "weighted_avg_price": 1539005.66,
     "venue": "UN",
-    "retrieved_at": "2026-08-19T09:09:16+09:00"
+    "retrieved_at": "2026-08-19T16:44:17+09:00"
   },
   "quote_live": {
-    "price": 1524000,
-    "change": -138000,
-    "change_rate": -8.3,
+    "price": 1622000,
+    "change": -40000,
+    "change_rate": -2.41,
     "open": 1552000,
-    "high": 1575000,
-    "low": 1510000,
-    "volume": 1157015,
-    "turnover": 1783976392000,
+    "high": 1628000,
+    "low": 1486000,
+    "volume": 8255248,
+    "turnover": 12704863418500,
     "foreign_ownership_rate": 51.16,
-    "weighted_avg_price": 1541877.12,
+    "weighted_avg_price": 1539005.66,
     "requested_venue": "AUTO",
     "used_venue": "UN",
     "fallback_used": false,
-    "retrieved_at": "2026-08-19T09:09:16+09:00",
+    "retrieved_at": "2026-08-19T16:44:17+09:00",
     "retrieval_age_sec": 0,
     "fresh": true,
     "session": {
       "schema": "krx_nxt_quote_session_v1",
-      "name": "KRX_NXT_DUAL_MAIN",
-      "as_of": "2026-08-19T09:09:16+09:00",
+      "name": "NXT_AFTERMARKET",
+      "as_of": "2026-08-19T16:44:16+09:00",
       "today_is_trading_day": true,
       "trade_active": true,
-      "krx_active": true,
+      "krx_active": false,
       "nxt_active": true,
-      "price_reference": "INTEGRATED",
+      "price_reference": "NXT",
       "nxt_hours": {
         "premarket": "08:00-08:50",
         "main": "09:00:30-15:20",
@@ -1055,21 +1055,18 @@
       "close": 1662000,
       "volume": 5139000,
       "turnover": 8802822440885
+    },
+    {
+      "date": "2026-08-19",
+      "open": 1545000,
+      "high": 1559000,
+      "low": 1486000,
+      "close": 1500000,
+      "volume": 4206017,
+      "turnover": 6382687412500
     }
   ],
   "investor_daily": [
-    {
-      "date": "2026-07-06",
-      "foreign_net_qty": -27696,
-      "institution_net_qty": -584423,
-      "personal_net_qty": 586434,
-      "foreign_buy_qty": 1319373,
-      "foreign_sell_qty": 1347069,
-      "institution_buy_qty": 1343894,
-      "institution_sell_qty": 1928317,
-      "foreign_net_amount_million": -62599,
-      "institution_net_amount_million": -1388962
-    },
     {
       "date": "2026-07-07",
       "foreign_net_qty": -542009,
@@ -1417,17 +1414,53 @@
       "institution_sell_qty": 1507417,
       "foreign_net_amount_million": 790424,
       "institution_net_amount_million": -123722
+    },
+    {
+      "date": "2026-08-19",
+      "foreign_net_qty": -1199222,
+      "institution_net_qty": -311368,
+      "personal_net_qty": 1463828,
+      "foreign_buy_qty": 986421,
+      "foreign_sell_qty": 2185643,
+      "institution_buy_qty": 1222839,
+      "institution_sell_qty": 1534207,
+      "foreign_net_amount_million": -1817617,
+      "institution_net_amount_million": -471792
     }
   ],
-  "investor_intraday_estimate": [],
-  "program_daily": [
+  "investor_intraday_estimate": [
     {
-      "date": "2026-07-06",
-      "program_net_qty": 0,
-      "program_net_amount": 0,
-      "arbitrage_net_qty": 0,
-      "non_arbitrage_net_qty": 0
+      "slot": "5",
+      "foreign_estimated_net_qty": -678000,
+      "institution_estimated_net_qty": -184000,
+      "sum_estimated_net_qty": -862000
     },
+    {
+      "slot": "4",
+      "foreign_estimated_net_qty": -636000,
+      "institution_estimated_net_qty": -163000,
+      "sum_estimated_net_qty": -799000
+    },
+    {
+      "slot": "3",
+      "foreign_estimated_net_qty": -549000,
+      "institution_estimated_net_qty": -121000,
+      "sum_estimated_net_qty": -670000
+    },
+    {
+      "slot": "2",
+      "foreign_estimated_net_qty": -484000,
+      "institution_estimated_net_qty": -110000,
+      "sum_estimated_net_qty": -594000
+    },
+    {
+      "slot": "1",
+      "foreign_estimated_net_qty": -301000,
+      "institution_estimated_net_qty": 0,
+      "sum_estimated_net_qty": -301000
+    }
+  ],
+  "program_daily": [
     {
       "date": "2026-07-07",
       "program_net_qty": 0,
@@ -1626,6 +1659,13 @@
     },
     {
       "date": "2026-08-18",
+      "program_net_qty": 0,
+      "program_net_amount": 0,
+      "arbitrage_net_qty": 0,
+      "non_arbitrage_net_qty": 0
+    },
+    {
+      "date": "2026-08-19",
       "program_net_qty": 0,
       "program_net_amount": 0,
       "arbitrage_net_qty": 0,
@@ -2745,13 +2785,13 @@
       "close": 2343000,
       "volume": 4235360,
       "turnover": 10104797943882,
-      "foreign_net_qty": -27696,
-      "institution_net_qty": -584423,
-      "personal_net_qty": 586434,
-      "foreign_net_amount_million": -62599,
-      "institution_net_amount_million": -1388962,
-      "program_net_qty": 0,
-      "program_net_amount": 0
+      "foreign_net_qty": null,
+      "institution_net_qty": null,
+      "personal_net_qty": null,
+      "foreign_net_amount_million": null,
+      "institution_net_amount_million": null,
+      "program_net_qty": null,
+      "program_net_amount": null
     },
     {
       "date": "2026-07-07",
@@ -3216,6 +3256,22 @@
       "institution_net_amount_million": -123722,
       "program_net_qty": 0,
       "program_net_amount": 0
+    },
+    {
+      "date": "2026-08-19",
+      "open": 1545000,
+      "high": 1559000,
+      "low": 1486000,
+      "close": 1500000,
+      "volume": 4206017,
+      "turnover": 6382687412500,
+      "foreign_net_qty": -1199222,
+      "institution_net_qty": -311368,
+      "personal_net_qty": 1463828,
+      "foreign_net_amount_million": -1817617,
+      "institution_net_amount_million": -471792,
+      "program_net_qty": 0,
+      "program_net_amount": 0
     }
   ],
   "sis_contract": {
@@ -3262,7 +3318,7 @@
   "snapshot": {
     "status": "PUBLISHED",
     "symbol": "000660",
-    "published_at": "2026-08-19T09:09:18+09:00",
+    "published_at": "2026-08-19T16:44:20+09:00",
     "file_name": "000660.json",
     "url": "https://k-bizpost.myds.me/sis/000660.json",
     "index_url": "https://k-bizpost.myds.me/sis/index.json",
@@ -3283,7 +3339,7 @@
       "sync": "ASYNCHRONOUS",
       "nas_github_credentials": false
     },
-    "confirmed_at": "2026-08-19T09:09:18+09:00",
+    "confirmed_at": "2026-08-19T16:44:20+09:00",
     "index_update": "UPDATED"
   }
 }
