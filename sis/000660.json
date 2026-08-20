@@ -3,7 +3,7 @@
   "schema": "sis_snapshot_v1",
   "version": "1.3.5",
   "revision": "sis-feed-v135-integrated-live-quote-gate-errc-20260819-r1",
-  "generated_at": "2026-08-20T09:38:10+09:00",
+  "generated_at": "2026-08-20T10:38:07+09:00",
   "request": {
     "q": "000660",
     "resolved_by": "code",
@@ -34,7 +34,7 @@
     "market_fresh": true,
     "quote_fresh": true,
     "quote_stale": false,
-    "quote_retrieved_at": "2026-08-20T09:38:08+09:00",
+    "quote_retrieved_at": "2026-08-20T10:38:04+09:00",
     "quote_age_sec": 0,
     "quote_market_session": "KRX_NXT_DUAL_MAIN",
     "quote_venue_used": "UN",
@@ -56,7 +56,7 @@
     "quote_freshness": {
       "schema": "sis_quote_freshness_v1",
       "fresh": true,
-      "retrieved_at": "2026-08-20T09:38:08+09:00",
+      "retrieved_at": "2026-08-20T10:38:04+09:00",
       "retrieval_age_sec": 0,
       "max_age_sec": 10,
       "cache_hit": false,
@@ -98,7 +98,7 @@
         "stale": false,
         "cache_hit": false,
         "cache_age_sec": 0,
-        "count": 1,
+        "count": 2,
         "error": "",
         "degraded": false
       },
@@ -114,40 +114,40 @@
     }
   },
   "quote": {
-    "price": 1635000,
-    "change": 135000,
-    "change_rate": 9,
+    "price": 1676000,
+    "change": 176000,
+    "change_rate": 11.73,
     "open": 1598000,
-    "high": 1637000,
+    "high": 1680000,
     "low": 1576000,
-    "volume": 2116105,
-    "turnover": 3414040117000,
+    "volume": 3686129,
+    "turnover": 6019946643000,
     "foreign_ownership_rate": 50.99,
-    "weighted_avg_price": 1613360.67,
+    "weighted_avg_price": 1633135.24,
     "venue": "UN",
-    "retrieved_at": "2026-08-20T09:38:08+09:00"
+    "retrieved_at": "2026-08-20T10:38:04+09:00"
   },
   "quote_live": {
-    "price": 1635000,
-    "change": 135000,
-    "change_rate": 9,
+    "price": 1676000,
+    "change": 176000,
+    "change_rate": 11.73,
     "open": 1598000,
-    "high": 1637000,
+    "high": 1680000,
     "low": 1576000,
-    "volume": 2116105,
-    "turnover": 3414040117000,
+    "volume": 3686129,
+    "turnover": 6019946643000,
     "foreign_ownership_rate": 50.99,
-    "weighted_avg_price": 1613360.67,
+    "weighted_avg_price": 1633135.24,
     "requested_venue": "AUTO",
     "used_venue": "UN",
     "fallback_used": false,
-    "retrieved_at": "2026-08-20T09:38:08+09:00",
+    "retrieved_at": "2026-08-20T10:38:04+09:00",
     "retrieval_age_sec": 0,
     "fresh": true,
     "session": {
       "schema": "krx_nxt_quote_session_v1",
       "name": "KRX_NXT_DUAL_MAIN",
-      "as_of": "2026-08-20T09:38:07+09:00",
+      "as_of": "2026-08-20T10:38:03+09:00",
       "today_is_trading_day": true,
       "trade_active": true,
       "krx_active": true,
@@ -1420,6 +1420,12 @@
     }
   ],
   "investor_intraday_estimate": [
+    {
+      "slot": "2",
+      "foreign_estimated_net_qty": -29000,
+      "institution_estimated_net_qty": -68000,
+      "sum_estimated_net_qty": -97000
+    },
     {
       "slot": "1",
       "foreign_estimated_net_qty": 17000,
@@ -3269,7 +3275,7 @@
   "snapshot": {
     "status": "PUBLISHED",
     "symbol": "000660",
-    "published_at": "2026-08-20T09:38:11+09:00",
+    "published_at": "2026-08-20T10:38:07+09:00",
     "file_name": "000660.json",
     "url": "https://k-bizpost.myds.me/sis/000660.json",
     "index_url": "https://k-bizpost.myds.me/sis/index.json",
@@ -3290,7 +3296,7 @@
       "sync": "ASYNCHRONOUS",
       "nas_github_credentials": false
     },
-    "confirmed_at": "2026-08-20T09:38:11+09:00",
+    "confirmed_at": "2026-08-20T10:38:07+09:00",
     "index_update": "UPDATED"
   }
 }
