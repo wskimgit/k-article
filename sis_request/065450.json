@@ -4,8 +4,8 @@
   "market": "KR",
   "symbol": "065450",
   "name": "빅텍",
-  "requested_at": "2026-08-20T09:42:00+09:00",
+  "requested_at": "2026-08-20T13:44:00+09:00",
   "requested_by": "chatgpt",
-  "request_nonce": "065450-20260820T094200+0900",
+  "request_nonce": "065450-20260820T134400+0900",
   "force_refresh": true
 }
