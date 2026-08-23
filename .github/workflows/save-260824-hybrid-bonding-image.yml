@@ -1,0 +1,70 @@
+name: Save 260824 hybrid bonding image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.save_260824_hybrid_bonding_image.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  save-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch, normalize and verify representative image
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk >/dev/null
+          TARGET='260824.AutoGen.하이브리드 본딩, 이제 붙이는 장비보다 맞추고 재는 장비가 중요해진다.v1.jpg'
+          URL='https://media.canva.com/v2/document-image/hash:368304326/height:335/id:DAHTH3g2nnE/type:B/width:595?brand=BAF-IELq5Kw&csig=AAAAAAAAAAAAAAAAAAAAAOeptxn0MZJroAPnRI7eJs8wXHehCGFyxGjtsmuvT_he&disableexport=T&exp=1787502635&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2Fg2nnE%2FDAHTH3g2nnE%2F1%2Fthumbnail%2F0001.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUH4GDRW44L%252F20260823%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260823T092404Z%26X-Amz-Expires%3D25591%26X-Amz-Signature%3Da448c7bc9ec647183e66ef854716bebc05a02023b7b791ca15133ba513ad2de4%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DSun%252C%252023%2520Aug%25202026%252016%253A30%253A35%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAANj_sf7lQkX4H_nVHiCY1TJ59R0VZwgZ84BOsu9m-2am&page=1&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=1'
+          curl -fL --retry 3 --retry-delay 2 "$URL" -o /tmp/source_image
+          python - <<'PY'
+          from PIL import Image, ImageOps, ImageDraw, ImageFont
+          from pathlib import Path
+          import hashlib, os
+          src=Path('/tmp/source_image')
+          dst=Path('260824.AutoGen.하이브리드 본딩, 이제 붙이는 장비보다 맞추고 재는 장비가 중요해진다.v1.jpg')
+          with Image.open(src) as im:
+              im.load()
+              im=ImageOps.fit(im.convert('RGB'), (1200,675), method=Image.Resampling.LANCZOS)
+              draw=ImageDraw.Draw(im, 'RGBA')
+              label='생성형 AI 제작 이미지'
+              fonts=['/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc','/usr/share/fonts/opentype/noto/NotoSansCJKkr-Regular.otf']
+              fp=next((f for f in fonts if os.path.exists(f)), None)
+              font=ImageFont.truetype(fp, 18) if fp else ImageFont.load_default()
+              b=draw.textbbox((0,0), label, font=font)
+              tw,th=b[2]-b[0],b[3]-b[1]
+              x,y=1200-tw-18,675-th-16
+              draw.rounded_rectangle([x-7,y-7,x+tw+7,y+th+7], radius=5, fill=(0,0,0,145))
+              draw.text((x,y), label, font=font, fill=(255,255,255,255))
+              im.save(dst,'JPEG',quality=90,optimize=True,progressive=False)
+          data=dst.read_bytes()
+          assert data[:2]==b'\xff\xd8' and data[-2:]==b'\xff\xd9'
+          with Image.open(dst) as im:
+              im.load()
+              assert im.format=='JPEG'
+              assert im.size==(1200,675)
+          print('verified', dst.name, len(data), hashlib.sha256(data).hexdigest())
+          PY
+      - name: Commit verified image and clean temporary workflow
+        shell: bash
+        run: |
+          rm -f .save_260824_hybrid_bonding_image.trigger
+          rm -f .github/workflows/save-260824-hybrid-bonding-image.yml
+          git config user.name 'k-article-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Save verified 2026-08-24 hybrid bonding representative image v1'
+          git push origin main
