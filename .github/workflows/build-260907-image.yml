@@ -1,0 +1,58 @@
+name: Build verified 260907 representative image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.build_260907_image.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  build-image:
+    if: ${{ !startsWith(github.event.head_commit.message, 'Save verified 260907 representative image') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch preserved image and verify JPEG
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          TARGET='260907.AutoGen.HBM 검사, 광학을 넘어 3D X-ray로 들어간다.v1.jpg'
+          URL='https://media.canva.com/v2/document-image/hash:2130361246/height:335/id:DAHUfXFAKqs/type:B/width:595?brand=BAF-IELq5Kw&csig=AAAAAAAAAAAAAAAAAAAAALlrY_t3rxdihrQuIBlRCVzjazvFIgwptaiEXPtKmgwS&disableexport=T&exp=1788758254&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export.canva.com%2FFAKqs%2FDAHUfXFAKqs%2F1%2Fthumbnail%2F0001.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUH4GDRW44L%252F20260906%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20260906T175806Z%26X-Amz-Expires%3D43468%26X-Amz-Signature%3D2fb57aa4c1d36583a7d2151c12bf276e4237334af532989563f2cb7024875b86%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DMon%252C%252007%2520Sep%25202026%252006%253A02%253A34%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAK8kqcyUv7cj-l-MVKSI1xFA4o7sq5QmB83W4VNT4Qvk&page=1&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=1'
+          curl -fL --retry 3 --retry-delay 2 "$URL" -o /tmp/source_image
+          python - <<'PY'
+          from PIL import Image, ImageOps
+          from pathlib import Path
+          import hashlib
+          src=Path('/tmp/source_image')
+          dst=Path('260907.AutoGen.HBM 검사, 광학을 넘어 3D X-ray로 들어간다.v1.jpg')
+          with Image.open(src) as im:
+              im.load()
+              im=ImageOps.fit(im.convert('RGB'), (1200,675), method=Image.Resampling.LANCZOS)
+              im.save(dst, 'JPEG', quality=92, optimize=True, progressive=False)
+          b=dst.read_bytes()
+          assert b[:2] == b'\xff\xd8' and b[-2:] == b'\xff\xd9'
+          with Image.open(dst) as im:
+              im.load()
+              assert im.format == 'JPEG'
+              assert im.size == (1200,675)
+          print('verified', dst.name, len(b), hashlib.sha256(b).hexdigest())
+          PY
+      - name: Commit image and remove trigger
+        shell: bash
+        run: |
+          rm -f .build_260907_image.trigger
+          git config user.name 'k-article-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Save verified 260907 representative image v1'
+          git push origin main
