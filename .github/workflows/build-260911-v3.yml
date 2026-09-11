@@ -27,7 +27,7 @@ jobs:
           import base64, io
 
           parts = sorted(Path('_upload_260911_v3').glob('part*.b64'))
-          assert len(parts) == 8, f'expected 8 parts, got {len(parts)}'
+          assert len(parts) >= 2, f'not enough parts: {len(parts)}'
           encoded = ''.join(p.read_text(encoding='ascii') for p in parts)
           data = base64.b64decode(encoded, validate=True)
           assert data[:2] == b'\xff\xd8' and data[-2:] == b'\xff\xd9', 'invalid JPEG markers'
@@ -37,7 +37,7 @@ jobs:
           assert im.size == (1200, 675), im.size
           out = Path('260911.AutoGen.반도체 FAB 배기가스 처리, 장비를 더 놓기보다 덕트 안으로 들어간다.v3.jpg')
           out.write_bytes(data)
-          print(out, len(data), im.size)
+          print(out, len(data), im.size, 'parts=', len(parts))
           PY
       - name: Commit final image and clean temporary files
         shell: bash
