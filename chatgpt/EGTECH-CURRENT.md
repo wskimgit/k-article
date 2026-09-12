@@ -5,36 +5,47 @@
 
 ## 현재 적용 지시문
 - 기사 작성 Canonical: `chatgpt/K-ARTICLE-RULES.md`
-- 기사 작성 Frozen Snapshot: `chatgpt/K-ARTICLE-RULES-v2.3.md`
+- 기사 작성 Frozen Snapshot: `chatgpt/K-ARTICLE-RULES-v2.4.md`
 - 대표이미지 Canonical: `chatgpt/K-ARTICLE-IMAGE-RULES.md`
-- 대표이미지 Frozen Snapshot: `chatgpt/K-ARTICLE-IMAGE-RULES-v2.4.md`
+- 대표이미지 Frozen Snapshot: `chatgpt/K-ARTICLE-IMAGE-RULES-v2.5.md`
 - 생성형 AI 고지: `chatgpt/K-ARTICLE-RULES-AI-DISCLOSURE.md`
 
 ## 현재 버전
-- 기사 작성 규칙: **v2.3 FROZEN**
-- 대표이미지 규칙: **v2.4 FROZEN**
+- 기사 작성 규칙: **v2.4 FROZEN**
+- 대표이미지 규칙: **v2.5 FROZEN**
 
-## 이번 업그레이드 핵심
-1. 조사 범위 확장은 최대 1회로 제한하고, 적합 주제가 없으면 `HOLD`로 정상 종료
-2. 특정 기업·제품·기술의 핵심 주장은 1차 자료를 우선 확인하는 Evidence Gate 적용
-3. 게시일과 실제 사건·발표일을 분리하여 오래된 사건의 최신 뉴스 오인 방지
-4. 기존 기사 중복 검사를 제목뿐 아니라 핵심 기술·기업·적용사례까지 확대
-5. ERRC 실패 수정·재검증도 1회로 제한하여 검증 무한루프 방지
-6. 기사 작업 상태를 `COMPLETE / PARTIAL / HOLD / ERROR`로 명확히 구분
-7. 새 대표이미지의 SHA가 기존 최고 버전과 같으면 `N+1` 중복 파일을 만들지 않음
-8. GitHub 이미지 저장은 현재 `main`의 base tree를 보존한 직접 commit 방식 사용
-9. `main` ref는 force update하지 않으며 동시 변경 충돌 시 동일 바이너리로 1회만 재시도
-10. 정상 이미지 확보 후 저장 실패를 이유로 이미지 재생성 금지 유지
-11. GitHub Actions, trigger, Base64 chunk, 임시 upload 폴더 방식 신규 사용 금지 유지
-12. AI 이미지 고지는 생성 모델의 그림문자보다 정확한 후처리 적용을 우선
+## 이번 업그레이드 핵심 — 무한루프 제거 / 초기 직선 처리 복원
+1. 이미지 처리 기본 경로를 `DIRECT ONE-SHOT`으로 고정
+2. 정상 이미지 확정 후 작업용 최종 JPG는 1개만 유지
+3. `test*.jpg`, `q*.jpg` 등 품질 시험용 다중 파일 생성 금지
+4. 정규화 1회, AI 고지 후처리 1회만 수행
+5. 최고 vN과 기존 GitHub blob SHA는 1회만 확인
+6. 최종 JPG의 로컬 Git blob SHA를 계산해 기존 최고 SHA와 직접 비교
+7. 동일 SHA이면 새 버전을 만들지 않고 기존 최고 버전 재사용 후 즉시 종료
+8. 새 이미지이면 `create_blob → create_tree → create_commit → update_ref → fetch_file` 직선 경로 사용
+9. 이미지 확정 후 정상 GitHub 작업은 최대 7-call로 제한
+10. 같은 HEAD·tree·파일·blob을 반복 조회하지 않음
+11. GitHub 도구 discovery는 실제 필요한 도구가 없을 때만 최대 1회
+12. non-fast-forward 충돌만 동일 blob으로 1회 재시도
+13. 저장 실패를 이유로 이미지 재생성 금지
+14. 저장 성공 후 원격 확인은 1회만 수행하고 즉시 COMPLETE 종료
+15. GitHub Actions, trigger, Base64 chunk, `_upload_*`, placeholder 신규 사용 금지
+16. 성공 후 추가 확인 금지, 실패 후 새로운 우회 경로 탐색 금지
+
+## HARD STOP
+다음 중 하나면 추가 작업 없이 종료한다.
+- 이미지 생성 2회 소진
+- 동일 SHA 확인
+- GitHub 저장 및 원격 재조회 성공
+- 저장 재시도 1회 소진
+- ERRC 재검증 1회 소진
 
 ## 관리 원칙
-- `K-ARTICLE-RULES.md`와 `K-ARTICLE-IMAGE-RULES.md`는 항상 최신 Canonical을 유지한다.
-- 새 버전 확정 시 버전 번호가 포함된 Frozen Snapshot을 별도로 보존한다.
+- Canonical은 항상 최신 확정본을 유지한다.
+- 새 버전은 별도 Frozen Snapshot으로 보존한다.
 - 과거 Frozen Snapshot은 수정하지 않는다.
-- `EGTECH-CURRENT.md`는 최신 Canonical/Frozen 버전 포인터와 핵심 변경사항만 관리한다.
-- 동일 내용이면 불필요한 update commit을 만들지 않는다.
-- 향후 업그레이드 시 **Frozen Snapshot 생성 → Canonical 갱신 → CURRENT 갱신 → 원격 재조회 검증** 순서를 따른다.
+- 업데이트 순서는 `Frozen Snapshot 생성 → Canonical 갱신 → CURRENT 갱신 → 원격 재조회 1회`다.
+- 검증 성공 후 추가 재조회하지 않는다.
 
 ## 현재 기준 한줄
-**egTEC는 최신 해외 근거가 있는 새로운 FAB 운영 주제만 기사화하고, 기사·이미지 생성과 GitHub 저장을 유한 횟수로 끝내며, 동일 이미지 중복 버전과 우회 저장을 만들지 않는다.**
+**egTEC는 최종 이미지 한 장이 확보되면 더 시험하지 않고 GitHub에 직선 경로로 한 번 저장하고 한 번 확인한 뒤 반드시 종료한다.**
