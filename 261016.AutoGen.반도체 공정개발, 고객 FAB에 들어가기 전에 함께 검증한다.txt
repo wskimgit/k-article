@@ -1,0 +1,25 @@
+반도체 공정개발, 고객 FAB에 들어가기 전에 함께 검증한다
+
+첨단 반도체 공정이 복잡해질수록 새로운 소재와 장비를 실제 FAB에 넣기까지 걸리는 시간이 길어진다. 대학이나 연구소에서 소재를 검증하고, 장비업체가 별도로 공정을 만들고, 고객사가 다시 통합과 파일럿 생산을 확인하는 식의 순차 개발은 각 단계의 인계와 재검증에서 시간이 많이 든다.
+
+Applied Materials는 10월 12일 미국 실리콘밸리에서 EPIC(Equipment and Process Innovation and Commercialization) Center를 공개했다. 약 50억 달러가 투입되는 이 시설은 60만 제곱피트 규모이며, 약 4에이커의 첨단 클린룸을 갖춘 반도체 장비·공정 공동 R&D 시설이다. 회사가 내세우는 핵심은 단순히 큰 연구소를 새로 짓는 것이 아니라, 소재 연구자·장비 엔지니어·칩 제조사·대학 연구진을 같은 공간에 모아 개발을 병렬로 진행하는 것이다.
+
+기존 방식에서는 소재 연구, 장비·레시피 개발, 공정 통합, 파일럿 생산이 서로 다른 장소와 조직에서 순서대로 이어졌다. EPIC은 이 인계 구간을 줄이고 초기 단계부터 실제 양산 장비와 가까운 환경에서 함께 검증하도록 설계됐다. Applied는 이를 통해 고객 FAB로 이전되는 기술의 성숙도를 높이고, 공정 개발의 학습 주기를 줄이겠다는 구상이다.
+
+이미 Intel은 차세대 트랜지스터·인터커넥트·첨단 패키징 기술 공동개발에 참여하고 있으며, UCLA도 소재와 공정 통합 연구를 진행하기로 했다. 이보다 앞서 삼성전자, SK하이닉스, Micron, Kioxia 등도 관련 공동개발 파트너로 발표됐다. 경쟁사끼리 같은 공정 정보를 공개한다는 뜻은 아니며, 각 프로젝트는 보안이 유지되는 별도 협업 구조로 운영될 것으로 보인다.
+
+FAB 운영 관점에서 의미 있는 변화는 ‘고객 공장 안에서 처음 문제를 발견하는 방식’을 줄이려는 데 있다. 장비 반입 뒤 발생하는 레시피 수정, 공정 편차, 계측 연동, 유지보수 조건 같은 문제를 R&D 단계에서 더 일찍 확인할 수 있다면 초기 램프업의 시행착오와 장비 점유시간을 줄일 가능성이 있다.
+
+이 변화는 장비업체의 사업 범위도 넓힌다. 단순 장비 판매보다 공동 공정개발, 데이터 분석, 가상 검증, 파일럿 운영, 양산 이행 지원 같은 서비스의 비중이 커질 수 있다. 앞으로 장비 경쟁력은 개별 장비의 성능뿐 아니라 고객이 양산에 들어가기 전에 얼마나 많은 문제를 미리 제거해 주느냐로 평가될 가능성이 높다.
+
+자료
+- Applied Materials, “Applied Materials Unveils $5 Billion EPIC Center in Silicon Valley to Accelerate Semiconductor Innovation for the AI Era”, 2026-10-12
+  https://www.appliedmaterials.com/us/en/newsroom/press-releases/101226-applied-unveils-5b-epic-center-silicon-valley-accelerate-innovation-ai-era.html
+- Applied Materials, “Applied Materials and Intel Collaborate to Accelerate Chipmaking Innovations for AI-Driven Computing”, 2026-10-06
+  https://www.appliedmaterials.com/us/en/newsroom/press-releases/100626-applied-intel-collaborate-chipmaking-innovations-ai-driven-computing.html
+- UCLA Samueli School of Engineering, “UCLA Samueli to Join Applied Materials’ EPIC Center to Accelerate Chip Innovation”, 2026-10-08
+  https://www.samueli.ucla.edu/ucla-samueli-to-join-applied-materials-epic-center-to-accelerate-chip-innovation/
+- SiliconANGLE, “Applied Materials opens new $5B chip research facility to accelerate collaborative semiconductor innovation”, 2026-10-12
+  https://siliconangle.com/2026/10/12/applied-materials-opens-new-5b-chip-research-facility-to-accelerate-collaborative-semiconductor-innovation/
+
+※ 본 기사는 공개된 해외 자료를 바탕으로 생성형 AI가 작성·편집했습니다.
