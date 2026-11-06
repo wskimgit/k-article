@@ -1,0 +1,151 @@
+{
+  "version": "knews-v2.2",
+  "scope": "판정은 기재된 실제 이용 범위에만 한정하며 원문 저작물 전체의 이용허락이나 법률상 무침해 보증이 아니다.",
+  "basis_url": "https://www.copyright.or.kr/customer-center/faq/list.do?categorycode1=02&counselfaqno=44197&pageIndex=6&portalcode=&searchkeyword=",
+  "sources": [
+    {
+      "owner": "Seoul Economic Daily",
+      "url": "https://en.sedaily.com/news/2026/11/06/foreign-selling-of-28-trillion-won-pushes-kospi-to-brink-of",
+      "checked": "2026-11-07 KST",
+      "use": "KOSPI 일간 종가·등락 및 SK하이닉스·NAVER 당일 등락 각 사실",
+      "location": "시장표·산업 관찰표",
+      "basis": "한국저작권위원회 FAQ: 기사 속 사실상의 정보·아이디어만 이용한 새로운 글은 독자적 저작물이 될 수 있다는 안내. 원문 표현·전개·표·사진을 이용하지 않고 최소한의 사실에 한정한 이용 범위를 개별 점검.",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "株探/livedoor",
+      "url": "https://news.livedoor.com/article/detail/32749896/",
+      "checked": "2026-11-07 KST",
+      "use": "일본 닛케이 11/6 종가·일간 등락 및 동증 33업종 하락 사실",
+      "location": "시장표·일본 방향",
+      "basis": "한국저작권위원회 FAQ: 기사 속 사실상의 정보·아이디어만 이용한 새로운 글은 독자적 저작물이 될 수 있다는 안내. 원문 표현·전개·표·사진을 이용하지 않고 최소한의 사실에 한정한 이용 범위를 개별 점검.",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "AP",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-806f71d95105bc7efbc760b194dd8cad",
+      "checked": "2026-11-07 KST",
+      "use": "미국 11/6 지수·등락 및 주간 등락 개별 사실",
+      "location": "시장표·일간/주간 비교",
+      "basis": "한국저작권위원회 FAQ: 기사 속 사실상의 정보·아이디어만 이용한 새로운 글은 독자적 저작물이 될 수 있다는 안내. 원문 표현·전개·표·사진을 이용하지 않고 최소한의 사실에 한정한 이용 범위를 개별 점검.",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "TipRanks",
+      "url": "https://www.tipranks.com/news/stock-market-wrap-sp-nasdaq-advanced-on-encouraging-jobs-data-as-ai-stocks-rebounded",
+      "checked": "2026-11-07 KST",
+      "use": "11/6 일부 반도체주 상승 여부만 확인; 정치 해석·발언·기사 구조·사진 제외",
+      "location": "미국 산업 관찰",
+      "basis": "한국저작권위원회 FAQ: 기사 속 사실상의 정보·아이디어만 이용한 새로운 글은 독자적 저작물이 될 수 있다는 안내. 원문 표현·전개·표·사진을 이용하지 않고 최소한의 사실에 한정한 이용 범위를 개별 점검.",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "대한경제",
+      "url": "https://www.dnews.co.kr/m_home/view_dnews.jsp?idxno=202611041605237160658",
+      "checked": "2026-11-07 KST",
+      "use": "KSD 인용 10월 미국 주식 및 SOXL 순매수 두 개 사실; 기사 해설·인용·사진 제외",
+      "location": "서학개미 문단",
+      "basis": "한국저작권위원회 FAQ: 기사 속 사실상의 정보·아이디어만 이용한 새로운 글은 독자적 저작물이 될 수 있다는 안내. 원문 표현·전개·표·사진을 이용하지 않고 최소한의 사실에 한정한 이용 범위를 개별 점검.",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "BLS",
+      "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+      "checked": "2026-11-07 KST",
+      "use": "정부 발표 고용 수치·실업률. 사진·삽화·로고 이용 없음",
+      "location": "고용 문단",
+      "basis": "https://www.bls.gov/bls/linksite.htm 에 public domain 확인; BLS 출처 명시",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "BLS",
+      "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
+      "checked": "2026-11-07 KST",
+      "use": "CPI/PPI 예정 날짜·시간. 자체 시각대 환산",
+      "location": "향후 일정",
+      "basis": "BLS public domain 정책; BLS 출처 명시",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "K-BIZPOST 기존 기사",
+      "url": "https://k-bizpost.myds.me/news.php",
+      "checked": "2026-11-07 KST",
+      "use": "자체 발행물의 10/30 역사적 종가 두 개 사실만 재확인. 이전 논평·사진 재사용 안 함",
+      "location": "한국·일본 주간 계산",
+      "basis": "사용자가 소유·발행한 기존 원고에 대한 요청 범위의 재사용; 해당 수치만 이용",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    },
+    {
+      "owner": "자체 생성 일러스트",
+      "url": "built-in imagegen; no referenced images",
+      "checked": "2026-11-07 KST",
+      "use": "일반적인 가상 인물·강·징검다리를 신규 무참조 생성. 기존 작품·실존 인물·브랜드·캐릭터 재현 없음",
+      "location": "대표이미지",
+      "basis": "외부 참조 입력 없음. 독창적인 장면 구성·결과물 시각 점검. AI 제작 고지. 명백한 복제 징후 없음",
+      "decision": "PASS",
+      "conditions": "본문·사진·도표 복제 및 원문 대체 요약 금지. 사실 기반의 독자적 표현·분석으로만 사용. 출처 명시."
+    }
+  ],
+  "excluded": [
+    {
+      "source": "연합인포맥스 4443494",
+      "reason": "AI 학습 및 활용 금지 고지 확인. 해당 수치·해설·사진을 최종 원고에 사용하지 않음.",
+      "decision": "EXCLUDE"
+    },
+    {
+      "source": "DZH Traders Web 업종표",
+      "reason": "전용·복제 금지 고지 및 별도 데이터 재이용 조건 미확인. TOPIX·업종 수치·표현 미사용.",
+      "decision": "EXCLUDE"
+    },
+    {
+      "source": "Nikkei Indexes 상세 데이터",
+      "reason": "상업적 웹 표시 라이선스 적용 범위 불명확. 해당 페이지의 데이터·기여도·표를 게시물에 사용하지 않음. 닛케이 단일 마감 사실은 독립 보도자료에서 확인.",
+      "decision": "UNCLEAR"
+    },
+    {
+      "source": "StreetAccount 11/6 Healthcare Midday",
+      "reason": "최신 정규장 마감 자료가 아니고 재이용 근거 미검증. 수치·해설 미사용.",
+      "decision": "UNCLEAR"
+    },
+    {
+      "source": "Finji/KOSTOCK 종목·업종 자료",
+      "reason": "집계 범위·시점·일부 수치 정합성 미확정. 수치·해설 미사용.",
+      "decision": "UNCLEAR"
+    }
+  ],
+  "checks": [
+    "직접 인용 없음",
+    "원문 전개·선택 배열·도표·사진을 복제하지 않음",
+    "종목 관찰과 업종 수익률·추천을 구분",
+    "제외자료 의존 문장·숫자·그림 제거",
+    "고용 16만5천·실업률4.1% 공식 원문 확인",
+    "미국 일간 반등과 주간 하락을 구분",
+    "한국·일본 주간 수익률은 자체 계산",
+    "한·일 주간의 휴장 차이 고지",
+    "매매일/결제일 불명확한 월간수치를 당일로 전용하지 않음"
+  ],
+  "article_path": "261107.knews.미국 하루 반등에 안심할까…다음 주는 수급과 물가 확인.txt",
+  "image_path": "261107.knews.미국 하루 반등에 안심할까…다음 주는 수급과 물가 확인.v1.jpg",
+  "image_validation": {
+    "bytes": 12180,
+    "size": [
+      960,
+      540
+    ],
+    "decode": true,
+    "SOI": "FFD8",
+    "EOI": "FFD9",
+    "git_blob_sha": "016d426282d314bba3474c6c6b9cfa333c88c419",
+    "profile": "960x540 RGB JPEG q30 4:2:0; 12 KiB maximum met"
+  },
+  "article_sha256": "fedcc7d3b4eef7c5d20b33eef216a16bfe0e011c0c79507d12585dcae44e46e3",
+  "final_gate": "PASS for all used material, limited to recorded uses"
+}
