@@ -1,0 +1,150 @@
+{
+  "version": "knews-v2.2",
+  "article_stem": "261107.knews.미국 고용 16만5천명 증가…다음 주 물가가 투자 판단 가른다",
+  "article_path": "261107.knews.미국 고용 16만5천명 증가…다음 주 물가가 투자 판단 가른다.txt",
+  "image_path": "261107.knews.미국 고용 16만5천명 증가…다음 주 물가가 투자 판단 가른다.v1.jpg",
+  "checked_at": "2026-11-07 08:24 KST",
+  "scope": "확인한 원자료의 실제 이용 범위와 출처 표시 이행에 한정한 자체 검증. 법률상 무침해 보증 아님.",
+  "sources": [
+    {
+      "owner": "U.S. Bureau of Labor Statistics",
+      "name": "Employment Situation Summary — October 2026",
+      "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+      "published_at": "2026-11-06 08:30 America/New_York",
+      "checked_at": "2026-11-07 08:24 KST",
+      "use": "고용 증가 165000명·직전 12개월 월평균 48000명·실업률 4.1%·산업별 고용 증가 70000/42000/25000/19000명·정보업/금융업 고용 큰 변화 없음. 독자적 한국어 서술. 사진·삽화·로고·외부 제공물 미사용.",
+      "basis_url": "https://www.bls.gov/bls/linksite.htm",
+      "basis": "BLS 자체 발행 자료는 public domain이며 별도 허락 없이 이용 가능. 이미 저작권이 있는 사진·삽화는 예외이고 로고 무단 사용은 금지.",
+      "commercial_use": "Public-domain material may be reused without specific permission; no non-commercial restriction stated.",
+      "conditions": "BLS 출처 표시. 제3자 사진·삽화 및 BLS 로고 이용 제외.",
+      "decision": "PASS",
+      "location": "리드·고용·산업 문단"
+    },
+    {
+      "owner": "U.S. Bureau of Labor Statistics",
+      "name": "Schedule of Selected Releases for November 2026",
+      "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
+      "published_at": "2026-11-03 last modified",
+      "checked_at": "2026-11-07 08:24 KST",
+      "use": "10월 CPI 11/10 및 PPI 11/13 08:30 ET 발표 예정. Asia/Seoul 22:30 직접 환산.",
+      "basis_url": "https://www.bls.gov/bls/linksite.htm",
+      "basis": "BLS 자체 발행 public-domain 일정. 별도 허락 없이 이용 가능.",
+      "conditions": "출처 표시. 일정 변경 가능. 기관 사진·삽화·로고 미사용.",
+      "decision": "PASS",
+      "location": "물가 일정 문단"
+    },
+    {
+      "owner": "자체 생성 일러스트",
+      "url": "built-in imagegen; no referenced images",
+      "checked_at": "2026-11-07 08:24 KST",
+      "use": "다음 발판을 확인하는 가상 투자자. 기존 자체 무참조 생성 이미지 재사용.",
+      "basis": "기존 무참조 생성 이력과 시각 점검. 외부 사진·캐릭터·브랜드·기존 작품 참조 없음. 본 기사에서 사용한 통계·시세표를 그림으로 생성하지 않음.",
+      "conditions": "생성형 AI 제작 일러스트 고지. 실존 인물·실제 보도사진으로 설명하지 않음.",
+      "decision": "PASS",
+      "location": "대표이미지"
+    }
+  ],
+  "excluded_items": [
+    {
+      "source": "연합인포맥스 4443494",
+      "reason": "AI 학습 및 활용 금지 고지 확인. 해당 수치·해설·사진을 최종 원고에 사용하지 않음.",
+      "decision": "EXCLUDE"
+    },
+    {
+      "source": "DZH Traders Web 업종표",
+      "reason": "전용·복제 금지 고지 및 별도 데이터 재이용 조건 미확인. TOPIX·업종 수치·표현 미사용.",
+      "decision": "EXCLUDE"
+    },
+    {
+      "source": "Nikkei Indexes 상세 데이터",
+      "reason": "상업적 웹 표시 라이선스 적용 범위 불명확. 해당 페이지의 데이터·기여도·표를 게시물에 사용하지 않음. 닛케이 단일 마감 사실은 독립 보도자료에서 확인.",
+      "decision": "UNCLEAR"
+    },
+    {
+      "source": "StreetAccount 11/6 Healthcare Midday",
+      "reason": "최신 정규장 마감 자료가 아니고 재이용 근거 미검증. 수치·해설 미사용.",
+      "decision": "UNCLEAR"
+    },
+    {
+      "source": "Finji/KOSTOCK 종목·업종 자료",
+      "reason": "집계 범위·시점·일부 수치 정합성 미확정. 수치·해설 미사용.",
+      "decision": "UNCLEAR"
+    },
+    {
+      "owner": "Seoul Economic Daily",
+      "url": "https://en.sedaily.com/news/2026/11/06/foreign-selling-of-28-trillion-won-pushes-kospi-to-brink-of",
+      "previous_decision": "PASS",
+      "decision": "EXCLUDE",
+      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
+      "legal_infringement_determined": false
+    },
+    {
+      "owner": "株探/livedoor",
+      "url": "https://news.livedoor.com/article/detail/32749896/",
+      "previous_decision": "PASS",
+      "decision": "EXCLUDE",
+      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
+      "legal_infringement_determined": false
+    },
+    {
+      "owner": "AP",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-806f71d95105bc7efbc760b194dd8cad",
+      "previous_decision": "PASS",
+      "decision": "EXCLUDE",
+      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
+      "legal_infringement_determined": false
+    },
+    {
+      "owner": "TipRanks",
+      "url": "https://www.tipranks.com/news/stock-market-wrap-sp-nasdaq-advanced-on-encouraging-jobs-data-as-ai-stocks-rebounded",
+      "previous_decision": "PASS",
+      "decision": "EXCLUDE",
+      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
+      "legal_infringement_determined": false
+    },
+    {
+      "owner": "대한경제",
+      "url": "https://www.dnews.co.kr/m_home/view_dnews.jsp?idxno=202611041605237160658",
+      "previous_decision": "PASS",
+      "decision": "EXCLUDE",
+      "reason": "무단전재·수집·재배포 금지 고지. 구체적 이용조건 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
+      "legal_infringement_determined": false
+    }
+  ],
+  "image_validation": {
+    "bytes": 12180,
+    "size": [
+      960,
+      540
+    ],
+    "decode": true,
+    "SOI": "FFD8",
+    "EOI": "FFD9",
+    "git_blob_sha": "016d426282d314bba3474c6c6b9cfa333c88c419",
+    "profile": "960x540 RGB JPEG q30 4:2:0; 12 KiB maximum met",
+    "visual_review_at": "2026-11-07 08:24 KST"
+  },
+  "article_copyright_status": "PASS_FOR_RECORDED_USES",
+  "image_copyright_status": "PASS_FOR_RECORDED_USE",
+  "publication_decision": "PUBLISH_REPLACEMENT",
+  "analysis_origin": "BLS 통계·일정에 바탕을 둔 본지 자체 경제 해석. 다른 신문기사의 해설·구성·매매 동기·시장 수치를 재서술하지 않음.",
+  "replaces": {
+    "article_path": "261107.knews.미국 하루 반등에 안심할까…다음 주는 수급과 물가 확인.txt",
+    "action": "이전 기사 본문 철회 후 교체 안내만 유지",
+    "reason": "사용자 요청: 권리가 불명확한 자료와 의존 내용 모두 제거"
+  },
+  "checks": [
+    "국내외 언론 5개 출처 및 의존 사실·수치·해석 제거",
+    "새 제목에 삭제된 시장 종가·반등 사실을 사용하지 않음",
+    "기사 본문 새로 작성, 3개 소제목, 시황표 없음",
+    "산업별 고용과 산업별 주가 수익률을 구분",
+    "서학개미 순매수·매도 수치 및 이에 의존한 집중매수 주장 미사용",
+    "BLS 데이터와 일정은 원문 확인, 소득·임금·시세 등 새 미검증 수치 없음",
+    "미 동부 표준시 08:30 = KST 22:30 환산",
+    "BLS 출처와 public-domain 이용조건 표시",
+    "기관 로고·제3자 사진·삽화 미사용",
+    "기존 자체 생성 일러스트만 재사용",
+    "본문에 법적 무침해 보증 또는 포괄 PASS 선언 없음"
+  ],
+  "article_sha256": "dec688666eb617d2f26202ee7db65d48426670f4ba264036c445422d95a1c939"
+}
