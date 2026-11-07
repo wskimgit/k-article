@@ -1,0 +1,59 @@
+{
+  "version": "knews-v2.4; general news copy revision",
+  "article_stem": "261031.knews.미 연준 기준금리 동결…위원 2명은 인상 주장",
+  "article_path": "261031.knews.미 연준 기준금리 동결…위원 2명은 인상 주장.txt",
+  "image_path": "261031.knews.미 연준 기준금리 동결…위원 2명은 인상 주장.v1.jpg",
+  "checked_at": "2026-11-07 14:49 KST",
+  "scope": "재사용 근거가 확인된 공식 발행 자료의 사실·수치만 사용. 기사 문장과 구성은 독자적으로 작성.",
+  "sources": [
+    {
+      "owner": "미 연방준비제도 이사회",
+      "name": "미 연방준비제도, 10월 28일 FOMC 성명",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "금리 동결, 10대 2 표결, 두 위원의 인상 의견, 경기·물가 판단",
+      "basis_url": "https://www.federalreserve.gov/disclaimer.htm",
+      "basis": "연준 이사회 자체 발행 자료 공개 정책. 별도 표기·제3자 저작물 제외.",
+      "conditions": "기사 하단 출처 표시. 제3자 이미지·도표 미사용.",
+      "decision": "PASS_FOR_RECORDED_USE"
+    },
+    {
+      "owner": "미 연방준비제도 이사회",
+      "name": "미 연방준비제도, 9월 16일 FOMC 성명",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "0.25%포인트 인상, 목표 범위 3.75~4.00%, 물가 진단",
+      "basis_url": "https://www.federalreserve.gov/disclaimer.htm",
+      "basis": "연준 이사회 자체 발행 자료 공개 정책. 별도 표기·제3자 저작물 제외.",
+      "conditions": "기사 하단 출처 표시. 제3자 이미지·도표 미사용.",
+      "decision": "PASS_FOR_RECORDED_USE"
+    }
+  ],
+  "excluded_items": [
+    {
+      "reason": "언론사 시황·업종 수익률, 시장 가격, 일본은행 자료는 재사용 근거 미확인으로 제외",
+      "decision": "EXCLUDED"
+    },
+    {
+      "reason": "투자 행동 제안 삭제",
+      "decision": "EXCLUDED"
+    }
+  ],
+  "image_validation": {
+    "bytes": 31855,
+    "git_blob_sha": "06188325aa6962b5c094f7d9fe0fe6e83dbd21ce",
+    "profile": "기사에 맞춰 자체 제작한 벡터 일러스트를 JPEG로 변환. 외부 소재 미사용.",
+    "visual_review_at": "2026-11-07 14:49 KST"
+  },
+  "article_copyright_status": "PASS_FOR_RECORDED_USES",
+  "image_copyright_status": "PASS_FOR_RECORDED_USE",
+  "publication_decision": "PUBLISH_GENERAL_NEWS_REPLACEMENT",
+  "article_sha256": "9b299f83340db69c71469b30d273fdf7f57fe34b5b34f64f4554181c09f7338f",
+  "rewrite": {
+    "previous_article_path": "261031.knews.오늘의 한일미 증시, AI 약세에도 제약은 강했다.txt",
+    "previous_blob_sha": "bca9f0457136946dbde4ea6b38e6f98f3a34141a",
+    "updated_at": "2026-11-07 14:49 KST",
+    "original_reporting_cutoff": "2026-10-31 KST"
+  },
+  "derivations": []
+}

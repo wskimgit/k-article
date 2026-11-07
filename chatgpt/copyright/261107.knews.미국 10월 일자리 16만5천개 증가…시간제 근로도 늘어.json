@@ -1,192 +1,66 @@
 {
-  "version": "knews-v2.4; user-directed general-news revision",
+  "version": "knews-v2.4; general news copy revision",
   "article_stem": "261107.knews.미국 10월 일자리 16만5천개 증가…시간제 근로도 늘어",
   "article_path": "261107.knews.미국 10월 일자리 16만5천개 증가…시간제 근로도 늘어.txt",
   "image_path": "261107.knews.미국 10월 일자리 16만5천개 증가…시간제 근로도 늘어.v1.jpg",
-  "checked_at": "2026-11-07 09:01 KST",
-  "scope": "KNEWS v2.3에 따라 확인한 실제 자료 이용과 조건 이행에 한정한 자체 점검. 법률상 무침해 보증 아님.",
+  "checked_at": "2026-11-07 14:49 KST",
+  "scope": "재사용 근거가 확인된 공식 발행 자료의 사실·수치만 사용. 기사 문장과 구성은 독자적으로 작성.",
   "sources": [
     {
-      "owner": "U.S. Bureau of Labor Statistics",
-      "name": "Employment Situation Summary — October 2026",
-      "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
-      "published_at": "2026-11-06 08:30 America/New_York",
-      "checked_at": "2026-11-07 09:01 KST",
-      "use": "비농업 일자리 165000개 증가, 직전 12개월 월평균 48000개 증가, 실업률 4.1%, 전문사업서비스 70000개 및 의료서비스 42000개 증가, 경제적 이유 시간제 근로자 339000명 증가 및 480만명, 민간 비농업 전체 근로자 시간당 평균임금 전월 0.4% 상승. 독자적인 일반 기사 문장과 구성.",
+      "owner": "미 노동통계국",
+      "name": "미 노동통계국, 2026년 10월 고용보고서(11월 6일 발표본)",
+      "url": "https://www.bls.gov/news.release/archives/empsit_11062026.htm",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "일자리 증가, 실업률, 두 업종의 순증, 경제적 이유의 시간제 취업",
       "basis_url": "https://www.bls.gov/bls/linksite.htm",
-      "basis": "BLS 자체 발행 자료는 public domain이며 별도 허락 없이 이용 가능. 이미 저작권이 있는 사진·삽화는 예외이고 로고 무단 사용은 금지.",
-      "commercial_use": "Public-domain material may be reused without specific permission; no non-commercial restriction stated.",
-      "conditions": "BLS 출처 표시. 제3자 사진·삽화 및 BLS 로고 이용 제외.",
-      "decision": "PASS",
-      "location": "리드·고용 증가·시간제 취업·임금 문단"
+      "basis": "BLS 자체 발행 자료 재사용 허용. 제3자 저작물 및 로고 제외.",
+      "conditions": "기사 하단 출처 표시. 제3자 이미지·도표 미사용.",
+      "decision": "PASS_FOR_RECORDED_USE"
     },
     {
-      "owner": "U.S. Bureau of Labor Statistics",
-      "name": "Schedule of Selected Releases for November 2026",
+      "owner": "미 노동통계국",
+      "name": "미 노동통계국, 2026년 11월 주요 발표 일정",
       "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
-      "published_at": "2026-11-03 last modified",
-      "checked_at": "2026-11-07 09:01 KST",
-      "use": "10월 CPI 11/10 및 PPI 11/13 08:30 ET 발표 예정. Asia/Seoul 22:30 직접 환산.",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "CPI·PPI 공개 날짜와 시각",
       "basis_url": "https://www.bls.gov/bls/linksite.htm",
-      "basis": "BLS 자체 발행 public-domain 일정. 별도 허락 없이 이용 가능.",
-      "conditions": "출처 표시. 일정 변경 가능. 기관 사진·삽화·로고 미사용.",
-      "decision": "PASS",
-      "location": "물가 일정 문단"
-    },
-    {
-      "owner": "자체 생성 일러스트",
-      "url": "built-in imagegen; no referenced images",
-      "checked_at": "2026-11-07 09:01 KST",
-      "use": "기존 무참조 자체 일러스트 재사용. 가상 인물이 다음 발판을 살피는 장면을 경제 여건 변화의 상징으로 설명.",
-      "basis": "기존 무참조 생성 이력과 시각 점검. 외부 사진·캐릭터·브랜드·기존 작품 참조 없음. 본 기사에서 사용한 통계·시세표를 그림으로 생성하지 않음.",
-      "conditions": "생성형 AI 제작 일러스트 고지. 실제 사건·인물 사진으로 소개하지 않음.",
-      "decision": "PASS",
-      "location": "대표이미지"
+      "basis": "BLS 자체 발행 자료 재사용 허용. 제3자 저작물 및 로고 제외.",
+      "conditions": "기사 하단 출처 표시. 제3자 이미지·도표 미사용.",
+      "decision": "PASS_FOR_RECORDED_USE"
     }
   ],
   "excluded_items": [
     {
-      "source": "연합인포맥스 4443494",
-      "reason": "AI 학습 및 활용 금지 고지 확인. 해당 수치·해설·사진을 최종 원고에 사용하지 않음.",
-      "decision": "EXCLUDE"
+      "reason": "언론사 기사에서 가져온 문장·수치 없음",
+      "decision": "EXCLUDED"
     },
     {
-      "source": "DZH Traders Web 업종표",
-      "reason": "전용·복제 금지 고지 및 별도 데이터 재이용 조건 미확인. TOPIX·업종 수치·표현 미사용.",
-      "decision": "EXCLUDE"
-    },
-    {
-      "source": "Nikkei Indexes 상세 데이터",
-      "reason": "상업적 웹 표시 라이선스 적용 범위 불명확. 해당 페이지의 데이터·기여도·표를 게시물에 사용하지 않음. 닛케이 단일 마감 사실은 독립 보도자료에서 확인.",
-      "decision": "UNCLEAR"
-    },
-    {
-      "source": "StreetAccount 11/6 Healthcare Midday",
-      "reason": "최신 정규장 마감 자료가 아니고 재이용 근거 미검증. 수치·해설 미사용.",
-      "decision": "UNCLEAR"
-    },
-    {
-      "source": "Finji/KOSTOCK 종목·업종 자료",
-      "reason": "집계 범위·시점·일부 수치 정합성 미확정. 수치·해설 미사용.",
-      "decision": "UNCLEAR"
-    },
-    {
-      "owner": "Seoul Economic Daily",
-      "url": "https://en.sedaily.com/news/2026/11/06/foreign-selling-of-28-trillion-won-pushes-kospi-to-brink-of",
-      "previous_decision": "PASS",
-      "decision": "EXCLUDE",
-      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
-      "legal_infringement_determined": false
-    },
-    {
-      "owner": "株探/livedoor",
-      "url": "https://news.livedoor.com/article/detail/32749896/",
-      "previous_decision": "PASS",
-      "decision": "EXCLUDE",
-      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
-      "legal_infringement_determined": false
-    },
-    {
-      "owner": "AP",
-      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-806f71d95105bc7efbc760b194dd8cad",
-      "previous_decision": "PASS",
-      "decision": "EXCLUDE",
-      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
-      "legal_infringement_determined": false
-    },
-    {
-      "owner": "TipRanks",
-      "url": "https://www.tipranks.com/news/stock-market-wrap-sp-nasdaq-advanced-on-encouraging-jobs-data-as-ai-stocks-rebounded",
-      "previous_decision": "PASS",
-      "decision": "EXCLUDE",
-      "reason": "개별 재이용 조건에 대한 구체적 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
-      "legal_infringement_determined": false
-    },
-    {
-      "owner": "대한경제",
-      "url": "https://www.dnews.co.kr/m_home/view_dnews.jsp?idxno=202611041605237160658",
-      "previous_decision": "PASS",
-      "decision": "EXCLUDE",
-      "reason": "무단전재·수집·재배포 금지 고지. 구체적 이용조건 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
-      "legal_infringement_determined": false
-    },
-    {
-      "source": "JPX website market data",
-      "url": "https://www.jpx.co.jp/english/term-of-use/index.html",
-      "decision": "EXCLUDE",
-      "reason": "정책은 상업적 수집·재사용에 사전 허락 또는 계약 요구. 이번 사용에 필요한 별도 허락·계약 미확인으로 시세·수치·해설 미채택.",
-      "legal_infringement_determined": false
-    },
-    {
-      "source": "KRX price data",
-      "url": "https://openapi.krx.co.kr/contents/OPP/DATA/OPPDATA003.jsp",
-      "decision": "EXCLUDE",
-      "reason": "배포·영리 활용 관련 별도 계약 안내 확인. 이번 뉴스 게재 권한 미확인으로 시세 미채택.",
-      "legal_infringement_determined": false
-    },
-    {
-      "source": "KSD/SEIBro investor flows",
-      "url": "https://seibro.or.kr/ems/%28%EC%8B%AC%EC%9D%98%EC%A1%B0%EC%A0%95%ED%95%84%29%28%EB%93%B1-2-135%29_%EC%A6%9D%EA%B6%8C%EC%A0%95%EB%B3%B4%ED%8F%AC%ED%84%B8%28SEIBro%29_%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80.pdf",
-      "decision": "UNCLEAR",
-      "reason": "검색으로 확인한 2020년 약관은 사전 승낙 없는 영리 복제·송신·출판·배포 제한. 현재 필요한 재사용 허용 근거를 확인하지 못해 순매수·순위·집중매수 주장 미채택.",
-      "legal_infringement_determined": false
+      "reason": "기사 해설과 반복 문단 삭제",
+      "decision": "EXCLUDED"
     }
   ],
   "image_validation": {
     "bytes": 12180,
-    "size": [
-      960,
-      540
-    ],
-    "decode": true,
-    "SOI": "FFD8",
-    "EOI": "FFD9",
     "git_blob_sha": "016d426282d314bba3474c6c6b9cfa333c88c419",
-    "profile": "960x540 RGB JPEG q30 4:2:0; 12 KiB maximum met",
-    "visual_review_at": "2026-11-07 09:01 KST"
+    "profile": "기존 기사에 표시된 자체 생성 일러스트를 유지",
+    "visual_review_at": "2026-11-07 14:49 KST"
   },
   "article_copyright_status": "PASS_FOR_RECORDED_USES",
   "image_copyright_status": "PASS_FOR_RECORDED_USE",
   "publication_decision": "PUBLISH_GENERAL_NEWS_REPLACEMENT",
-  "analysis_origin": "BLS 통계·일정에 근거한 일반 경제 보도. 매수·매도·보류 지침이나 투자 전망을 제시하지 않음.",
-  "checks": [
-    "기사 제목과 리드가 BLS 고용 발표의 핵심 사실을 전달",
-    "매수·매도·보류·투자 방향 및 조건부 거래 지침 없음",
-    "본지 계산 67.8788%를 약 68%로 표시",
-    "사업체 일자리와 가구 취업자의 단위 구분",
-    "현재 시세·순매수 및 제외 매체의 내용 없음",
-    "자료 기준과 수정 시각 일반 텍스트",
-    "같은 자체 일러스트와 제작 고지 유지",
-    "기존 주소 두 곳의 본문을 교체 안내로 전환"
-  ],
-  "article_sha256": "335f1c6bbbc34e21c66111a5b4c92b0493fec593c84f0c91e2f1478a6403b268",
-  "derivations": [
-    {
-      "name": "전문사업서비스·의료의 비농업 고용 순증가 기여 비중",
-      "formula": "(70000+42000)/165000*100",
-      "value": 67.8787878788,
-      "published": "약 68%",
-      "input_source": "BLS Employment Situation Summary — October 2026",
-      "limitations": "같은 사업체조사의 순증가 기준. 가구조사 경제적 이유 시간제 취업자 수와 합산·차감하지 않음.",
-      "attribution": "본문·주석에 자체 계산임을 표시"
-    }
-  ],
+  "article_sha256": "b2989200ec50bb314f36f50bb28221a5f1486a07e717cbf9ca92bd84a550e92f",
   "rewrite": {
-    "instruction_version": "KNEWS v2.4 with latest user instruction prioritizing general news",
-    "updated_at": "2026-11-07 14:11 KST",
-    "changes": [
-      "제목·리드에 미국 10월 고용 발표의 핵심 사실 배치",
-      "매매 판단·조건부 투자 결론·투자분석 고지 제거",
-      "전문사업서비스·의료 고용 증가 및 비자발적 시간제 취업 설명",
-      "마지막 문단에 공식 물가 발표 일정 제시",
-      "기존 주소 두 곳을 최신 기사 교체 안내로 연결"
-    ],
-    "article_scope": "미국 10월 고용 및 예정된 물가 발표에 관한 일반 경제 기사"
+    "previous_article_path": "261107.knews.미국 10월 일자리 16만5천개 증가…시간제 근로도 늘어.txt",
+    "previous_blob_sha": "73d4522570df8e8d10513851338c28e56ada9e83",
+    "updated_at": "2026-11-07 14:49 KST",
+    "original_reporting_cutoff": "2026-11-07 09:01 KST"
   },
-  "editorial_review_at": "2026-11-07 14:11 KST",
+  "derivations": [
+    "두 업종 비중 약 68%는 11만2천개를 비농업 일자리 순증가분 16만5천개로 나눈 값이다."
+  ],
   "source_revalidation": {
-    "scope": "기존 2026-11-07 09:01 KST 확인 원자료의 고용·임금·일정만 사용. 기사 범위를 일반 경제 보도로 한정하고 실제 이용 부분·출처 표시 재점검.",
-    "previous_article_sha256": "45e1b2328e47fd8d62eb0933730ef020009837c87b268d13df23729b772a80d1",
-    "editorial_checked_at": "2026-11-07 14:11 KST"
+    "previous_article_sha256": "335f1c6bbbc34e21c66111a5b4c92b0493fec593c84f0c91e2f1478a6403b268",
+    "editorial_checked_at": "2026-11-07 14:49 KST",
+    "scope": "고용보고서 링크를 당시 발표 보존본으로 교체하고 전체 기사 재검수."
   }
 }

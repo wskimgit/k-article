@@ -1,0 +1,65 @@
+{
+  "version": "knews-v2.4; general news copy revision",
+  "article_stem": "261101.knews.한국 10월 수출 1153억 달러…반도체가 절반 가까이",
+  "article_path": "261101.knews.한국 10월 수출 1153억 달러…반도체가 절반 가까이.txt",
+  "image_path": "261101.knews.한국 10월 수출 1153억 달러…반도체가 절반 가까이.v1.jpg",
+  "checked_at": "2026-11-07 14:49 KST",
+  "scope": "재사용 근거가 확인된 공식 발행 자료의 사실·수치만 사용. 기사 문장과 구성은 독자적으로 작성.",
+  "sources": [
+    {
+      "owner": "산업통상부",
+      "name": "산업통상부, 2026년 10월 수출입 동향",
+      "url": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172360/view",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "수출입 총액·증감률, 반도체·석유제품, 일평균 수출, 무역수지",
+      "basis_url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156787411&pWise=mSub&pWiseSub=C1",
+      "basis": "공공누리 제1유형. 산업통상부 출처 표시. 첨부물과 이미지 제외.",
+      "conditions": "산업통상부, 공공누리 제1유형 표시 본문",
+      "decision": "PASS_FOR_RECORDED_USE"
+    },
+    {
+      "owner": "산업통상부",
+      "name": "대한민국 정책브리핑, 같은 자료의 공공누리 제1유형 표시본",
+      "url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156787411&pWise=mSub&pWiseSub=C1",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "정부 보도자료 본문에 표시된 이용 조건 확인",
+      "basis_url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156787411&pWise=mSub&pWiseSub=C1",
+      "basis": "공공누리 제1유형. 산업통상부 출처 표시. 첨부물과 이미지 제외.",
+      "conditions": "기사 하단 출처 표시. 제3자 이미지·도표 미사용.",
+      "decision": "PASS_FOR_RECORDED_USE"
+    }
+  ],
+  "excluded_items": [
+    {
+      "reason": "거래소·매체 시황 및 해외주식 자금흐름은 이번 개정에서 확인한 이용 근거 범위 밖이므로 제외",
+      "decision": "EXCLUDED"
+    },
+    {
+      "reason": "보도자료의 첨부 이미지·도표 제외",
+      "decision": "EXCLUDED"
+    },
+    {
+      "reason": "투자 행동 제안 삭제",
+      "decision": "EXCLUDED"
+    }
+  ],
+  "image_validation": {
+    "bytes": 34200,
+    "git_blob_sha": "e4203e564757336f45bfae524921d70943f18040",
+    "profile": "기존 기사에 표시된 자체 생성 일러스트를 유지",
+    "visual_review_at": "2026-11-07 14:49 KST"
+  },
+  "article_copyright_status": "PASS_FOR_RECORDED_USES",
+  "image_copyright_status": "PASS_FOR_RECORDED_USE",
+  "publication_decision": "PUBLISH_GENERAL_NEWS_REPLACEMENT",
+  "article_sha256": "c41d5f05facfe93a3ca263fbf404f0df5a339a15c499d65db9588b10d83928ef",
+  "rewrite": {
+    "previous_article_path": "261101.knews.수출은 뛰는데 주가는 흔들린다…반등 베팅보다 이익 확인.txt",
+    "previous_blob_sha": "dc50133482ff89586945b0e75a79124694ecc291",
+    "updated_at": "2026-11-07 14:49 KST",
+    "original_reporting_cutoff": "2026-11-01 KST"
+  },
+  "derivations": [
+    "반도체 수출 비중은 564.4억 달러를 전체 수출 1152.8억 달러로 나눈 약 49.0%다."
+  ]
+}

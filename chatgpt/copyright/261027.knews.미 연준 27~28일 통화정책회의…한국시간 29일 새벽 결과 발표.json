@@ -1,0 +1,59 @@
+{
+  "version": "knews-v2.4; general news copy revision",
+  "article_stem": "261027.knews.미 연준 27~28일 통화정책회의…한국시간 29일 새벽 결과 발표",
+  "article_path": "261027.knews.미 연준 27~28일 통화정책회의…한국시간 29일 새벽 결과 발표.txt",
+  "image_path": "261027.knews.미 연준 27~28일 통화정책회의…한국시간 29일 새벽 결과 발표.v1.jpg",
+  "checked_at": "2026-11-07 14:49 KST",
+  "scope": "재사용 근거가 확인된 공식 발행 자료의 사실·수치만 사용. 기사 문장과 구성은 독자적으로 작성.",
+  "sources": [
+    {
+      "owner": "미 연방준비제도 이사회",
+      "name": "미 연방준비제도, 2026년 10월 공식 일정",
+      "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "10월 27~28일 회의, 성명·기자회견 발표 시간",
+      "basis_url": "https://www.federalreserve.gov/disclaimer.htm",
+      "basis": "연준 이사회 자체 발행 자료 공개 정책. 별도 표기·제3자 저작물 제외.",
+      "conditions": "기사 하단 출처 표시. 제3자 이미지·도표 미사용.",
+      "decision": "PASS_FOR_RECORDED_USE"
+    },
+    {
+      "owner": "미 연방준비제도 이사회",
+      "name": "미 연방준비제도, 9월 16일 FOMC 성명",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "checked_at": "2026-11-07 14:49 KST",
+      "use": "0.25%포인트 인상, 목표 범위 3.75~4.00%, 물가 진단",
+      "basis_url": "https://www.federalreserve.gov/disclaimer.htm",
+      "basis": "연준 이사회 자체 발행 자료 공개 정책. 별도 표기·제3자 저작물 제외.",
+      "conditions": "기사 하단 출처 표시. 제3자 이미지·도표 미사용.",
+      "decision": "PASS_FOR_RECORDED_USE"
+    }
+  ],
+  "excluded_items": [
+    {
+      "reason": "언론사 시황·지수 및 종목 가격, 업종 수급, 일본은행 자료는 재사용 근거 미확인으로 제외",
+      "decision": "EXCLUDED"
+    },
+    {
+      "reason": "투자 행동 제안 삭제",
+      "decision": "EXCLUDED"
+    }
+  ],
+  "image_validation": {
+    "bytes": 29084,
+    "git_blob_sha": "e25cd76bd55576d86aebd6fdf2e9520a8a20d1ae",
+    "profile": "기사에 맞춰 자체 제작한 벡터 일러스트를 JPEG로 변환. 외부 소재 미사용.",
+    "visual_review_at": "2026-11-07 14:49 KST"
+  },
+  "article_copyright_status": "PASS_FOR_RECORDED_USES",
+  "image_copyright_status": "PASS_FOR_RECORDED_USE",
+  "publication_decision": "PUBLISH_GENERAL_NEWS_REPLACEMENT",
+  "article_sha256": "635719bb46d967ccc290d0ba86bce0164bc3defb9fa88330f147a28a218cca3f",
+  "rewrite": {
+    "previous_article_path": "261027.knews.오늘의 한일미 증시, AI 반등에도 추격보다 실적 확인.txt",
+    "previous_blob_sha": "ecda39e6b5fda9027c46429c2d7618081f662c83",
+    "updated_at": "2026-11-07 14:49 KST",
+    "original_reporting_cutoff": "2026-10-27 19:43 KST"
+  },
+  "derivations": []
+}
