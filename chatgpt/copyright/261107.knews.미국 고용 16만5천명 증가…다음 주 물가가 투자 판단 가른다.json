@@ -148,22 +148,19 @@
   "article_copyright_status": "PASS_FOR_RECORDED_USES",
   "image_copyright_status": "PASS_FOR_RECORDED_USE",
   "publication_decision": "UPDATE_EXISTING_ARTICLE",
-  "analysis_origin": "BLS 보고서의 고용·임금과 공표 일정을 근거로 물가 및 금리 확인을 매수 판단 조건으로 제시한 본지 해석.",
+  "analysis_origin": "기존 BLS 고용·임금·일정에 대한 본지 해석. 보류 및 전환 기준은 본지의 판단.",
   "replaces": {
     "article_path": "261107.knews.미국 하루 반등에 안심할까…다음 주는 수급과 물가 확인.txt",
     "action": "이전 기사 본문 철회 후 교체 안내만 유지",
     "reason": "사용자 요청: 권리가 불명확한 자료와 의존 내용 모두 제거"
   },
   "checks": [
-    "기사 판단을 첫 문장에 명시",
-    "단일 논지를 뒷받침하는 기존 BLS 고용·임금·물가 일정만 사용",
-    "업종 비중 계산과 사업체조사/가구조사 단위 구분",
-    "관망 및 이후 매수 검토 조건의 명확성",
-    "공식 발표와 본지 조건부 투자 해석 구분",
-    "자료 기준과 수정 시각 평문 표시, 이전에 확인된 b와 h2만 사용",
-    "기존 기사 파일명·공개 주소·일러스트·출처 유지"
+    "리드에 신규 매수 보류 명시",
+    "마지막 문단에 전환 기준 및 보류 유지 조건 명시",
+    "반복적 유보 문구 제거",
+    "자료 기준·통계·출처 및 공개 기사 경로 확인"
   ],
-  "article_sha256": "df0c55729d64a7cc50e047460e8f739d9adf579db4d29c4a72a7a6bd8fe756b0",
+  "article_sha256": "45e1b2328e47fd8d62eb0933730ef020009837c87b268d13df23729b772a80d1",
   "derivations": [
     {
       "name": "전문사업서비스·의료의 비농업 고용 순증가 기여 비중",
@@ -178,20 +175,19 @@
   "rewrite": {
     "instruction_version": "KNEWS v2.4",
     "requested_at": "2026-11-07 KST",
-    "updated_at": "2026-11-07 12:07 KST",
+    "updated_at": "2026-11-07 12:15 KST",
     "changes": [
-      "10일 소비자물가 발표까지 미국 주식 신규 매수 관망을 리드에 배치",
-      "고용의 업종별 집중과 비자발적 시간제 근로를 소비 및 기업 이익 전망의 근거로 연결",
-      "물가 둔화·금리 안정 시 신규 매수 검토와 물가·금리 압력 지속 시 판단 유예를 구체화",
-      "중심 논지에 직접 연결되는 기존 BLS 수치와 일정만 사용",
-      "원자료 기준 시각과 개별 이용조건 확인 기록 보존"
+      "현재 판단을 10일 소비자물가 발표까지 미국 주식 신규 매수 보류로 명시",
+      "물가 상승률 둔화와 국채금리 안정이 함께 확인될 때 매수 쪽으로 전환",
+      "전환 조건 미충족 시 보류 유지",
+      "확인된 기존 수치·일정과 출처를 바탕으로 논지와 표현 수정"
     ],
-    "article_scope": "기존 미국 10월 고용·11월 물가 일정 기사의 논지와 문장 구조 편집"
+    "article_scope": "기존 고용 및 물가 기사의 신규 매수 결론 명확화"
   },
-  "editorial_review_at": "2026-11-07 12:07 KST",
+  "editorial_review_at": "2026-11-07 12:15 KST",
   "source_revalidation": {
-    "scope": "2026-11-07 09:01 KST 확인 자료의 사용 범위와 출처 표시 재점검. 기존 통계와 일정에 대한 편집.",
-    "previous_article_sha256": "a1641c8d969be3323d6a3de7d392e185dd54f69995037d9feeb4bc340ce3db44",
-    "editorial_checked_at": "2026-11-07 12:07 KST"
+    "scope": "재사용 조건을 확인한 기존 BLS 원자료의 수치와 일정만 사용. 투자 결론의 표현을 명확화.",
+    "previous_article_sha256": "df0c55729d64a7cc50e047460e8f739d9adf579db4d29c4a72a7a6bd8fe756b0",
+    "editorial_checked_at": "2026-11-07 12:15 KST"
   }
 }
