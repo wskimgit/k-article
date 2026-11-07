@@ -1,31 +1,31 @@
 {
-  "version": "knews-v2.2",
+  "version": "knews-v2.3",
   "article_stem": "261107.knews.미국 고용 16만5천명 증가…다음 주 물가가 투자 판단 가른다",
   "article_path": "261107.knews.미국 고용 16만5천명 증가…다음 주 물가가 투자 판단 가른다.txt",
   "image_path": "261107.knews.미국 고용 16만5천명 증가…다음 주 물가가 투자 판단 가른다.v1.jpg",
-  "checked_at": "2026-11-07 08:24 KST",
-  "scope": "확인한 원자료의 실제 이용 범위와 출처 표시 이행에 한정한 자체 검증. 법률상 무침해 보증 아님.",
+  "checked_at": "2026-11-07 09:01 KST",
+  "scope": "KNEWS v2.3에 따라 확인한 실제 자료 이용과 조건 이행에 한정한 자체 점검. 법률상 무침해 보증 아님.",
   "sources": [
     {
       "owner": "U.S. Bureau of Labor Statistics",
       "name": "Employment Situation Summary — October 2026",
       "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
       "published_at": "2026-11-06 08:30 America/New_York",
-      "checked_at": "2026-11-07 08:24 KST",
-      "use": "고용 증가 165000명·직전 12개월 월평균 48000명·실업률 4.1%·산업별 고용 증가 70000/42000/25000/19000명·정보업/금융업 고용 큰 변화 없음. 독자적 한국어 서술. 사진·삽화·로고·외부 제공물 미사용.",
+      "checked_at": "2026-11-07 09:01 KST",
+      "use": "고용 165000명 증가·직전 12개월 월평균 증가 48000명·실업률 4.1%·경제적 이유 시간제 근로 339000명 증가 및 480만명·전문사업서비스 고용 70000명 및 의료서비스 42000명 증가·병원과 가정방문 의료서비스 고용 증가·정보업/금융업 큰 변화 없음·민간 전체 평균시급 전월 0.4% 및 전년 3.1% 증가. 직접 사실 정리 후 독자적인 한국어 기사 구성·서술·시장 해석.",
       "basis_url": "https://www.bls.gov/bls/linksite.htm",
       "basis": "BLS 자체 발행 자료는 public domain이며 별도 허락 없이 이용 가능. 이미 저작권이 있는 사진·삽화는 예외이고 로고 무단 사용은 금지.",
       "commercial_use": "Public-domain material may be reused without specific permission; no non-commercial restriction stated.",
       "conditions": "BLS 출처 표시. 제3자 사진·삽화 및 BLS 로고 이용 제외.",
       "decision": "PASS",
-      "location": "리드·고용·산업 문단"
+      "location": "리드·고용의 양/질·산업 비교·임금 문단"
     },
     {
       "owner": "U.S. Bureau of Labor Statistics",
       "name": "Schedule of Selected Releases for November 2026",
       "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
       "published_at": "2026-11-03 last modified",
-      "checked_at": "2026-11-07 08:24 KST",
+      "checked_at": "2026-11-07 09:01 KST",
       "use": "10월 CPI 11/10 및 PPI 11/13 08:30 ET 발표 예정. Asia/Seoul 22:30 직접 환산.",
       "basis_url": "https://www.bls.gov/bls/linksite.htm",
       "basis": "BLS 자체 발행 public-domain 일정. 별도 허락 없이 이용 가능.",
@@ -36,7 +36,7 @@
     {
       "owner": "자체 생성 일러스트",
       "url": "built-in imagegen; no referenced images",
-      "checked_at": "2026-11-07 08:24 KST",
+      "checked_at": "2026-11-07 09:01 KST",
       "use": "다음 발판을 확인하는 가상 투자자. 기존 자체 무참조 생성 이미지 재사용.",
       "basis": "기존 무참조 생성 이력과 시각 점검. 외부 사진·캐릭터·브랜드·기존 작품 참조 없음. 본 기사에서 사용한 통계·시세표를 그림으로 생성하지 않음.",
       "conditions": "생성형 AI 제작 일러스트 고지. 실존 인물·실제 보도사진으로 설명하지 않음.",
@@ -109,6 +109,27 @@
       "decision": "EXCLUDE",
       "reason": "무단전재·수집·재배포 금지 고지. 구체적 이용조건 확인 부족으로 종전 PASS 철회. 이번 기사·제목·출처에서 모든 의존 내용 제거.",
       "legal_infringement_determined": false
+    },
+    {
+      "source": "JPX website market data",
+      "url": "https://www.jpx.co.jp/english/term-of-use/index.html",
+      "decision": "EXCLUDE",
+      "reason": "정책은 상업적 수집·재사용에 사전 허락 또는 계약 요구. 이번 사용에 필요한 별도 허락·계약 미확인으로 시세·수치·해설 미채택.",
+      "legal_infringement_determined": false
+    },
+    {
+      "source": "KRX price data",
+      "url": "https://openapi.krx.co.kr/contents/OPP/DATA/OPPDATA003.jsp",
+      "decision": "EXCLUDE",
+      "reason": "배포·영리 활용 관련 별도 계약 안내 확인. 이번 뉴스 게재 권한 미확인으로 시세 미채택.",
+      "legal_infringement_determined": false
+    },
+    {
+      "source": "KSD/SEIBro investor flows",
+      "url": "https://seibro.or.kr/ems/%28%EC%8B%AC%EC%9D%98%EC%A1%B0%EC%A0%95%ED%95%84%29%28%EB%93%B1-2-135%29_%EC%A6%9D%EA%B6%8C%EC%A0%95%EB%B3%B4%ED%8F%AC%ED%84%B8%28SEIBro%29_%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80.pdf",
+      "decision": "UNCLEAR",
+      "reason": "검색으로 확인한 2020년 약관은 사전 승낙 없는 영리 복제·송신·출판·배포 제한. 현재 필요한 재사용 허용 근거를 확인하지 못해 순매수·순위·집중매수 주장 미채택.",
+      "legal_infringement_determined": false
     }
   ],
   "image_validation": {
@@ -122,29 +143,55 @@
     "EOI": "FFD9",
     "git_blob_sha": "016d426282d314bba3474c6c6b9cfa333c88c419",
     "profile": "960x540 RGB JPEG q30 4:2:0; 12 KiB maximum met",
-    "visual_review_at": "2026-11-07 08:24 KST"
+    "visual_review_at": "2026-11-07 09:01 KST"
   },
   "article_copyright_status": "PASS_FOR_RECORDED_USES",
   "image_copyright_status": "PASS_FOR_RECORDED_USE",
-  "publication_decision": "PUBLISH_REPLACEMENT",
-  "analysis_origin": "BLS 통계·일정에 바탕을 둔 본지 자체 경제 해석. 다른 신문기사의 해설·구성·매매 동기·시장 수치를 재서술하지 않음.",
+  "publication_decision": "UPDATE_EXISTING_ARTICLE",
+  "analysis_origin": "일자리 총량·불완전고용·임금과 향후 물가 일정을 연결한 독자적 기사. 다른 언론의 기사·구성·논평을 참고·번역·치환하지 않음. 시세 또는 투자자 순매수에 관한 새 주장 없음.",
   "replaces": {
     "article_path": "261107.knews.미국 하루 반등에 안심할까…다음 주는 수급과 물가 확인.txt",
     "action": "이전 기사 본문 철회 후 교체 안내만 유지",
     "reason": "사용자 요청: 권리가 불명확한 자료와 의존 내용 모두 제거"
   },
   "checks": [
-    "국내외 언론 5개 출처 및 의존 사실·수치·해석 제거",
-    "새 제목에 삭제된 시장 종가·반등 사실을 사용하지 않음",
-    "기사 본문 새로 작성, 3개 소제목, 시황표 없음",
-    "산업별 고용과 산업별 주가 수익률을 구분",
-    "서학개미 순매수·매도 수치 및 이에 의존한 집중매수 주장 미사용",
-    "BLS 데이터와 일정은 원문 확인, 소득·임금·시세 등 새 미검증 수치 없음",
-    "미 동부 표준시 08:30 = KST 22:30 환산",
-    "BLS 출처와 public-domain 이용조건 표시",
-    "기관 로고·제3자 사진·삽화 미사용",
-    "기존 자체 생성 일러스트만 재사용",
-    "본문에 법적 무침해 보증 또는 포괄 PASS 선언 없음"
+    "최종 이용 자료 모두 public-domain BLS 원자료 및 기존 자체 일러스트",
+    "BLS 출처·자료명·발표일·URL·이용정책 표시",
+    "원문 기사 문장·취재 구성·창작적 논평 차용 없음",
+    "일자리/취업자·사업체/가구조사 범위 구분",
+    "고용/주가·의료서비스/바이오 구분",
+    "두 분야 비중 67.8788%를 약 68%로 반올림",
+    "미국 ET 08:30은 11월 해당일 KST 22:30",
+    "유보·빈 표·내부 PASS 등 독자 노출 없음",
+    "고용 자료로 특정 시장·종목 매수 또는 금리 결정 단정 없음",
+    "기사 제목·주소·기자명·대표이미지 논리 stem 유지"
   ],
-  "article_sha256": "dec688666eb617d2f26202ee7db65d48426670f4ba264036c445422d95a1c939"
+  "article_sha256": "fda6ed7af593bd3d26f0bbb81bc2e743c2f80cdd79a4ece14f3a1194b1558657",
+  "derivations": [
+    {
+      "name": "전문사업서비스·의료의 비농업 고용 순증가 기여 비중",
+      "formula": "(70000+42000)/165000*100",
+      "value": 67.8787878788,
+      "published": "약 68%",
+      "input_source": "BLS Employment Situation Summary — October 2026",
+      "limitations": "같은 사업체조사의 순증가 기준. 가구조사 경제적 이유 시간제 취업자 수와 합산·차감하지 않음.",
+      "attribution": "본문·주석에 자체 계산임을 표시"
+    }
+  ],
+  "rewrite": {
+    "instruction_version": "KNEWS v2.3; Library version 8",
+    "requested_at": "2026-11-07 KST",
+    "updated_at": "2026-11-07 09:01 KST",
+    "changes": [
+      "발표 주체·일시·핵심 변화가 드러나는 리드로 재작성",
+      "비자발적 시간제 근로와 임금을 보완해 고용 보고서의 양면을 설명",
+      "산업별 채용과 주가 등락을 분리",
+      "시장 해석과 원자료 사실을 구분",
+      "정해진 국가별 표·매수 후보·서학개미 칸을 채우지 않음",
+      "재사용 조건이 불명확한 시세·투자자 순매수 미사용",
+      "기존 제목·주소·자체 일러스트 유지",
+      "표·점수·체크리스트 없는 서술형 기사"
+    ],
+    "article_scope": "미국 고용 발표와 향후 물가 일정이 투자 판단에 갖는 의미. 한미일 종가·업종 수익률·서학개미 동향은 자료 채택 제한으로 미제시."
+  }
 }
