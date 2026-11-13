@@ -3,7 +3,7 @@
   "article_stem": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발",
   "article_path": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발.txt",
   "checked_at": "2026-11-13T10:18:38+09:00",
-  "article_sha256": "0adc95561ffcad2360d756700da95c0e2b63628909a7b599f8db01ef51140192",
+  "article_sha256": "099244d390fba7a0d9c22a2eaaed2aeda6fc20c6e7cc486f29da24973cd1aea2",
   "message": "국산 AI 반도체의 첫 성과를 가를 단계는 시제품의 실제 제품 탑재와 성능 검증이다.",
   "sources": [
     {
@@ -50,16 +50,28 @@
     "origin": "외부 이미지 참조 없는 자체 생성",
     "rights_policy": "https://openai.com/policies/terms-of-use/",
     "visual_review": "시제품 칩을 시험용 로봇에 탑재하는 장면. 로고·문자·워터마크·식별 가능한 외부 저작물 재현 징후 없음.",
-    "file_profile_status": "12 KiB 이하 전송 목표 미충족",
-    "publish": false
+    "file_profile_status": "PASS",
+    "publish": true,
+    "bytes": 10901,
+    "size": [
+      960,
+      540
+    ],
+    "color": "RGB",
+    "soi": true,
+    "eoi": true,
+    "decoded": true,
+    "git_blob_sha": "b060cfcaf12851c2f9c60c8b8f42b24c7ef22fac"
   },
   "article_copyright_status": "PASS_FOR_RECORDED_USES",
-  "publication_decision": "PUBLISH_TEXT_ONLY_PARTIAL",
+  "publication_decision": "PUBLISH",
   "checks": [
     "발표된 계획과 실현된 성과를 구분",
     "칩 8종과 설계자산 2종 확인",
     "21회는 2027년 시제품 제작 수요, 2나노급 3회 포함",
     "기사 말미 참고자료와 지재권 확인",
     "시장별 시세·종목 매매 제안 제외"
-  ]
+  ],
+  "image_path": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발.v1.jpg",
+  "image_copyright_status": "PASS_FOR_RECORDED_USE"
 }
