@@ -3,7 +3,7 @@
   "article_stem": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발",
   "article_path": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발.txt",
   "checked_at": "2026-11-13T10:18:38+09:00",
-  "article_sha256": "099244d390fba7a0d9c22a2eaaed2aeda6fc20c6e7cc486f29da24973cd1aea2",
+  "article_sha256": "e94c51d3030413889aee2e2bb4bf89ff594bde326a18936feb628890a2666ebc",
   "message": "국산 AI 반도체의 첫 성과를 가를 단계는 시제품의 실제 제품 탑재와 성능 검증이다.",
   "sources": [
     {
@@ -18,20 +18,7 @@
       "commercial_use": "출처표시 조건으로 허용",
       "conditions": "발표 기관과 원문·이용조건 표시. 사진·그래프·첨부 디자인 미사용",
       "decision": "PASS",
-      "location": "리드~4문단 및 마무리"
-    },
-    {
-      "owner": "미 연방준비제도 이사회",
-      "name": "American Inequality and the Future of AI",
-      "url": "https://www.federalreserve.gov/newsevents/speech/barr20261112a.htm",
-      "published_at": "2026-11-12",
-      "checked_at": "2026-11-13T10:18:38+09:00",
-      "use": "마이클 바 이사가 평가한 AI의 일부 생산성 효과와 제한적 도입 범위",
-      "basis_url": "https://www.federalreserve.gov/disclaimer.htm",
-      "basis": "이사회가 자체 웹사이트에 발행한 자료의 public domain 이용 정책. 별도 제한 및 제3자 자료 제외",
-      "conditions": "발언자·발행 기관·원문 표시. 원문 문장·외부 연구·이미지 미사용",
-      "decision": "PASS",
-      "location": "5문단"
+      "location": "리드와 본문"
     }
   ],
   "excluded_items": [
@@ -44,6 +31,11 @@
       "source": "일별 지수·업종 시세 및 서학개미 자료",
       "reason": "재사용 근거와 기사 관련성 기준에 따라 본문에 사용하지 않음",
       "decision": "EXCLUDED"
+    },
+    {
+      "source": "미 연준 마이클 바 이사 2026-11-12 연설",
+      "reason": "한국 AI 반도체 개발 사업의 직접 근거나 맥락으로 쓰기에 연결이 약해 개정본에서 제외",
+      "decision": "EXCLUDED_EDITORIAL_RELEVANCE"
     }
   ],
   "illustration": {
@@ -73,5 +65,10 @@
     "시장별 시세·종목 매매 제안 제외"
   ],
   "image_path": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발.v1.jpg",
-  "image_copyright_status": "PASS_FOR_RECORDED_USE"
+  "image_copyright_status": "PASS_FOR_RECORDED_USE",
+  "editorial_revision": {
+    "updated_at": "2026-11-13 10:40 KST",
+    "previous_article_sha256": "099244d390fba7a0d9c22a2eaaed2aeda6fc20c6e7cc486f29da24973cd1aea2",
+    "reason": "미국 AI 활용 일반론을 제거하고 한국 AI 반도체 시제품의 제품 탑재·실증에 집중"
+  }
 }
