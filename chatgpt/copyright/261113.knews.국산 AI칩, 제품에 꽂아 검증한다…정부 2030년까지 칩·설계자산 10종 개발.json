@@ -1,0 +1,65 @@
+{
+  "version": "knews-v2.6",
+  "article_stem": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발",
+  "article_path": "261113.knews.국산 AI칩, 제품에 꽂아 검증한다…정부 2030년까지 칩·설계자산 10종 개발.txt",
+  "checked_at": "2026-11-13T10:18:38+09:00",
+  "article_sha256": "0adc95561ffcad2360d756700da95c0e2b63628909a7b599f8db01ef51140192",
+  "message": "국산 AI 반도체의 첫 성과를 가를 단계는 시제품의 실제 제품 탑재와 성능 검증이다.",
+  "sources": [
+    {
+      "owner": "산업통상부",
+      "name": "K-온디바이스 AI반도체, ‘상생’으로 속도낸다",
+      "url": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172399/view",
+      "published_at": "2026-11-12",
+      "checked_at": "2026-11-13T10:18:38+09:00",
+      "use": "공식 보도자료 본문의 사업 규모·일정·개발 항목·수요기업과 위탁생산 기업 역할·검증 계획",
+      "basis_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156788895&pWise=sub&pWiseSub=J1",
+      "basis": "동일 보도자료의 정책브리핑 전재본 텍스트에 명시된 공공누리 제1유형",
+      "commercial_use": "출처표시 조건으로 허용",
+      "conditions": "발표 기관과 원문·이용조건 표시. 사진·그래프·첨부 디자인 미사용",
+      "decision": "PASS",
+      "location": "리드~4문단 및 마무리"
+    },
+    {
+      "owner": "미 연방준비제도 이사회",
+      "name": "American Inequality and the Future of AI",
+      "url": "https://www.federalreserve.gov/newsevents/speech/barr20261112a.htm",
+      "published_at": "2026-11-12",
+      "checked_at": "2026-11-13T10:18:38+09:00",
+      "use": "마이클 바 이사가 평가한 AI의 일부 생산성 효과와 제한적 도입 범위",
+      "basis_url": "https://www.federalreserve.gov/disclaimer.htm",
+      "basis": "이사회가 자체 웹사이트에 발행한 자료의 public domain 이용 정책. 별도 제한 및 제3자 자료 제외",
+      "conditions": "발언자·발행 기관·원문 표시. 원문 문장·외부 연구·이미지 미사용",
+      "decision": "PASS",
+      "location": "5문단"
+    }
+  ],
+  "excluded_items": [
+    {
+      "source": "미 연준 FEDS 2026-074",
+      "reason": "논문의 출판 인용에 별도의 저자 확인 안내가 있어 기사 근거에서 제외",
+      "decision": "EXCLUDED"
+    },
+    {
+      "source": "일별 지수·업종 시세 및 서학개미 자료",
+      "reason": "재사용 근거와 기사 관련성 기준에 따라 본문에 사용하지 않음",
+      "decision": "EXCLUDED"
+    }
+  ],
+  "illustration": {
+    "origin": "외부 이미지 참조 없는 자체 생성",
+    "rights_policy": "https://openai.com/policies/terms-of-use/",
+    "visual_review": "시제품 칩을 시험용 로봇에 탑재하는 장면. 로고·문자·워터마크·식별 가능한 외부 저작물 재현 징후 없음.",
+    "file_profile_status": "12 KiB 이하 전송 목표 미충족",
+    "publish": false
+  },
+  "article_copyright_status": "PASS_FOR_RECORDED_USES",
+  "publication_decision": "PUBLISH_TEXT_ONLY_PARTIAL",
+  "checks": [
+    "발표된 계획과 실현된 성과를 구분",
+    "칩 8종과 설계자산 2종 확인",
+    "21회는 2027년 시제품 제작 수요, 2나노급 3회 포함",
+    "기사 말미 참고자료와 지재권 확인",
+    "시장별 시세·종목 매매 제안 제외"
+  ]
+}
