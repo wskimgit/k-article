@@ -1,0 +1,96 @@
+{
+  "version": "knews-v2.6",
+  "instruction_revision": 14,
+  "article_stem": "261113.knews.반도체 수출 호황에도 소비 회복 더뎌…유가 상승이 먼저 가계 압박",
+  "article_path": "261113.knews.반도체 수출 호황에도 소비 회복 더뎌…유가 상승이 먼저 가계 압박.txt",
+  "checked_at": "2026-11-13T10:57:34+09:00",
+  "article_sha256": "50ec336d212e289ef0efa10d7fe736e5a33c8c1125306a637b9de3344b400c11",
+  "message": "반도체 호황이 가계 소득으로 이어지기까지 시간이 걸리는 사이, 유가 상승은 생활비를 통해 소비 여력을 먼저 줄였다.",
+  "sources": [
+    {
+      "owner": "한국개발연구원(KDI)",
+      "name": "최근 반도체 호황과 유가 상승이 민간소비에 미치는 영향",
+      "url": "https://www.kdi.re.kr/research/analysisView?art_no=3829",
+      "published_at": "2026-11-12",
+      "checked_at": "2026-11-13T10:57:34+09:00",
+      "use": "가격 상승 충격의 소비 전달 경로, 시차 및 연도별 모형 추정치",
+      "connection": "수출 호조와 소비 회복의 속도 차이를 설명하는 직접 근거",
+      "basis_url": "https://www.kdi.re.kr/research/analysisView?art_no=3829",
+      "license_terms_url": "https://www.kogl.or.kr/info/license.do",
+      "basis": "사용한 원문 페이지의 공공누리 제1유형 출처표시 고지",
+      "conditions": "발행 기관, 자료명, 발표일, 원문 링크 표시. 확인된 사실과 수치만 이용. 외부 문장·표·그래프·이미지·첨부파일 미복제.",
+      "decision": "PASS",
+      "location": "리드·4~6문단"
+    },
+    {
+      "owner": "관세청",
+      "name": "2026년 11월 1일~11월 10일 수출입 현황 [잠정치]",
+      "url": "https://customs.go.kr/kcs/na/ntt/selectNttInfo.do?bbsId=1362&mi=2891&nttSn=10182926&nttSnUrl=f245ffc86cc10295d215ed0379c4a630",
+      "published_at": "2026-11-11",
+      "checked_at": "2026-11-13T10:57:34+09:00",
+      "use": "통관 기준 11월 1~10일 수출 잠정치와 반도체 비중, 일평균 수출액 증가율",
+      "connection": "수출 호조와 반도체 비중을 수치로 보여주는 직접 근거",
+      "basis_url": "https://customs.go.kr/kcs/na/ntt/selectNttInfo.do?bbsId=1362&mi=2891&nttSn=10182926&nttSnUrl=f245ffc86cc10295d215ed0379c4a630",
+      "license_terms_url": "https://www.kogl.or.kr/info/license.do",
+      "basis": "사용한 원문 페이지의 공공누리 제1유형 출처표시 고지",
+      "conditions": "발행 기관, 자료명, 발표일, 원문 링크 표시. 확인된 사실과 수치만 이용. 외부 문장·표·그래프·이미지·첨부파일 미복제.",
+      "decision": "PASS",
+      "location": "부제·2문단"
+    },
+    {
+      "owner": "국가데이터처",
+      "name": "2026년 10월 소비자물가동향",
+      "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156787698",
+      "published_at": "2026-11-03",
+      "checked_at": "2026-11-13T10:57:34+09:00",
+      "use": "10월 전체 소비자물가와 식품 외 생활물가, 석유류 상승에 대한 공식 설명",
+      "connection": "가계 생활비에 석유류 가격이 전달되는 경로를 보여주는 관측치와 공식 설명",
+      "basis_url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156787698",
+      "license_terms_url": "https://www.kogl.or.kr/info/license.do",
+      "basis": "사용한 원문 페이지의 공공누리 제1유형 출처표시 고지",
+      "conditions": "발행 기관, 자료명, 발표일, 원문 링크 표시. 확인된 사실과 수치만 이용. 외부 문장·표·그래프·이미지·첨부파일 미복제.",
+      "decision": "PASS",
+      "location": "3문단"
+    }
+  ],
+  "excluded_items": [
+    {
+      "source": "미국 연준·노동통계국, 일본 재무성·일본은행·JPX 공개 자료",
+      "reason": "국내 반도체 수출과 유가가 국내 가계에 전달되는 시차에 직접 기여할 내용이 없어 제외",
+      "decision": "EXCLUDE"
+    },
+    {
+      "source": "업종 주가 및 서학개미 수급",
+      "reason": "선정 메시지와 직접 관련된 검증 자료에 해당하지 않음",
+      "decision": "EXCLUDE"
+    }
+  ],
+  "illustration": {
+    "origin": "외부 이미지 참조와 입력 없이 새로 생성한 편집 일러스트",
+    "rights_policy": "https://openai.com/policies/terms-of-use/",
+    "visual_review": "화물선과 반도체 문양, 주유기, 장바구니가 한 화면에 보임. 로고·문자·워터마크·외부 저작물 재현 징후 미확인.",
+    "file_profile_status": "PASS",
+    "publish": true,
+    "bytes": 9546,
+    "size": [
+      960,
+      540
+    ],
+    "color": "RGB",
+    "soi": true,
+    "eoi": true,
+    "decoded": true,
+    "sha256": "eb58fcbe7ebc44b0b5c926e80217093e3eb213553a737205a56d2b8174b932a6",
+    "git_blob_sha": "a2bdc3f39eb22b71c3e3d03522ffd242009c6f94"
+  },
+  "article_copyright_status": "PASS_FOR_RECORDED_USES",
+  "image_copyright_status": "PASS_FOR_RECORDED_USE",
+  "image_path": "261113.knews.반도체 수출 호황에도 소비 회복 더뎌…유가 상승이 먼저 가계 압박.v1.jpg",
+  "publication_decision": "PUBLISH",
+  "checks": [
+    "수출 잠정치와 물가 관측치, 민간소비 증가율에 대한 모형 추정치를 구분",
+    "수출액과 일평균 수출액의 집계 기간, 소비자물가의 전년 동월 비교를 명시",
+    "반도체 가격과 유가의 민간소비 증가율 기여를 분리",
+    "기사·삽화의 핵심 메시지 및 참고자료·지재권 말미 표시 확인"
+  ]
+}
