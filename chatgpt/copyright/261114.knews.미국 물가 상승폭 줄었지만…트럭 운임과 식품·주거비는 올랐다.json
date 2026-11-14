@@ -1,0 +1,104 @@
+{
+  "version": "knews-v2.6",
+  "instruction_revision": 14,
+  "article_stem": "261114.knews.미국 물가 상승폭 줄었지만…트럭 운임과 식품·주거비는 올랐다",
+  "article_path": "261114.knews.미국 물가 상승폭 줄었지만…트럭 운임과 식품·주거비는 올랐다.txt",
+  "checked_at": "2026-11-14T15:26:51+09:00",
+  "article_sha256": "96e8290b034676a3eccacf1503c91faed3b63b600aa5536f353ffb07b24afc1f",
+  "message": "미국 10월 전체 물가의 월간 상승폭은 줄었지만 기업의 운송비와 가계의 식품·주거비가 계속 올라 물가 부담이 남았다.",
+  "sources": [
+    {
+      "owner": "미국 노동통계국",
+      "name": "Producer Price Indexes – October 2026",
+      "url": "https://www.bls.gov/news.release/archives/ppi_11132026.htm",
+      "published_at": "2026-11-13",
+      "checked_at": "2026-11-14T15:26:51+09:00",
+      "basis": "BLS 자체 발행 수치의 퍼블릭 도메인 안내",
+      "basis_url": "https://www.bls.gov/bls/linksite.htm",
+      "use": "생산자물가 총계, 식품·에너지, 제외지수, 운송·경유 통계",
+      "location": "부제·1~3문단",
+      "conditions": "출처·원문 링크를 표시하고 수치·공개 사실만 자체 문장에 사용. 원문 표현·도표·브랜드·외부 이미지 미사용.",
+      "decision": "PASS"
+    },
+    {
+      "owner": "미국 노동통계국",
+      "name": "Consumer Price Index – October 2026",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11102026.htm",
+      "published_at": "2026-11-10",
+      "checked_at": "2026-11-14T15:26:51+09:00",
+      "basis": "BLS 자체 발행 수치의 퍼블릭 도메인 안내",
+      "basis_url": "https://www.bls.gov/bls/linksite.htm",
+      "use": "전체·에너지·식품·주거비 월간 상승률, 주거비 기여, 식품·에너지 제외 지수",
+      "location": "1·4문단",
+      "conditions": "출처·원문 링크를 표시하고 수치·공개 사실만 자체 문장에 사용. 원문 표현·도표·브랜드·외부 이미지 미사용.",
+      "decision": "PASS"
+    },
+    {
+      "owner": "미국 재무부",
+      "name": "Daily Treasury Par Yield Curve Rates",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve",
+      "published_at": "2026-11-06·12·13",
+      "checked_at": "2026-11-14T15:26:51+09:00",
+      "basis": "미 재무부가 작성·배포한 수익률 값 3개만 사용. 공공기관 저작물 17 USC §105 및 공개 수치의 사실 이용. 호가 원자료와 표는 미복제.",
+      "basis_url": "https://www.govinfo.gov/link/uscode/17/105",
+      "use": "10년 만기 고정 만기 국채 수익률 3개 및 차이",
+      "location": "부제·5문단",
+      "conditions": "출처·원문 링크를 표시하고 수치·공개 사실만 자체 문장에 사용. 원문 표현·도표·브랜드·외부 이미지 미사용.",
+      "decision": "PASS"
+    },
+    {
+      "owner": "미국 경제분석국",
+      "name": "Release Schedule",
+      "url": "https://www.bea.gov/news/schedule",
+      "published_at": "2026-11-14 확인",
+      "checked_at": "2026-11-14T15:26:51+09:00",
+      "basis": "BEA 웹 공개 자료의 퍼블릭 도메인 안내",
+      "basis_url": "https://www.bea.gov/help/faq/147",
+      "use": "10월 개인소비지출 통계의 공개 일정, 동부 표준시를 한국시간으로 변환",
+      "location": "5문단",
+      "conditions": "출처·원문 링크를 표시하고 수치·공개 사실만 자체 문장에 사용. 원문 표현·도표·브랜드·외부 이미지 미사용.",
+      "decision": "PASS"
+    }
+  ],
+  "excluded_items": [
+    {
+      "source": "한국·일본 지수와 업종, 미국 장 마감·기업 인사",
+      "reason": "한 국가의 10월 기업·가계 물가 지표와 연동될 직접 근거가 없어 제외. 제3자 시세와 보도 표현을 재배포하지 않음.",
+      "decision": "EXCLUDE"
+    },
+    {
+      "source": "SEIBro 인용 해외주식 결제·순매수 집계",
+      "reason": "미국 물가의 비용 부담을 설명할 통계가 아니며, 별도 집계와 재사용 권한도 기사에 근거로 채택하지 않음.",
+      "decision": "EXCLUDE"
+    }
+  ],
+  "illustration": {
+    "origin": "외부 이미지 입력 없이 독자 제작한 생성형 AI 삽화",
+    "prompt_summary": "동네 식료품점으로 상자를 나르는 트럭의 하역 장면, 뒤쪽 주택과 주유기. 글자·로고·시세 없이 16:9",
+    "rights_policy": "https://openai.com/policies/terms-of-use/",
+    "visual_review": "중심 소재 식료품 상자·배달 트럭·주거 건물·주유기 확인. 글자·마크·워터마크·외부 이미지 재현 징후 없음.",
+    "file_profile_status": "PASS",
+    "publish": true,
+    "bytes": 11081,
+    "size": [
+      960,
+      540
+    ],
+    "color": "RGB",
+    "soi": true,
+    "eoi": true,
+    "decoded": true,
+    "sha256": "2c0da3189f7975102bba9cbbfca5119dd938db210cd74404fe7a9dba06bd1cdf",
+    "git_blob_sha": "5065beb86727fa04dfc61aaf4d472d6b4a625952"
+  },
+  "image_path": "261114.knews.미국 물가 상승폭 줄었지만…트럭 운임과 식품·주거비는 올랐다.v1.jpg",
+  "article_copyright_status": "PASS_FOR_RECORDED_USES",
+  "image_copyright_status": "PASS_FOR_RECORDED_USE",
+  "publication_decision": "PUBLISH",
+  "checks": [
+    "월간/연간 생산자물가 및 월간 소비자물가 구분. 2025년 10월 비교 결측인 연간 CPI 미사용.",
+    "생산자·소비자 품목 가격의 정의 차이를 유지. 운임과 소비자물가 및 발표와 채권금리 간 인과관계 미단정.",
+    "10년 수익률은 미 재무부 고정 만기 기준. 11월 25일 08:30 EST → 22:30 KST.",
+    "본문 말미에 통합 메시지, 실제 사용한 참고자료와 지재권 확인. 본문과 삽화의 주제 일치."
+  ]
+}
