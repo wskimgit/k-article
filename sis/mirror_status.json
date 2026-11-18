@@ -1,7 +1,7 @@
 {
   "ok": true,
   "schema": "sis_github_mirror_status_v2",
-  "synced_at": "2026-11-18T07:17:08.956014+00:00",
+  "synced_at": "2026-11-18T16:29:30.692307+00:00",
   "source": "https://k-bizpost.myds.me/sis/index.json",
   "source_count": 9,
   "mirrored_count": 9,
