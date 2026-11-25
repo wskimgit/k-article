@@ -1,0 +1,200 @@
+{
+  "schema": "egtech_article_copyright_check_v2",
+  "article_stem": "261125.AutoGen.NIST, 반도체 계측 AI의 검출 한계 검증 추진",
+  "checked_at": "2026-11-25T16:57+09:00",
+  "source_reference": {
+    "article_rules": "v2.7",
+    "image_rules": "v2.9",
+    "disclosure_rules": "v1.2",
+    "current": "chatgpt/EGTECH-CURRENT.md"
+  },
+  "message": "NIST는 물리모델과 AI 기반 SEM 계측 연구에서 검출 한계를 확인해 FAB 적용 시 측정값의 신뢰 범위를 정하려 한다.",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Overlay Metrology Using Physics and AI-Based Scanning Electron Microscopy",
+      "author_or_distributor": "National Institute of Standards and Technology (NIST)",
+      "url": "https://www.nist.gov/programs-projects/overlay-metrology-using-physics-and-ai-based-scanning-electron-microscopy",
+      "published_at": "2026-09-03",
+      "updated_at": "2026-09-18",
+      "use": "연구 과제의 목적·접근방법·진행 상태를 독자적 한국어 문장으로 기술. 원문 표현·그림·코드 복제 없음.",
+      "basis_type": "NIST public information redistribution policy",
+      "basis_url": "https://www.nist.gov/copyrights-disclaimers",
+      "basis_section": "Use of NIST information",
+      "rights_scope": "별도 저작권 표시 없는 NIST 웹정보; 이미지·로고·외부 링크 콘텐츠·소프트웨어는 사용하지 않음",
+      "conditions_fulfilled": [
+        "NIST 출처·자료명·날짜·원문 링크 표시",
+        "원문 전문 번역이나 문장별 치환 대신 독자 작성",
+        "연구 목표와 양산 성과 구분"
+      ],
+      "status": "PASS",
+      "checked_at": "2026-11-25T16:57+09:00"
+    },
+    {
+      "id": "S2",
+      "title": "Metrology Program",
+      "author_or_distributor": "NIST, CHIPS for America",
+      "url": "https://www.nist.gov/chips/research-development-programs/metrology-program",
+      "published_at": null,
+      "use": "복잡한 다층 반도체의 계측과 품질·수율·비용 관련 배경 설명만 독자 서술",
+      "basis_type": "NIST public information redistribution policy",
+      "basis_url": "https://www.nist.gov/copyrights-disclaimers",
+      "basis_section": "Use of NIST information",
+      "rights_scope": "NIST 페이지 설명 텍스트의 사실만 사용; 제3자 사진·보고서·데이터베이스·이미지 사용 없음",
+      "conditions_fulfilled": [
+        "기관·자료명·원문 링크·확인일 표시",
+        "과거 프로그램 배경을 이번 신규 발표처럼 서술하지 않음"
+      ],
+      "status": "PASS",
+      "checked_at": "2026-11-25T16:57+09:00"
+    },
+    {
+      "id": "S3",
+      "title": "Relating Human and AI-based Detection Limits in SEM Dimensional Metrology",
+      "author_or_distributor": "Peter Bajcsy, Pushkar Sathe, Andras Vladar / NIST publication page",
+      "url": "https://www.nist.gov/publications/relating-human-and-ai-based-detection-limits-sem-dimensional-metrology",
+      "published_at": "2025-10-25",
+      "updated_at": "2026-03-04",
+      "use": "NIST 웹페이지 초록에서 설명한 입력 영상의 잡음·대비와 모델별 검출 한계의 관계만 배경 사실로 사용",
+      "basis_type": "NIST public information redistribution policy applied to NIST-hosted descriptive abstract",
+      "basis_url": "https://www.nist.gov/copyrights-disclaimers",
+      "basis_section": "Use of NIST information",
+      "rights_scope": "NIST의 공개 웹페이지 초록 설명만 사용; 학술지 원문/PDF/표/그림의 재사용 허용을 주장하지 않으며 사용하지 않음",
+      "conditions_fulfilled": [
+        "저자·기관·제목·2025년 발표일·링크 표시",
+        "선행연구로 명시하여 2026년 신규 성과와 구분"
+      ],
+      "status": "PASS",
+      "checked_at": "2026-11-25T16:57+09:00"
+    }
+  ],
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "2026-09-03 공개·09-18 갱신된 진행 중 연구",
+      "source_ids": [
+        "S1"
+      ],
+      "paragraph": 1
+    },
+    {
+      "id": "F2",
+      "statement": "다층 회로 정렬과 오버레이 계측, 계측과 품질·수율·비용의 관계",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "paragraph": 2
+    },
+    {
+      "id": "F3",
+      "statement": "물리 시뮬레이션·모델 기반 측정·AI 취득/잡음제거/분석 통합은 연구계획",
+      "source_ids": [
+        "S1"
+      ],
+      "paragraph": 3
+    },
+    {
+      "id": "F4",
+      "statement": "희소 스캔 시험은 계획; 수율·처리량 상용성과 수치 미주장",
+      "source_ids": [
+        "S1"
+      ],
+      "paragraph": 4
+    },
+    {
+      "id": "F5",
+      "statement": "모델별 검출 한계와 입력 영상 잡음·대비의 관계는 2025년 선행연구",
+      "source_ids": [
+        "S3",
+        "S1"
+      ],
+      "paragraph": 5
+    }
+  ],
+  "message_links": [
+    {
+      "source_id": "S1",
+      "role": "현재 진행 중 과제의 핵심 메시지와 도입단계 근거"
+    },
+    {
+      "source_id": "S2",
+      "role": "FAB 계측이 운영·품질·비용에 연결되는 직접 배경"
+    },
+    {
+      "source_id": "S3",
+      "role": "이번 과제와 직접 연결된 선행 검출한계 연구의 배경; 새 발표처럼 쓰지 않음"
+    }
+  ],
+  "independent_writing_check": {
+    "status": "PASS",
+    "body_characters": 1350,
+    "body_words": 333,
+    "structure": "한국어 리드→계측 배경→연구 접근→검출 한계→운영·사업 의미. 원자료의 장절 구조 재현 없음.",
+    "direct_quotes": [],
+    "interpretation_paragraphs": [
+      6,
+      7,
+      8
+    ],
+    "interpretation_limit": "운영상 검증 조건 및 잠재 서비스 의미를 조건부 독자 해석으로 제시. 실적·양산·수익률·목표가·확정 고객수요 주장 없음.",
+    "source_independence": "세 자료 모두 NIST 자료다. 독립 기관 교차 검증을 했다고 주장하지 않음."
+  },
+  "article_style_status": "PASS",
+  "article_copyright_status": "PASS",
+  "image_copyright_status": "PASS",
+  "image_review": {
+    "status": "PASS",
+    "generator": "OpenAI built-in imagegen",
+    "external_reference_images": [],
+    "prompt": "Use case: photorealistic-natural. Editorial image for a Korean article on semiconductor scanning electron microscope metrology and checking AI detection limits before fab deployment. One original generic industrial scene, not any real company's or NIST's equipment. Widescreen 16:9. Restrained realistic photograph of the front of a closed semiconductor inspection instrument: an extremely simple smooth off-white cabinet with one small circular dark wafer-loading port and a brushed-metal handle, a narrow part of a cleanroom service corridor softly blurred at the far edge. No people, no screens, no diagram, no actual SEM micrograph, no visible chip pattern, no text or numbers, no logos, no brand or distinctive commercial product design, no watermark. Eye-level composition, large smooth pale surfaces, soft low-contrast diffuse light, subtle shadows, very low fine-detail and very low visual clutter, credible calm factory inspection environment. The round load port is the single focal subject, occupying approximately one fifth of the image; the rest is smooth softly graded clean equipment surface. Leave bottom-right area empty for a small Korean AI disclosure added later. This is an illustrative generic scene, never evidence of research results or deployment.",
+    "basis_url": "https://openai.com/policies/terms-of-use/",
+    "basis_section": "Content: Ownership of content; Similarity of content; rights responsibility and output review",
+    "review": "독자적 일반 산업현장 사진형. 기업 로고·인물·보호 캐릭터·원문 도표·화면 UI·워터마크·실제 NIST 장비 복제 없음. 기존 특정 저작물의 특징적 재현을 확인한 범위에서 발견하지 못함. 우측 하단 AI 고지 확인.",
+    "not_a_claim": "이용약관은 제3자 권리 침해에 대한 보증이 아님; 자체 검토와 고지를 병행함."
+  },
+  "excluded_items": [
+    {
+      "title": "Vertical Compute / imec 2026-11-11 발표",
+      "url": "https://www.imec-int.com/en/press/vertical-compute-expands-partnership-imec-accelerate-commercial-manufacturing-vertically",
+      "status": "UNCLEAR",
+      "basis_url": "https://www.imec-int.com/en/disclaimer-imec",
+      "reason": "개인 정보 목적 한정 및 투자 목적 배제 안내가 있으며 이번 상업적 기사 이용의 별도 허락을 확보하지 못해 선택하지 않음. 내용·수치·해석·이미지 입력 모두 미사용."
+    },
+    {
+      "title": "검색에서 발견한 신문·통신사·금융매체·시장 기사",
+      "status": "EXCLUDE",
+      "reason": "원출처 탐색 단서로만 사용; 기사 근거·표현·수치·투자 해석·참조사진으로 사용하지 않음. FAB 계측 메시지에 무관한 자료도 제외."
+    }
+  ],
+  "recency": {
+    "search_rounds": 1,
+    "supplement_rounds": 1,
+    "selected_window": "최근 3개월",
+    "selected_primary_update": "2026-09-18",
+    "reason": "최근 7일·30일 후보 중 이번 이용 근거를 확인한 적합 핵심 원자료를 확보하지 못해 3개월 내 진행 중 NIST 신규 과제로 범위를 한정. 현재 연구계획임을 명시."
+  },
+  "duplicate_check": {
+    "checked_once": true,
+    "location": "wskimgit/k-article main recursive tree",
+    "autogen_articles_in_current_tree": 0,
+    "other_current_topics": [
+      "미국 물가·운임",
+      "중국 핵심광물 규제 유예·갈륨 공급망"
+    ],
+    "overlap": false,
+    "historical_context": "과거 일반 FAB AI·예지정비 등과 이번 검출한계·SEM 계측 주제를 구분"
+  },
+  "rewrite_count": 0,
+  "image_generation_count": 1,
+  "editing_revision_count": 0,
+  "publication_decision": "APPROVED_FOR_GITHUB_ATOMIC_COMMIT",
+  "publication_scope": {
+    "repository": "wskimgit/k-article",
+    "branch": "main",
+    "article": "261125.AutoGen.NIST, 반도체 계측 AI의 검출 한계 검증 추진.txt",
+    "image": "261125.AutoGen.NIST, 반도체 계측 AI의 검출 한계 검증 추진.v1.jpg",
+    "audit": "chatgpt/copyright-checks/261125.nist-sem-ai-limits.json",
+    "nas_publication": "GitHub 저장과 별도로 확인할 단계. 기존 egtech.php의 초기 조회는 과거 보관 기사 화면을 반환하여 신규 기사 공개는 아직 확인하지 않음."
+  }
+}
